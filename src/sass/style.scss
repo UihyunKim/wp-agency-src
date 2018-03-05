@@ -30,6 +30,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 $sky: #11749e;
 $light-sky: #2e85aa;
 $dark: #222222;
+$transparent: rgba(0,0,0,0);
 
 // etc
 $nav-height: 88px;
@@ -245,7 +246,7 @@ body#bootstrap-overrides {
     
     .progress {
       
-      background-color:rgba(0, 0, 0, 0);
+      background-color: $transparent;
       border-radius: 0;
 
       .progress-bar {
@@ -312,17 +313,45 @@ body#bootstrap-overrides {
         bottom: 0;
         left: 0;
         right: 0;
-        h1 {
-          font-size: 2.5em;
+        h1 { font-size: 1.7em; }
+        @include media-breakpoint-up(md) {
+          h1 { font-size: 2.5em; }
         }
       }
       div:last-child {
         font-size: 6em;
+        line-height: 0.8em;
         @include media-breakpoint-up(md) {
           font-size: 13em;
+          line-height: 1em;
         }
         color: rgba(255, 255, 255, 0.4);
-        line-height: 1em;
+      }
+    }
+
+    form {
+      input, textarea {
+        background-color: $transparent;
+        color: white;
+      }
+    }
+
+    footer {
+      @include media-breakpoint-down(md) {
+        width: 100vw;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+
+      h5 {
+        font-size: 0.7em;
+      }
+      img {
+        max-height: 150px;
+        object-fit: cover;
+        object-position: center center;
+        width: 100%;
       }
     }
   }

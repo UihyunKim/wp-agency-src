@@ -6,12 +6,14 @@ const babel = require('gulp-babel');
 const sass = require('gulp-sass');
 const concat = require('gulp-concat');
 const rename = require("gulp-rename");
+const changed = require('gulp-changed');
 
 const themePath = '/opt/lampp/htdocs/wp-agency/wp-content/themes/wp-agency/';
 
 // Optimize images
 gulp.task('imageMin', () =>
   gulp.src('src/img/*')
+      .pipe(changed(themePath + 'img'))
       .pipe(imagemin())
       .pipe(gulp.dest(themePath + 'img'))
 );
@@ -55,6 +57,17 @@ gulp.task('copyScripts', () =>
       .pipe(gulp.dest(themePath + 'js'))
 )
 
+// Copy wp sources
+const wpSrc = [
+  'src/screentshot.png',
+  'src/*.php'
+];
+
+gulp.task('copyWp', () => 
+  gulp.src(wpSrc)
+      .pipe(gulp.dest(themePath))
+)
+
 // default
 gulp.task('default', [
   'imageMin',
@@ -70,4 +83,5 @@ gulp.task('watch', () => {
   gulp.watch('src/sass/*.scss', ['sass']);
   gulp.watch('node_modules/bootstrap/scss/bootstrap.scss', ['bootstrap']);
   gulp.watch('src/js/*.js', ['minify']);
+  gulp.watch(wpSrc, ['copyWp']);
 })
