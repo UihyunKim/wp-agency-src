@@ -7,6 +7,8 @@ const sass = require('gulp-sass');
 const concat = require('gulp-concat');
 const rename = require("gulp-rename");
 const changed = require('gulp-changed');
+const plumber = require('gulp-plumber');
+
 
 const themePath = '/opt/lampp/htdocs/wp-agency/wp-content/themes/wp-agency/';
 
@@ -29,12 +31,13 @@ gulp.task('sass', () =>
 // Javascripts minify(+concat +convert ES6 +uglify)
 gulp.task('minify', () =>
 gulp.src(['src/js/*.js'])
-.pipe(concat('main.js'))
-.pipe(babel({
-  presets: ['env']
-}))
-.pipe(uglify())
-.pipe(gulp.dest(themePath + 'js'))
+  .pipe(plumber())
+  .pipe(concat('main.js'))
+  .pipe(babel({
+    presets: ['env']
+  }))
+  .pipe(uglify())
+  .pipe(gulp.dest(themePath + 'js'))
 );
 
 // Copy styles

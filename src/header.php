@@ -17,7 +17,7 @@
 
 <body id='bootstrap-overrides' class='prx-1 d-none'>
 
-  <nav  class="navbar fixed-top navbar-expand-lg navbar-dark p-lg-0" 
+  <nav  class="navbar fixed-top navbar-expand-lg navbar-dark p-lg-0 justify-content-center" 
         role="navigation">
     <div class="container">
 
@@ -40,58 +40,19 @@
           'theme_location'    => 'primary',
           'depth'             => 2,
           'container'         => 'div',
-          'container_class'   => 'collapse navbar-collapse justify-content-end',
+          'container_class'   => 'collapse navbar-collapse justify-content-center',
           'container_id'      => 'navbarNavDropdown',
           'menu_class'        => 'navbar-nav',
           'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
           'walker'            => new WP_Bootstrap_Navwalker()
         ));
       ?>
-
-      <!-- <div class="collapse navbar-collapse col-lg-9" id="navbarNavDropdown">
-        <ul class="navbar-nav col justify-content-between">
-          <li class="nav-item active d-flex align-items-center">
-            <a class="nav-link" href="#">Home <span class="sr-only d-lg-none">(current)</span></a>
-          </li>
-          <li class="nav-item d-flex align-items-center">
-            <a class="nav-link" href="#">Pages</a>
-          </li>
-          <li class="nav-item d-flex align-items-center">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item d-flex align-items-center">
-            <a class="nav-link" href="#">Extensions</a>
-          </li>
-          <li class="nav-item d-flex align-items-center">
-            <a class="nav-link" href="#">Tutorials</a>
-          </li>
-          <li class="nav-item d-flex align-items-center">
-            <a class="nav-link" href="#">Contact us</a>
-          </li>
-
-          <li class="nav-item dropdown">
-
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown link
-            </a>
-
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-
-          <li class="nav-item d-flex align-items-center nav-sns">
-            <a href="#"><img src="<?php bloginfo('template_url') ?>/img/sns-facebook.png" alt="sns link for facebook"></a>
-            <a href="#"><img src="<?php bloginfo('template_url') ?>/img/sns-twitter.png" alt="sns link for twitter"></a>
-            <a href="#"><img src="<?php bloginfo('template_url') ?>/img/sns-skype.png" alt="sns link for skype"></a>
-            <a href="#"><img src="<?php bloginfo('template_url') ?>/img/sns-linkedin.png" alt="sns link for linked in"></a>
-          </li>
-        </ul>
-      </div> -->
-
-
+      
+      <div id="sns" class="d-none d-lg-block">
+        <a class="mx-1" href="#"><img src="<?php bloginfo('template_url') ?>/img/sns-facebook.png" alt="sns link for facebook"></a>
+        <a class="mx-1" href="#"><img src="<?php bloginfo('template_url') ?>/img/sns-twitter.png" alt="sns link for twitter"></a>
+        <a class="mx-1" href="#"><img src="<?php bloginfo('template_url') ?>/img/sns-linkedin.png" alt="sns link for linked in"></a>
+      </div>
 
     </div>
   </nav>

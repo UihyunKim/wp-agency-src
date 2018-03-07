@@ -4,12 +4,25 @@
 $(function () {
   
   let windowWidth = $(window).width();
-  let slideIndex;
-  const navBgs = [4, 6];
+  let currSlide;
+  const navColors = [4, 6];
 
-  const navBg = function (param) {
-    param == 'on' ? $('nav').css('background-color', 'rgba(0,0,0,0.7)') : '';
-    param == 'off' ? $('nav').css('background-color', 'rgba(0,0,0,0)') : '';
+  const navColor = function () {
+    if (windowWidth >= 992) {
+      
+      if (navColors.includes(currSlide)) {
+        $('nav a').css('color', 'black');
+        $('#sns img').css('filter', 'invert(100%)');
+      } else {
+        $('nav a').css('color', 'white');
+        $('#sns img').css('filter', 'invert(0%)');
+      }
+      
+    } else {
+      $('nav a').css('color', 'white');
+      $('#sns img').css('filter', 'invert(0%)');
+    }
+    
   }
 
   const imgCrop = function () {
@@ -34,7 +47,7 @@ $(function () {
     windowWidth = $(window).width();
 
     // NAV BG COLOR
-    windowWidth < 992 ? navBg('off') : navBg('on');
+    windowWidth < 992 ? navColor('white') : navColor('black');
 
     // SECTION5 SMARTPHONE IMAGE CROP
     imgCrop();
@@ -42,7 +55,7 @@ $(function () {
 
   $('#fullpage').fullpage({
     afterLoad : function (anchorLink, idx) {
-      slideIndex = idx;
+      currSlide = idx;
 
       // progress bar animation start
       if (idx == 5) {
@@ -59,12 +72,10 @@ $(function () {
 
     onLeave: function(idx, nextIdx, direction){
       
-      // add bg-color on nav when white bg
+      // Change color on nav when white bg
       // only working bigger than md screen size
-      if (windowWidth >= 992) {
-        if (navBgs.includes(idx)) { navBg('off'); }
-        else if (navBgs.includes(nextIdx)) { navBg('on'); }
-      }
+      currSlide = nextIdx;
+      navColor();
 
       // change parallax background image
       if (nextIdx == 1) {

@@ -49,38 +49,34 @@ $nav-height: 88px;
 
 // Navigation
 body#bootstrap-overrides {
+
   @include media-breakpoint-up(lg) {
     nav {
       border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+
       height: 90px;
       .container,
       .navbar-collapse,
       ul.navbar-nav,
       li.nav-item {
         height: 100%;
-      }
-      .nav-link {
-        color: #fff;
-      }
-      .nav-item.active {
-        border-bottom: 5px solid $sky;
-      }
-      .nav-sns img {
         margin: 0 10px;
       }
+
+      a.nav-link {
+        color: #fff;
+        text-transform: uppercase;
+      }
+
+      .nav-item.active {
+        border-top: 5px solid $transparent;
+        border-bottom: 5px solid $sky;
+        &:last-child {
+          border: none;
+        }
+      }
+
     }
-
-  }
-
-  // mobile nav
-  .navbar-nav {
-    // a {
-    //   background-color: $sky-trans;
-    //   padding: 0px 5px;
-    //   margin: 3px 0;
-    //   border-radius: 2px;
-    //   color: white;
-    // }
 
   }
 
