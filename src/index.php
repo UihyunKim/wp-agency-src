@@ -1,59 +1,4 @@
-<!DOCTYPE html>
-<html <?php language_attributes(); ?>>
-<head>
-  <meta charset="<?php bloginfo('charset'); ?>">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="<?php bloginfo('description'); ?>">
-
-  <title> <?php is_front_page() ? bloginfo('name') : wp_title() ; ?> </title>
-
-  <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/css/jquery.fullpage.min.css" />
-  <link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url'); ?>">
-
-  <?php wp_head(); ?>
-</head>
-<body id='bootstrap-overrides' class='prx-1'>
-
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-lg-0">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="<?php bloginfo('template_url') ?>/img/logo.png" width="70px" height="auto" alt="">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse col-lg-9" id="navbarNavDropdown">
-        <ul class="navbar-nav col justify-content-between">
-          <li class="nav-item active d-flex align-items-center">
-            <a class="nav-link" href="#">Home <span class="sr-only d-lg-none">(current)</span></a>
-          </li>
-          <li class="nav-item d-flex align-items-center">
-            <a class="nav-link" href="#">Pages</a>
-          </li>
-          <li class="nav-item d-flex align-items-center">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item d-flex align-items-center">
-            <a class="nav-link" href="#">Extensions</a>
-          </li>
-          <li class="nav-item d-flex align-items-center">
-            <a class="nav-link" href="#">Tutorials</a>
-          </li>
-          <li class="nav-item d-flex align-items-center">
-            <a class="nav-link" href="#">Contact us</a>
-          </li>
-          <li class="nav-item d-flex align-items-center nav-sns">
-            <img src="<?php bloginfo('template_url') ?>/img/sns-facebook.png" alt="sns link for facebook">
-            <img src="<?php bloginfo('template_url') ?>/img/sns-twitter.png" alt="sns link for twitter">
-            <img src="<?php bloginfo('template_url') ?>/img/sns-skype.png" alt="sns link for skype">
-            <img src="<?php bloginfo('template_url') ?>/img/sns-linkedin.png" alt="sns link for linked in">
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+<?php get_header(); ?>
 
   <div id="fullpage">
 
@@ -202,30 +147,41 @@
           </div>
   
           <div class="blog-container row">
+
+            <?php if(have_posts()) : ?>
+              <?php while(have_posts()) : the_post(); ?>
+
+                <article class="col-6 col-md-4 col-lg-3">
+                  <?php if( has_post_thumbnail() ) : ?>
+                  	<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+                      <img class="img-fluid" src="<?php the_post_thumbnail_url('full'); ?>">
+                    </a>
+                  <?php endif; ?>
+                  <h1 class="text-uppercase text-center mt-2">
+                    <a href="<?php the_permalink() ?>"><?php the_title() ?></a>
+                  </h1>
+                  <p class="d-none d-md-block text-center"><?php the_excerpt() ?></p>
+                </article>
   
-            <article class="col-6 col-md-4 col-lg-3">
-                <img class="img-fluid" src="<?php bloginfo('template_url') ?>/img/blog1.png" alt="a meeting with 3 colleagues">
-                <h1 class="text-uppercase text-center">Fresh Summer Campaign</h1>
-                <p class="d-none d-md-block text-center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident accusantium ducimus tempore recusandae, deserunt inventore!</p>
-            </article>
-  
-            <article class="col-6 col-md-4 col-lg-3">
+              <?php endwhile ?>
+            <?php endif ?>
+            <!-- <article class="col-6 col-md-4 col-lg-3">
               <img class="img-fluid" src="<?php bloginfo('template_url') ?>/img/blog2.png" alt="a man seeing tablet">
-              <h1 class="text-uppercase text-center">Fresh Summer Campaign</h1>
+              <h1 class="text-uppercase text-center mt-2">Fresh Summer Campaign</h1>
               <p class="d-none d-md-block text-center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident accusantium ducimus tempore recusandae, deserunt inventore!</p>
             </article>
   
             <article class="col-6 col-md-4 col-lg-3">
               <img class="img-fluid" src="<?php bloginfo('template_url') ?>/img/blog3.png" alt="hands on computer keyboard">
-              <h1 class="text-uppercase text-center">Fresh Summer Campaign</h1>
+              <h1 class="text-uppercase text-center mt-2">Fresh Summer Campaign</h1>
               <p class="d-none d-md-block text-center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident accusantium ducimus tempore recusandae, deserunt inventore!</p>
             </article>
   
             <article class="col-6 d-xl-block d-md-none d-lg-block col-md-4 col-lg-3">
               <img class="img-fluid" src="<?php bloginfo('template_url') ?>/img/blog1.png" alt="a meeting with 3 colleagues">
-              <h1 class="text-uppercase text-center">Fresh Summer Campaign</h1>
+              <h1 class="text-uppercase text-center mt-2">Fresh Summer Campaign</h1>
               <p class="d-none d-lg-block text-center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident accusantium ducimus tempore recusandae, deserunt inventore!</p>
-            </article>
+            </article> -->
   
           </div>
         </div>
@@ -387,7 +343,7 @@
                 <textarea class="form-control" id="textarea" rows="3" placeholder="Message"></textarea>
               </div>
               <div class="form-group col-md-12 text-center">
-                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                <button type="submit" class="btn btn-lg text-white text-uppercase">Submit</button>
               </div>
             </div>
           </form>
@@ -396,9 +352,15 @@
             <img class="img-fluid d-none d-md-block" src="<?php bloginfo('template_url') ?>/img/map.png" alt="map">
             <div class="p-md-3 bg-dark text-white
                         d-flex
-                        flex-column flex-md-row">
-              <h5 class="my-2 m-md-0 col-12 col-md-6 text-center text-md-left">&copy; 2018 PSDfreebies.com - All Right Reserved</h5>
-              <h5 class="my-2 m-md-0 col-12 col-md-6 text-center text-md-right">Design by PSDFreebies.com</h5>
+                        flex-column flex-md-row
+                        align-items-md-center">
+              <h5 class="my-2 m-md-0 col-12 col-md-6 text-center text-md-left">
+                &copy; <?php echo Date('Y'); ?> - <?php bloginfo('name'); ?> - All Right Reserved
+              </h5>
+              <h5 class="my-2 m-md-0 col-12 col-md-6 text-center text-md-right">Design by: 
+                <img class="img-fluid" src="<?php bloginfo('template_url') ?>/img/bee.png" alt="bee icon"> 
+                PSDFreebies.com
+              </h5>
             </div>
 
           </footer>
@@ -412,14 +374,4 @@
   </div> <!-- End #fullpage -->
 
 
-
-
-  <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.min.js"></script>
-  <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.fullpage.min.js"></script>
-  <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/main.js"></script>
-
-
-  <?php wp_footer(); ?>
-</body>
-</html>
+<?php get_footer(); ?>

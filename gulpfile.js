@@ -59,7 +59,7 @@ gulp.task('copyScripts', () =>
 
 // Copy wp sources
 const wpSrc = [
-  'src/screentshot.png',
+  'src/screenshot.png',
   'src/*.php'
 ];
 

@@ -28,7 +28,9 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 // color
 $sky: #11749e;
+$sky-trans: rgba(17, 116, 158, 0.5);
 $light-sky: #2e85aa;
+$light-sky-trans: rgba(46, 133, 170, 0.5);
 $dark: #222222;
 $transparent: rgba(0,0,0,0);
 
@@ -67,6 +69,19 @@ body#bootstrap-overrides {
         margin: 0 10px;
       }
     }
+
+  }
+
+  // mobile nav
+  .navbar-nav {
+    // a {
+    //   background-color: $sky-trans;
+    //   padding: 0px 5px;
+    //   margin: 3px 0;
+    //   border-radius: 2px;
+    //   color: white;
+    // }
+
   }
 
   // parallax background image
@@ -334,6 +349,10 @@ body#bootstrap-overrides {
         background-color: $transparent;
         color: white;
       }
+
+      button {
+        background-color: $sky;
+      }
     }
 
     footer {
@@ -347,7 +366,7 @@ body#bootstrap-overrides {
       h5 {
         font-size: 0.7em;
       }
-      img {
+      >img {
         max-height: 150px;
         object-fit: cover;
         object-position: center center;

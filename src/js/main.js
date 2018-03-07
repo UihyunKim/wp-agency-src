@@ -102,3 +102,11 @@ $(function() {
     });
 
 });
+
+//
+// animation on loading
+//
+
+$(function () {
+  $('#bootstrap-overrides').removeClass('d-none');
+});
