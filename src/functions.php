@@ -24,3 +24,9 @@
 
   add_filter('excerpt_length', 'set_excerpt_length');
   
+  
+  // Count posts
+  function wp_total_posts() {
+    $total = wp_count_posts()->publish;
+    echo 'Total Posts: ' . $total;
+  }

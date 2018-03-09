@@ -8,6 +8,7 @@ const concat = require('gulp-concat');
 const rename = require("gulp-rename");
 const changed = require('gulp-changed');
 const plumber = require('gulp-plumber');
+const autoprefixer = require('gulp-autoprefixer');
 
 
 const themePath = '/opt/lampp/htdocs/wp-agency/wp-content/themes/wp-agency/';
@@ -24,6 +25,7 @@ gulp.task('imageMin', () =>
 gulp.task('sass', () => 
   gulp.src('src/sass/*.scss')
       .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+      .pipe(autoprefixer({browsers: ['last 2 versions'], cascade: false}))
       .pipe(gulp.dest(themePath))
 );
 
@@ -36,16 +38,17 @@ gulp.src(['src/js/*.js'])
   .pipe(babel({
     presets: ['env']
   }))
-  .pipe(uglify())
+  // .pipe(uglify())
   .pipe(gulp.dest(themePath + 'js'))
 );
 
 // Copy styles
 gulp.task('copyStyles', () => 
   gulp.src([
-    'node_modules/dist/css/bootstrap.min.css',
+    'node_modules/bootstrap/dist/css/bootstrap.css',
     'node_modules/fullpage.js/dist/jquery.fullpage.min.css',
   ])
+      .pipe(autoprefixer({browsers: ['last 2 versions'], cascade: false}))
       .pipe(gulp.dest(themePath + 'css'))
 );
 

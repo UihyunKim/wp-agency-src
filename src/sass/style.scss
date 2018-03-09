@@ -14,17 +14,23 @@ This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
 
-// import Bootstrap modules for responsive break points
+// Bootstrap modules for responsive break points
 // Required
 @import "../../node_modules/bootstrap/scss/functions";
 @import "../../node_modules/bootstrap/scss/variables";
 @import "../../node_modules/bootstrap/scss/mixins";
 
-// import Bootstrap.scss
+// Bootstrap.scss
 // @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
-// import Animate.css
+// Animate.css
 @import "../../node_modules/animate.css/animate";
+
+// change style by js
+@import "js-style"; 
+
+// animation by js
+@import "js-anim";
 
 // color
 $sky: #11749e;
@@ -37,11 +43,16 @@ $transparent: rgba(0,0,0,0);
 // etc
 $nav-height: 88px;
 
+// font
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker|Rozha+One');
+$cursive: 'Permanent Marker', cursive;
+$serif: 'Rozha One', serif;
+
 /*
  * fullpage.js commons
  */
 
-#fullpage {
+#fullpage-front {
   .section .content-wrapper {
     height: 100%;
   }
@@ -52,8 +63,11 @@ body#bootstrap-overrides {
 
   @include media-breakpoint-up(lg) {
     nav {
-      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+      animation-duration: 0.8s;
+      animation-delay: 1.5s;
+      animation-iteration-count: 1;
 
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
       height: 90px;
       .container,
       .navbar-collapse,
@@ -103,7 +117,7 @@ body#bootstrap-overrides {
  * section 1
  */
 
-#fullpage {
+#fullpage-front {
   
   #section1 {
     // background-image: url('img/front-parallax-bg.png');
@@ -372,4 +386,5 @@ body#bootstrap-overrides {
   }
 }
 
-
+// News page styles
+@import "news";

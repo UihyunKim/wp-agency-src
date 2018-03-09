@@ -1,17 +1,17 @@
 <?php get_header(); ?>
 
-  <div id="fullpage">
+  <div id="fullpage-front">
 
     <!-- section 1 -->
     <section id="section1" class="section" data-anchor="slide1">
 
-      <div class="content-wrapper container d-flex flex-column justify-content-center align-items-center position-relative">
-        <div class="text-center">
+      <div class="content-wrapper container d-flex flex-column justify-content-center align-items-center">
+        <div class="invisible text-center js-title-anim">
           <h1 class="font-weight-bold text-white m-0">CREATIVES</h1>
           <h2>POWER BY OLDERTHANYESTERDAY.COM</h2>
         </div>
 
-        <a href="#slide2" class="scroll-down position-absolute">
+        <a href="#slide2" class="scroll-down position-absolute js-bg-anim invisible">
           <p class="text-white text-center" >Scroll Down</p>
           <div class="arrow border border-white rounded-circle m-auto">
             <div class="d-flex align-items-center w-100 h-100 block">
@@ -147,12 +147,19 @@
           </div>
   
           <div class="blog-container row">
+          
+            <?php query_posts('category_name=Business&showposts=4'); ?>
 
-            <?php if(have_posts()) : ?>
-              <?php while(have_posts()) : the_post(); ?>
+            <?php if (have_posts()) : ?>
+            
+              <?php 
+                $counter = 0;
+                $class = "col-6 col-md-4 col-lg-3";
+                $lastClass = "col-6 col-lg-3 d-md-none d-lg-block";
+                while (have_posts()) : the_post(); ?>
 
-                <article class="col-6 col-md-4 col-lg-3">
-                  <?php if( has_post_thumbnail() ) : ?>
+                <article class= "<?php echo $counter == 3 ? $lastClass : $class ?>" >
+                  <?php if (has_post_thumbnail()) : ?>
                   	<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
                       <img class="img-fluid" src="<?php the_post_thumbnail_url('full'); ?>">
                     </a>
@@ -160,28 +167,15 @@
                   <h1 class="text-uppercase text-center mt-2">
                     <a href="<?php the_permalink() ?>"><?php the_title() ?></a>
                   </h1>
-                  <p class="d-none d-md-block text-center"><?php the_excerpt() ?></p>
+                  <div class="d-none d-md-block text-center">
+                    <?php the_excerpt() ?>
+                  </div>
                 </article>
   
-              <?php endwhile ?>
+              <?php 
+                $counter++;
+                endwhile ?>
             <?php endif ?>
-            <!-- <article class="col-6 col-md-4 col-lg-3">
-              <img class="img-fluid" src="<?php bloginfo('template_url') ?>/img/blog2.png" alt="a man seeing tablet">
-              <h1 class="text-uppercase text-center mt-2">Fresh Summer Campaign</h1>
-              <p class="d-none d-md-block text-center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident accusantium ducimus tempore recusandae, deserunt inventore!</p>
-            </article>
-  
-            <article class="col-6 col-md-4 col-lg-3">
-              <img class="img-fluid" src="<?php bloginfo('template_url') ?>/img/blog3.png" alt="hands on computer keyboard">
-              <h1 class="text-uppercase text-center mt-2">Fresh Summer Campaign</h1>
-              <p class="d-none d-md-block text-center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident accusantium ducimus tempore recusandae, deserunt inventore!</p>
-            </article>
-  
-            <article class="col-6 d-xl-block d-md-none d-lg-block col-md-4 col-lg-3">
-              <img class="img-fluid" src="<?php bloginfo('template_url') ?>/img/blog1.png" alt="a meeting with 3 colleagues">
-              <h1 class="text-uppercase text-center mt-2">Fresh Summer Campaign</h1>
-              <p class="d-none d-lg-block text-center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident accusantium ducimus tempore recusandae, deserunt inventore!</p>
-            </article> -->
   
           </div>
         </div>

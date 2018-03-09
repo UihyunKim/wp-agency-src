@@ -1,123 +1,191 @@
-// 
-// fullpage.js
-// 
-$(function () {
-  
+(function ($) {
+
   let windowWidth = $(window).width();
-  let currSlide;
-  const navColors = [4, 6];
+  let imgCrops = [];
+  let blackNavs = [];
+  let currSlide = null;
+  let navTooltips = [];
+  let pgBars = [];
+  let prxBgs = [];
+
+  const resize = function () {
+    $(window)
+      .resize(function (e) {
+        windowWidth = $(window).width();
+        navColor();
+        imgCrop();
+      });
+  }
+
+  const prxBg = function () {
+    if (prxBgs.map(bg => bg.slide).includes(currSlide)) {
+      const prx = prxBgs.filter(bg => bg.slide === currSlide)[0]['class'];
+      $('#bootstrap-overrides')
+        .removeClass()
+        .addClass(prx);
+    }
+  }
+
+  var animationEnd = (function (el) {
+    var animations = {
+      animation: 'animationend',
+      OAnimation: 'oAnimationEnd',
+      MozAnimation: 'mozAnimationEnd',
+      WebkitAnimation: 'webkitAnimationEnd'
+    };
+
+    for (var t in animations) {
+      if (el.style[t] !== undefined) {
+        return animations[t];
+      }
+    }
+  })(document.createElement('div'));
+
+  const titleAnim = function (sId, effectAdd) {
+    const all = '.js-title-anim';
+    const current = `#${sId}${currSlide} ${all}`;
+    const effect = `animated ${effectAdd}`;
+
+    $(all).addClass('invisible'); // back to default(display: hidden;)
+    $(current) // animation start
+      .removeClass('invisible')
+      .addClass(effect)
+      .one(animationEnd, function () {
+        $(this).removeClass(effect);
+      });
+  }
+
+  const bgAnim = function (sId, effectAdd) {
+    const all = '.js-bg-anim';
+    const current = `#${sId}${currSlide} ${all}`;
+    const effect = `animated ${effectAdd}`;
+
+    $(all).addClass('invisible'); // back to default(display: hidden;)
+    $(current) // animation start
+      .removeClass('invisible')
+      .addClass(effect)
+      .one(animationEnd, function () {
+        $(this).removeClass(effect);
+      });
+  }
+
+  const pgBarAnim = function () {
+    if (pgBars.includes(currSlide)) {
+      $('.prb-1').css('width', '80%');
+      $('.prb-2').css('width', '90%');
+      $('.prb-3').css('width', '100%');
+    } else {
+      $('.progress-bar').css('width', '0%');
+    }
+  }
+
+  const hoverAnim = function () {
+    const anim = 'animated infinite bounce'
+    $('#fullpage-front .scroll-down').mouseenter(function () {
+      $('.arrow', this).addClass(anim);
+    })
+      .mouseleave(function () {
+        $('.arrow', this).removeClass(anim);
+      });
+  }
 
   const navColor = function () {
-    if (windowWidth >= 992) {
-      
-      if (navColors.includes(currSlide)) {
-        $('nav a').css('color', 'black');
-        $('#sns img').css('filter', 'invert(100%)');
-      } else {
-        $('nav a').css('color', 'white');
-        $('#sns img').css('filter', 'invert(0%)');
-      }
-      
-    } else {
-      $('nav a').css('color', 'white');
-      $('#sns img').css('filter', 'invert(0%)');
+    const white = function () {
+      $('nav a').removeClass('js-color-black');
+      $('#sns img').removeClass('js-filter-black');
+      $('#fp-nav ul li a span, .fp-slidesNav ul li a span').addClass('js-bg-white');
+      $('#fp-nav ul li .fp-tooltip').removeClass('js-color-black');
+    };
+    const black = function () {
+      $('nav a').addClass('js-color-black');
+      $('#sns img').addClass('js-filter-black');
+      $('#fp-nav ul li a span, .fp-slidesNav ul li a span').removeClass('js-bg-white');
+      $('#fp-nav ul li .fp-tooltip').addClass('js-color-black');
     }
-    
+    blackNavs.includes(currSlide)
+      ? black()
+      : white();
   }
 
   const imgCrop = function () {
-    // Crop image
-    if (windowWidth < 576) {
-      // measure height
+    if (imgCrops.length) {
       const hWindow = $(window).height();
-      const hNav = $('nav').outerHeight(); 
+      const hNav = $('nav').outerHeight();
       const hBody = $('#s5-body').outerHeight();
-      const height = hWindow - hNav - hBody +'px';
-
-      $('#s5-img').css('height', height);
-    }
-
-    // No-crop image
-    else {
-      $('#s5-img').css('height', 'auto');
+      const height = hWindow - hNav - hBody + 'px';
+      $('#s5-img').css('height', (windowWidth < 576
+        ? height
+        : 'auto'));
     }
   }
 
-  $(window).resize(function (e) {
-    windowWidth = $(window).width();
+  const fullpage = function () {
+    // Front page
+    if ($('#fullpage-front').length) {
+      blackNavs = [4, 6];
+      imgCrops = [5];
+      pgBars = [5];
+      navTooltips = [
+        'Welcome',
+        'About us',
+        'News',
+        'Blog',
+        'Skill-set',
+        'Our team',
+        'Contact'
+      ];
+      prxBgs = [
+        {
+          slide: 1,
+          class: 'prx-1'
+        }, {
+          slide: 5,
+          class: 'prx-2'
+        }, {
+          slide: 7,
+          class: 'prx-3'
+        }
+      ];
 
-    // NAV BG COLOR
-    windowWidth < 992 ? navColor('white') : navColor('black');
+      $('#fullpage-front').fullpage({
+        navigation: true,
+        navigationPosition: 'right',
+        navigationTooltips: navTooltips,
 
-    // SECTION5 SMARTPHONE IMAGE CROP
-    imgCrop();
+        afterLoad: function (anchorLink, idx) {
+          currSlide = idx;
+          navColor();
+          pgBarAnim();
+          imgCrop();
+          titleAnim('section', 'fadeInUp');
+          bgAnim('section', 'fadeIn');
+        },
+        onLeave: function (idx, nextIdx, direction) { //
+          currSlide = nextIdx;
+          navColor();
+          pgBarAnim();
+          prxBg();
+        }
+      });
+    } else if ($('#fp-news').length) {
+      $('#fp-news').fullpage({
+        navigation: true,
+        navigationPosition: 'right',
+        afterLoad: function (achorLink, idx) {
+          currSlide = idx;
+          navColor();
+          titleAnim('news-section', 'flipInX');
+          bgAnim('news-section', 'fadeIn');
+        }
+      })
+    }
+  } // end fulpage
+
+  $(document).ready(function () {
+    hoverAnim();
+    resize();
+    fullpage();
+    $('#bootstrap-overrides').removeClass('d-none');
   });
 
-  $('#fullpage').fullpage({
-    afterLoad : function (anchorLink, idx) {
-      currSlide = idx;
-
-      // progress bar animation start
-      if (idx == 5) {
-        $('.prb-1').css('width', '80%');
-        $('.prb-2').css('width', '90%');
-        $('.prb-3').css('width', '100%');
-      } else {
-        $('.progress-bar').css('width', '0%');
-      }
-
-      // SECTION5 IMAGE CROP
-      imgCrop();
-    },
-
-    onLeave: function(idx, nextIdx, direction){
-      
-      // Change color on nav when white bg
-      // only working bigger than md screen size
-      currSlide = nextIdx;
-      navColor();
-
-      // change parallax background image
-      if (nextIdx == 1) {
-        $('#bootstrap-overrides')
-          .removeClass()
-          .addClass('prx-1');
-      } 
-      else if (nextIdx == 5) {
-        $('#bootstrap-overrides')
-          .removeClass()
-          .addClass('prx-2');
-      }
-      else if (nextIdx == 7) {
-        $('#bootstrap-overrides')
-          .removeClass()
-          .addClass('prx-3');
-      }
-
-    },
-
-  });
-});
-
-
-//
-// animate.js
-//
-$(function() {
-  $('#fullpage .scroll-down')
-    .mouseenter(function() {
-      $('.arrow', this).addClass('animated infinite bounce');
-    })
-    .mouseleave(function() {
-      $('.arrow', this).removeClass('animated infinite bounce');
-    });
-
-});
-
-//
-// animation on loading
-//
-
-$(function () {
-  $('#bootstrap-overrides').removeClass('d-none');
-});
+})(jQuery);

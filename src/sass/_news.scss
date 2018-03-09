@@ -1,0 +1,39 @@
+#fp-news {
+  section {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    h5 {
+      font-family: $serif;
+    }
+    h1 {
+      font-family: $cursive;
+      font-size: 3.4em;
+      line-height: 1em;
+      @include media-breakpoint-up(md) {
+        width: 50%;
+      }
+      @include media-breakpoint-up(lg) {
+        width: 40%;
+        font-size: 5em;
+      }
+    }
+    .read-more {
+      font-size: 1em;
+      border: 2px solid white;
+      
+      &:hover, &:focus {
+        background-color: rgba(0, 0, 0, 0);
+        border: 2px solid white;
+        color: white;
+      }
+    }
+  }
+}
+
+#news-section1 {}
+
+#news-section2 {}
+
+#news-section3 {}

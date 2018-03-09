@@ -15,9 +15,9 @@
   <?php wp_head(); ?>
 </head>
 
-<body id='bootstrap-overrides' class='prx-1 d-none'>
+<body id='bootstrap-overrides' class='<?php echo is_home() ? 'prx-1' : '' ?> d-none'>
 
-  <nav  class="navbar fixed-top navbar-expand-lg navbar-dark p-lg-0 justify-content-center" 
+  <nav  class="navbar fixed-top navbar-expand-lg navbar-dark p-lg-0 justify-content-center animated fadeIn" 
         role="navigation">
     <div class="container">
 
