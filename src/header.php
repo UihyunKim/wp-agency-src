@@ -8,14 +8,17 @@
 
   <title> <?php is_front_page() ? bloginfo('name') : wp_title() ; ?> </title>
 
-  <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/css/jquery.fullpage.min.css" />
-  <link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url'); ?>">
-
   <?php wp_head(); ?>
 </head>
 
-<body id='bootstrap-overrides' class='<?php echo is_home() ? 'prx-1' : '' ?> d-none'>
+<body id='bootstrap-overrides' 
+      class='<?php echo is_home() ? 'prx-1' : '' ?>'
+      style = 'visibility: hidden'
+      data-temp-url = <?php bloginfo('template_url') ?>
+      data-bg-img1 = "<?php echo get_theme_mod('slide1_bg_image', get_bloginfo('template_url').'/img/front-parallax-bg1.png') ?>"
+      data-bg-img2 = "<?php echo get_theme_mod('slide2_bg_image', get_bloginfo('template_url').'/img/front-parallax-bg2.png') ?>" 
+      data-bg-img3 = "<?php echo get_theme_mod('slide3_bg_image', get_bloginfo('template_url').'/img/front-parallax-bg3.png') ?>" 
+      >
 
   <nav  class="navbar fixed-top navbar-expand-lg navbar-dark p-lg-0 justify-content-center animated fadeIn" 
         role="navigation">
@@ -32,7 +35,12 @@
               aria-controls="navbarNavDropdown" 
               aria-expanded="false" 
               aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <div id="nav-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </button>
 
       <?php
@@ -56,3 +64,4 @@
 
     </div>
   </nav>
+  

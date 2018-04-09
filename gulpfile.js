@@ -32,14 +32,10 @@ gulp.task('sass', () =>
 
 // Javascripts minify(+concat +convert ES6 +uglify)
 gulp.task('minify', () =>
-gulp.src(['src/js/*.js'])
-  .pipe(plumber())
-  .pipe(concat('main.js'))
-  .pipe(babel({
-    presets: ['env']
-  }))
-  // .pipe(uglify())
-  .pipe(gulp.dest(themePath + 'js'))
+  gulp.src(['src/js/*.js'])
+    .pipe(plumber())
+    // .pipe(uglify())
+    .pipe(gulp.dest(themePath + 'js'))
 );
 
 // Copy styles
@@ -58,7 +54,8 @@ gulp.task('copyScripts', () =>
   gulp.src([
     'node_modules/jquery/dist/jquery.min.js',
     'node_modules/fullpage.js/dist/jquery.fullpage.min.js',
-    'node_modules/bootstrap/dist/js/bootstrap.min.js'
+    'node_modules/bootstrap/dist/js/bootstrap.min.js',
+    'node_modules/shufflejs/dist/shuffle.min.js'
   ])
       .pipe(gulp.dest(themePath + 'js'))
 )
@@ -81,6 +78,7 @@ gulp.task('default', [
   'minify',
   'copyStyles',
   'copyScripts',
+  'copyWp',
 ]);
 
 // watch

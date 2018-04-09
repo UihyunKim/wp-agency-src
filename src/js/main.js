@@ -1,3 +1,18 @@
+import $ from 'jquery'
+window.jQuery = $
+window.$ = $
+import 'bootstrap'
+import '../sass/style.scss'
+import 'fullpage.js'
+import 'fullpage.js/dist/jquery.fullpage.css'
+import 'animate.css'
+import Shuffle from 'shufflejs'
+import 'lightgallery'
+import 'lightgallery/dist/css/lightgallery.css';
+import 'jquery-mousewheel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel';
+
 (function ($) {
 
   let windowWidth = $(window).width();
@@ -8,12 +23,19 @@
   let pgBars = [];
   let prxBgs = [];
 
+  const device = {
+    sm: 576,
+    md: 768
+  }
+
   const resize = function () {
     $(window)
       .resize(function (e) {
         windowWidth = $(window).width();
         navColor();
         imgCrop();
+        owl();
+        navToggle('resize');
       });
   }
 
@@ -23,11 +45,18 @@
       $('#bootstrap-overrides')
         .removeClass()
         .addClass(prx);
+
+      const url = prxBgs.filter(bg => bg.slide === currSlide)[0]['url'];
+      // const header = $('#bootstrap-overrides').data('tempUrl');
+      // const value = `url(${header}${url})`;
+      const value = `url(${url})`;
+      $('#bootstrap-overrides').css('background-image', value);
+
     }
   }
 
-  var animationEnd = (function (el) {
-    var animations = {
+  const animationEnd = (function (el) {
+    const animations = {
       animation: 'animationend',
       OAnimation: 'oAnimationEnd',
       MozAnimation: 'mozAnimationEnd',
@@ -113,15 +142,15 @@
       const hNav = $('nav').outerHeight();
       const hBody = $('#s5-body').outerHeight();
       const height = hWindow - hNav - hBody + 'px';
-      $('#s5-img').css('height', (windowWidth < 576
+      $('#s5-img').css('height', (windowWidth < device.sm
         ? height
         : 'auto'));
     }
   }
 
   const fullpage = function () {
-    // Front page
-    if ($('#fullpage-front').length) {
+
+    const frontInit = function () {
       blackNavs = [4, 6];
       imgCrops = [5];
       pgBars = [5];
@@ -137,13 +166,16 @@
       prxBgs = [
         {
           slide: 1,
-          class: 'prx-1'
+          class: 'prx-1',
+          url: $('#bootstrap-overrides').data('bgImg1')
         }, {
           slide: 5,
-          class: 'prx-2'
+          class: 'prx-2',
+          url: $('#bootstrap-overrides').data('bgImg2')
         }, {
           slide: 7,
-          class: 'prx-3'
+          class: 'prx-3',
+          url: $('#bootstrap-overrides').data('bgImg3')
         }
       ];
 
@@ -159,6 +191,7 @@
           imgCrop();
           titleAnim('section', 'fadeInUp');
           bgAnim('section', 'fadeIn');
+          prxBg();
         },
         onLeave: function (idx, nextIdx, direction) { //
           currSlide = nextIdx;
@@ -167,7 +200,10 @@
           prxBg();
         }
       });
-    } else if ($('#fp-news').length) {
+
+    }
+
+    const newsInit = function () {
       $('#fp-news').fullpage({
         navigation: true,
         navigationPosition: 'right',
@@ -179,13 +215,147 @@
         }
       })
     }
+
+    // Front page
+    if ($('#fullpage-front').length) {
+      frontInit();
+    } else if ($('#fp-news').length) {
+      newsInit();
+    }
   } // end fulpage
+
+  const shuffle = function () {
+    const $sf = $('.my-shuffle');
+    const shuffleInit = function () {
+      // var Shuffle = window.Shuffle;
+      var myShuffle = new Shuffle(document.querySelector('.my-shuffle'), {
+        itemSelector: '.image-item',
+        sizer: '.my-sizer-element',
+        buffer: 1
+      });
+
+      $('input[name="shuffle-filter"]').on('change', function (evt) {
+        var input = evt.currentTarget;
+        if (input.checked) {
+          myShuffle.filter(input.value);
+        }
+      });
+    }
+    $sf.length
+      ? shuffleInit()
+      : false;
+  }
+
+  const lightGallery = function () {
+    const $lg = $('#lightgallery');
+    const $here = $('#lg-here');
+    // move position to [shortcode]
+    $lg
+      .appendTo($here)
+      .removeClass('d-none');
+    const galleryInit = function () {
+      $lg.lightGallery();
+      $lg.on('onAferAppendSlide.lg', function (event) {
+        $('body').addClass('noscroll');
+      });
+      $lg.on('onBeforeClose.lg', function (event) {
+        $('body').removeClass('noscroll');
+      });
+    }
+    $lg.length
+      ? galleryInit()
+      : false;
+  }
+
+  const owl = function () {
+    const $owl = $('#owl');
+
+    const owlInit = function () {
+      $owl.owlCarousel({items: 1, dots: true, loop: true});
+    }
+
+    if ($owl.length && windowWidth < device.md) {
+      $owl
+        .removeClass('row')
+        .addClass('owl-carousel owl-theme');
+      owlInit();
+    } else {
+      $owl
+        .trigger('destroy.owl.carousel')
+        .removeClass()
+        .addClass('row');
+
+    }
+  }
+
+  const scrollTop = function () {
+    $("a[href='#top']")
+      .click(function () {
+        $("html, body").animate({
+          scrollTop: 0
+        }, "slow");
+        return false;
+      });
+  }
+
+  const navToggle = function (param) {
+    const dark = '#222222';
+    const $navbar = $('nav.navbar');
+    const $navButton = $('button.navbar-toggler');
+    const $navItems = $('#navbarNavDropdown a');
+    const navbarShown = () => !!$('#navbarNavDropdown.show').length;
+    const navExpanded = () => {
+      return !!$('.navbar-toggler[aria-expanded="true"]').length;
+    }
+
+    const navbarOpen = () => {
+      $('#nav-icon').addClass('open');
+      $navbar.css('background-color', dark);
+    }
+    const navbarClose = () => {
+      $('#nav-icon').removeClass('open');
+      setTimeout(function () {
+        $navbar.css('background-color', 'transparent')
+      }, 300);
+    }
+    const handleNavbar = () => {
+      navbarShown()
+        ? navbarClose()
+        : navbarOpen();
+    }
+    $navButton
+      .on('click', function () {
+        $('.navbar-toggler').attr('aria-expanted');
+        handleNavbar();
+      })
+    $(document).mouseup(function (e) {
+      // close when click other area
+      if (navExpanded()) {
+        if (!$navbar.is(e.target) && $navbar.has(e.target).length === 0 && navbarShown()) {
+          $navButton.trigger('click');
+        }
+        if ($navItems.is(e.target)) {
+          $navButton.trigger('click');
+        }
+      }
+    });
+
+    if (param === 'resize') {
+      if (navExpanded()) {
+        $navButton.trigger('click');
+      }
+    }
+  }
 
   $(document).ready(function () {
     hoverAnim();
     resize();
     fullpage();
-    $('#bootstrap-overrides').removeClass('d-none');
+    shuffle();
+    lightGallery();
+    owl();
+    $('#bootstrap-overrides').css('visibility', 'visible');
+    scrollTop();
+    navToggle();
   });
-
 })(jQuery);

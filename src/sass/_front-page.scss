@@ -1,0 +1,244 @@
+/*
+ * section 1
+ */
+
+#fullpage-front {
+  #section1 {
+    h1 {
+      line-height: 1em;
+      font-size: 3em; // default - mobile
+      @include media-breakpoint-up(md) {
+        font-size: 7em;
+      }
+      @include media-breakpoint-up(lg) {
+        font-size: 9em;
+      }
+    }
+    h2 {
+      letter-spacing: 4px;
+      color: $sky;
+      font-size: 0.7em;
+      text-align: center;
+      @include media-breakpoint-up(md) {
+        font-size: 1.5em;
+      }
+      @include media-breakpoint-up(lg) {
+        font-size: 2em;
+      }
+    }
+    a:hover {
+      text-decoration: none;
+    }
+    .scroll-down {
+      bottom: 10%;
+      .arrow {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+  #section2 {
+    background-color: $sky;
+    .awesome {
+      div:first-child {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        h1 {
+          font-size: 2.5em;
+        }
+      }
+      div:last-child {
+        font-size: 13em;
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+    .features {
+      figure {
+        width: 45%;
+        padding-top: 45%;
+        div {
+          background-color: rgba(255, 255, 255, 0.2);
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+        }
+      }
+      h1 {
+        font-size: 0.9em;
+      }
+    }
+  } // end section 2
+  // section 3
+  #section3 {
+    img {
+      object-fit: cover;
+    }
+    .content-wrapper>.row>article:nth-child(1) {
+      background-color: $dark;
+      .row {
+        height: calc(100% - #{$nav-height});
+      }
+    }
+  } // end section 3
+  // section 4
+  #section4 {
+    .content-wrapper {
+      .blog-title {
+        div:first-child {
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          h1 {
+            font-size: 2.5em;
+          }
+        }
+        div:last-child {
+          font-size: 6em;
+          @include media-breakpoint-up(md) {
+            font-size: 13em;
+          }
+          color: rgba(0, 0, 0, 0.2);
+          line-height: 1em;
+        }
+      }
+      h2 {
+        font-size: 1.8em;
+      }
+      .blog-container {
+        h1 {
+          color: $sky;
+          font-size: 1em;
+        }
+      }
+    }
+  } // end section 4
+  // section5
+  #section5 {
+    img {
+      @include media-breakpoint-down(xs) {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+        object-position: top;
+      }
+    }
+    .progress {
+      background-color: $transparent;
+      border-radius: 0;
+      .progress-bar {
+        background-color: $sky;
+        &.prb-1 {
+          transition-duration: 0.4s
+        }
+        ;
+        &.prb-2 {
+          transition-duration: 0.7s
+        }
+        ;
+        &.prb-3 {
+          transition-duration: 1s
+        }
+        ;
+        span {
+          white-space: nowrap;
+        }
+      }
+    }
+  } // End section: 5
+  #section6 {
+    .content-wrapper {
+      .member-title {
+        div:first-child {
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          h1 {
+            font-size: 2.5em;
+          }
+        }
+        div:last-child {
+          font-size: 6em;
+          @include media-breakpoint-up(md) {
+            font-size: 13em;
+          }
+          color: rgba(0, 0, 0, 0.2);
+          line-height: 1em;
+        }
+      }
+      h2 {
+        font-size: 1.8em;
+      }
+      .members-container {
+        h5 {
+          color: $sky;
+          font-size: 1rem;
+        }
+        p {
+          font-size: 0.9rem;
+        }
+        .m-title {
+          top: -36px;
+        }
+      }
+    }
+  }
+  #section7 {
+    .form-title {
+      div:first-child {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        h1 {
+          font-size: 1.7em;
+        }
+        @include media-breakpoint-up(md) {
+          h1 {
+            font-size: 2.5em;
+          }
+        }
+      }
+      div:last-child {
+        font-size: 6em;
+        line-height: 0.8em;
+        @include media-breakpoint-up(md) {
+          font-size: 13em;
+          line-height: 1em;
+        }
+        color: rgba(255, 255, 255, 0.4);
+      }
+    }
+    form {
+      input,
+      textarea {
+        background-color: $transparent;
+        color: white;
+      }
+      button {
+        background-color: $sky;
+      }
+    }
+    footer {
+      @include media-breakpoint-down(md) {
+        width: 100vw;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+      h5 {
+        font-size: 0.7em;
+      }
+      >img {
+        max-height: 150px;
+        object-fit: cover;
+        object-position: center center;
+        width: 100%;
+      }
+    }
+  }
+}

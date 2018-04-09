@@ -1,0 +1,60 @@
+body {
+  background-color: $bg;
+}
+
+.height-without-nav {
+  height: calc(100% - #{$nav-height});
+}
+
+.noscroll {
+  overflow: hidden !important;
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.over-width {
+  img {
+    object-fit: cover;
+    object-position: center center;
+  }
+  @include media-breakpoint-up (lg) {
+    margin: auto -200px;
+    img {
+      min-height: 200px;
+    }
+  }
+}
+
+.zm-container {
+  overflow: hidden;
+  .zm-item {
+    transition: all 0.5s;
+    transform: scale(1);
+
+  }
+  &:hover .zm-item {
+    transition: all 0.5s;
+    transform: scale(1.2);
+    
+  }
+  .zm-item-text {
+    position: absolute;
+    display: none;
+    margin: auto;
+    height: 46px;
+    font-size: 1.9rem;
+    text-align: center;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    color: white;
+  }
+  &:hover .zm-item-text {
+    display: block;
+  }
+}
+
+.link-primary {
+  color: $sky;
+}

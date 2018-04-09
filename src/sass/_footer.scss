@@ -1,0 +1,39 @@
+body > footer {
+  min-height: 40vh;
+  >div:nth-child(2) {
+    background-color: $dark;
+    min-height: 50px;
+    font-size: 0.85rem;
+  }
+  .card-deck {
+    h5 {
+      font-size: 0.8rem;
+    }
+    p {
+      font-size: 0.8rem;
+    }
+    .list-group {
+      li {
+        font-size: 0.8rem;
+        >span {
+          font-size: 0.8rem;
+        }
+      }
+      
+      a {
+        font-size: 0.8rem;
+      }
+    }
+  }
+  .post_tags {
+    a {
+      font-size: 0.7rem;
+      
+      &:hover {
+        color: $dark !important;
+        background-color: white !important;
+        text-decoration: none !important;
+      }
+    }
+  }
+}

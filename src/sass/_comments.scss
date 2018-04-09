@@ -1,0 +1,57 @@
+#comments {
+  
+  h3 {
+    font-size: 0.9rem;
+  }
+  
+  h4 {
+    font-size: 0.8rem;
+    color: $dark-gray;
+  }
+  
+  li {
+    list-style-type: none;
+  }
+  
+  .comment-list {
+    list-style: none;
+    padding: 0;
+    
+    .avatar {
+      img {
+        min-width: 70px;
+      }
+    }
+    
+    .comment-main {
+      .comment-reply {
+        a {
+          color: $sky;
+          font-size: 0.8rem;
+          font-weight: bold;
+        }
+      }
+      .comment-text {
+        h1, h2, h3, h4, h5, h6, p {
+          color: $dark-gray;
+          font-size: 0.9rem;
+        }
+        h1, h2, h3, h4, h5, h6 {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+}
+
+#respond {
+  
+  h2 {
+    font-size: 1rem;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+}

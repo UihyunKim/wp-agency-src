@@ -1,0 +1,10 @@
+.btn-outline-primary {
+  color: $sky;
+  border-color: $sky;
+  
+  &:hover {
+    color: white;
+    border-color: $sky;
+    background-color: $sky;
+  }
+}

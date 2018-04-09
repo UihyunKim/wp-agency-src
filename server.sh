@@ -1,2 +1,2 @@
 sudo /opt/lampp/lampp start;
-gulp watch;
+# gulp watch;
