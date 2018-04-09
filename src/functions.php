@@ -1,17 +1,18 @@
 <?php
   // enqueue style
-  function mytheme_styles() {
+  function wpa_styles_enqueue() {
     wp_enqueue_style('main-styles', get_template_directory_uri() . '/dist/main.css', array(), filemtime(get_template_directory() . '/dist/main.css'), false);
+    wp_enqueue_script( 'bundle-js', get_template_directory_uri() . '/dist/bundle.js', array(), '1.0.0', true );
   }
 
-  add_action('wp_enqueue_scripts', 'mytheme_styles');
+  add_action('wp_enqueue_scripts', 'wpa_styles_enqueue');
 
 
   // Register Custom Navigation Walker
   require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
 
   // Theme support
-  function wp_theme_setup() {
+  function wpa_theme_setup() {
     // Nav menus
     register_nav_menus(array(
     'primary' => __('Primary Menu', 'wp-agency'),
@@ -21,14 +22,14 @@
     add_theme_support('post-thumbnails');
   }
 
-  add_action('after_setup_theme', 'wp_theme_setup');
+  add_action('after_setup_theme', 'wpa_theme_setup');
 
   // Excerpt Length Control
-  function set_excerpt_length() {
+  function wpa_set_excerpt_length() {
     return 1;
   }
 
-  add_filter('excerpt_length', 'set_excerpt_length', 999);
+  add_filter('excerpt_length', 'wpa_set_excerpt_length', 999);
 
   // Count posts
   function wp_total_posts() {
@@ -37,8 +38,8 @@
   }
 
   // Count post view
-  function popular_posts($post_id) {
-    $count_key = 'popular_posts';
+  function wpa_popular_posts($post_id) {
+    $count_key = 'wpa_popular_posts';
     $count = get_post_meta($post_id, $count_key, true);
     if ($count == '') {
     $count = 0;
@@ -49,7 +50,7 @@
     update_post_meta($post_id, $count_key, $count);
     }
   }
-  function track_posts($post_id) {
+  function wpa_track_posts($post_id) {
     if (!is_single()) {
     return;
     }
@@ -57,9 +58,9 @@
     global $post;
     $post_id = $post->ID;
     }
-    popular_posts($post_id);
+    wpa_popular_posts($post_id);
   }
-  add_action('wp_head', 'track_posts');
+  add_action('wp_head', 'wpa_track_posts');
 
   function wporg_shortcode($atts = [], $content = null) {
     // do something to $content
@@ -74,22 +75,22 @@
   add_shortcode('wporg', 'wporg_shortcode');
   
   // filter to replace class on reply link
-  function replace_reply_link_class($class){
+  function wpa_replace_reply_link_class($class){
       // $class = str_replace("class='comment-reply-link", "class='reply", $class);
       $pattern = '/(class=[\'\"])(.*?)(?=[\'\"])([\'\"])/i';
       $replace = '${1}${2} text-uppercase${3}';
       $class = preg_replace($pattern, $replace, $class);
       return $class;
   }
-  add_filter('comment_reply_link', 'replace_reply_link_class');
+  add_filter('comment_reply_link', 'wpa_replace_reply_link_class');
   
   // add class in post-navs(prev, next)
-  function post_link_attributes($output) {
+  function wpa_post_link_attributes($output) {
     $code = 'class="text-uppercase link-primary font-weight-bold"';
     return str_replace('<a href=', '<a '.$code.' href=', $output);
   }
-  add_filter('next_post_link', 'post_link_attributes');
-  add_filter('previous_post_link', 'post_link_attributes');
+  add_filter('next_post_link', 'wpa_post_link_attributes');
+  add_filter('previous_post_link', 'wpa_post_link_attributes');
 
 ?>
 
