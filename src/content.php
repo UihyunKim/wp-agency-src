@@ -1,5 +1,4 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class('w-100'); ?>>
-
 	<header class="entry-header">
 		<?php
 			if ( is_single() ) :

@@ -4,6 +4,7 @@
   <div  class="header d-flex justify-content-center align-items-center"
         style="background-image: url(<?php bloginfo('template_url')?>/img/blog-header.jpeg)">
     <h3 class="text-white"><b>B</b><span>usiness</span> <b>LOG</b></h1>
+    <i class="fas fa-user-circle fa-10x"></i>
   </div>
 
   <div id="filter-container" class="container">
@@ -64,7 +65,21 @@
                     <img  src="<?php the_post_thumbnail_url('large') ?>"
                           class="rounded zm-item"
                           alt="test" />
-                    <div class="zm-item-text">+</div>
+                    <div class="zm-item-text">
+                      <?php 
+                        $format = get_post_format();
+                        switch ($format) {
+                          case 'gallery':
+                            echo '<i class="fa fa-picture-o" aria-hidden="true"></i>';
+                            break;
+                          
+                          default:
+                            // standard
+                            echo '+';
+                            break;
+                        }
+                      ?>
+                    </div>
                   </a>
                 </div>
               </div>

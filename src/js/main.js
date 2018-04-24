@@ -12,6 +12,12 @@ import 'lightgallery/dist/css/lightgallery.css';
 import 'jquery-mousewheel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel';
+import fontawesome from '@fortawesome/fontawesome';
+import faUser from '@fortawesome/fontawesome-free-solid/faUser';
+fontawesome.library.add(faUser);
+import faUserCircle from '@fortawesome/fontawesome-free-solid/faUserCircle';
+fontawesome.library.add(faUserCircle);
+
 
 (function ($) {
 
@@ -41,17 +47,9 @@ import 'owl.carousel';
 
   const prxBg = function () {
     if (prxBgs.map(bg => bg.slide).includes(currSlide)) {
-      const prx = prxBgs.filter(bg => bg.slide === currSlide)[0]['class'];
-      $('#bootstrap-overrides')
-        .removeClass()
-        .addClass(prx);
-
       const url = prxBgs.filter(bg => bg.slide === currSlide)[0]['url'];
-      // const header = $('#bootstrap-overrides').data('tempUrl');
-      // const value = `url(${header}${url})`;
       const value = `url(${url})`;
       $('#bootstrap-overrides').css('background-image', value);
-
     }
   }
 
@@ -288,6 +286,18 @@ import 'owl.carousel';
     }
   }
 
+  const owlShort = function () {
+    const $owl = $('.owl-carousel');
+    
+    for (let owl of $owl) {
+      $(owl).owlCarousel({
+        items: 1,
+        margin:30,
+        loop:true,
+      });
+    }
+  }
+
   const scrollTop = function () {
     $("a[href='#top']")
       .click(function () {
@@ -354,8 +364,11 @@ import 'owl.carousel';
     shuffle();
     lightGallery();
     owl();
+    owlShort();
     $('#bootstrap-overrides').css('visibility', 'visible');
     scrollTop();
     navToggle();
+    
+    console.log(magicalData);
   });
 })(jQuery);

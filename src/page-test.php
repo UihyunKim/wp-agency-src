@@ -1,5 +1,7 @@
 <?php get_header(); ?>
-
+/*
+  Template Name: Test Template
+*/
 <style>
 
 </style>

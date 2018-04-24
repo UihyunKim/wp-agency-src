@@ -66,9 +66,8 @@ module.exports = {
         to: dest,
         flatten: true
       }, {
-        from: 'src/inc/*.php',
+        from: 'src/inc',
         to: dest + '/inc',
-        flatten: true
       }, {
         from: 'src/screenshot.png',
         to: dest,

@@ -1,5783 +1,771 @@
-/* ----------------------------------------------------------
- * Uncode App
- * ---------------------------------------------------------- */
-
-(function ($) {
-  "use strict";
-  var UNCODE = window.UNCODE || {};
-  window.UNCODE = UNCODE;
-
-  UNCODE.utils = function () {
-    $('.btn-tooltip').tooltip();
-    $('a').hover(function () {
-      $(this).attr('data-title', $(this).attr('title'));
-      $(this).removeAttr('title');
-    }, function () {
-      $(this).attr('title', $(this).attr('data-title'));
-    });
-    $('.counter').counterUp({delay: 10, time: 1500});
-    $('[data-countdown]').each(function () {
-      var $this = $(this),
-        finalDate = $(this).data('countdown');
-      $this.countdown(finalDate, function (event) {
-        $this.html(event.strftime('%D <small>' + SiteParameters.days + '</small> %H <small>' + SiteParameters.hours + '</small> %M <small>' + SiteParameters.minutes + '</small> %S <small>' + SiteParameters.seconds + '</small>'));
-      });
-    });
-    var share_button_top = new Share(".share-button", {
-      ui: {
-        flyout: "top center",
-        button_font: false,
-        button_text: '',
-        icon_font: false
-      }
-    });
-
-    this.get_scroll_offset = function () {
-
-      var scroll_offset = 0;
-
-      if ($('.menu-hide').length || $('.menu-hide-vertical').length) {
-        if (UNCODE.bodyTop > UNCODE.wheight / 2) {
-          UNCODE.hideMenu(100);
-        }
-      }
-
-      if (($('.menu-sticky').length && !$('.menu-hide').length) || ($('.menu-sticky-vertical').length && !$('.menu-hide-vertical').length)) {
-        scroll_offset += UNCODE.menuMobileHeight;
-      } else {
-        if (UNCODE.wwidth < UNCODE.mediaQuery) {
-          scroll_offset += $('.main-menu-container.open-items').height();
-        }
-      }
-
-      scroll_offset += UNCODE.bodyBorder;
-
-      return scroll_offset;
+[{
+    "id": 60,
+    "date": "2018-03-09T10:16:16",
+    "date_gmt": "2018-03-09T10:16:16",
+    "guid": {
+        "rendered": "http:\/\/localhost\/wp-agency\/?p=60"
+    },
+    "modified": "2018-04-10T13:25:00",
+    "modified_gmt": "2018-04-10T12:25:00",
+    "slug": "quality",
+    "status": "publish",
+    "type": "post",
+    "link": "http:\/\/localhost\/wp-agency\/2018\/03\/09\/quality\/",
+    "title": {
+        "rendered": "Quality is much better than quantity."
+    },
+    "content": {
+        "rendered": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rutrum felis at dapibus pellentesque. Nullam nec lacinia ligula. Vestibulum eu augue facilisis lacus convallis efficitur in id lectus. Sed porta dapibus tristique. Nunc pharetra orci metus, vitae varius enim sagittis eget. Quisque ac quam congue, semper orci eu, lacinia enim. Vivamus vel felis in ante eleifend accumsan eu sed arcu. Duis vehicula porta dapibus.<\/p>\n<\/p>\n<p>\n\t\t\n\t\t<div id='owl-gallery-1' class='owl-carousel owl-theme gallery galleryid-60 gallery-columns-3 gallery-size-large'><dl class='gallery-item'>\n\t\t\t<dt class='gallery-icon landscape'>\n\t\t\t\t<a href='http:\/\/localhost\/wp-agency\/2018\/03\/01\/travel\/news-adventure\/'><img width=\"1024\" height=\"699\" src=\"http:\/\/localhost\/wp-agency\/wp-content\/uploads\/2018\/03\/news-adventure-1024x699.jpeg\" class=\"attachment-large size-large\" alt=\"\" srcset=\"http:\/\/localhost\/wp-agency\/wp-content\/uploads\/2018\/03\/news-adventure-1024x699.jpeg 1024w, http:\/\/localhost\/wp-agency\/wp-content\/uploads\/2018\/03\/news-adventure-300x205.jpeg 300w, http:\/\/localhost\/wp-agency\/wp-content\/uploads\/2018\/03\/news-adventure-768x524.jpeg 768w\" sizes=\"(max-width: 1024px) 100vw, 1024px\" \/><\/a>\n\t\t\t<\/dt><\/dl><dl class='gallery-item'>\n\t\t\t<dt class='gallery-icon landscape'>\n\t\t\t\t<a href='http:\/\/localhost\/wp-agency\/2018\/03\/09\/quality\/news2-urban\/'><img width=\"1024\" height=\"683\" src=\"http:\/\/localhost\/wp-agency\/wp-content\/uploads\/2018\/03\/news2-urban-1024x683.jpeg\" class=\"attachment-large size-large\" alt=\"\" srcset=\"http:\/\/localhost\/wp-agency\/wp-content\/uploads\/2018\/03\/news2-urban-1024x683.jpeg 1024w, http:\/\/localhost\/wp-agency\/wp-content\/uploads\/2018\/03\/news2-urban-300x200.jpeg 300w, http:\/\/localhost\/wp-agency\/wp-content\/uploads\/2018\/03\/news2-urban-768x512.jpeg 768w\" sizes=\"(max-width: 1024px) 100vw, 1024px\" \/><\/a>\n\t\t\t<\/dt><\/dl><dl class='gallery-item'>\n\t\t\t<dt class='gallery-icon landscape'>\n\t\t\t\t<a href='http:\/\/localhost\/wp-agency\/2018\/03\/09\/quality\/news1-travel\/'><img width=\"1024\" height=\"683\" src=\"http:\/\/localhost\/wp-agency\/wp-content\/uploads\/2018\/03\/news1-travel-1024x683.jpeg\" class=\"attachment-large size-large\" alt=\"\" srcset=\"http:\/\/localhost\/wp-agency\/wp-content\/uploads\/2018\/03\/news1-travel-1024x683.jpeg 1024w, http:\/\/localhost\/wp-agency\/wp-content\/uploads\/2018\/03\/news1-travel-300x200.jpeg 300w, http:\/\/localhost\/wp-agency\/wp-content\/uploads\/2018\/03\/news1-travel-768x512.jpeg 768w\" sizes=\"(max-width: 1024px) 100vw, 1024px\" \/><\/a>\n\t\t\t<\/dt><\/dl>\n\t\t<\/div>\n<\/p>\n<p>\n<p>In non diam ac felis aliquam eleifend. Mauris non hendrerit urna. Pellentesque in commodo tortor. Morbi at tortor ultrices, varius tellus at, egestas leo. Nam lectus velit, fermentum eget neque non, pellentesque aliquet felis. Sed sed orci eu felis ultricies tincidunt bibendum quis nisl. Ut ornare leo sed neque porttitor sodales. Morbi euismod arcu a dui ultrices, nec ultricies leo varius. Aenean efficitur, nisi at dignissim porta, ipsum nisl elementum orci, eget aliquet lacus metus vitae lorem. Integer sed vestibulum augue. Ut auctor sagittis enim, in ornare velit scelerisque et. Vestibulum malesuada scelerisque erat, gravida facilisis nisi. Pellentesque orci lorem, convallis eget tincidunt in, auctor id risus. Duis tellus ante, tristique et urna quis, posuere tempor turpis. Donec lacus sem, euismod id massa vel, cursus posuere sem.<\/p>\n<div id='lg-here' class='lg-container'><\/div>\n<p>Vivamus vitae consectetur turpis. Morbi eget massa a elit malesuada luctus. Maecenas urna enim, hendrerit in maximus eu, vestibulum vitae eros. Quisque eleifend nulla at egestas suscipit. Fusce a erat molestie, aliquam tortor et, mollis dui. Etiam a purus id libero eleifend eleifend. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque quis ante elit. Mauris faucibus pulvinar orci, at posuere erat pharetra vel. Proin suscipit urna et maximus dapibus. Nulla eget sollicitudin neque, commodo blandit tortor.<\/p>\n<p>&nbsp;<\/p>\n",
+        "protected": false
+    },
+    "excerpt": {
+        "rendered": "<p>Lorem [&hellip;]<\/p>\n",
+        "protected": false
+    },
+    "author": 5,
+    "featured_media": 69,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "gallery",
+    "meta": [],
+    "categories": [8],
+    "tags": [19, 22, 21, 13],
+    "_links": {
+        "self": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts\/60"
+        }],
+        "collection": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts"
+        }],
+        "about": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/types\/post"
+        }],
+        "author": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/users\/5"
+        }],
+        "replies": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/comments?post=60"
+        }],
+        "version-history": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts\/60\/revisions"
+        }],
+        "wp:featuredmedia": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/media\/69"
+        }],
+        "wp:attachment": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/media?parent=60"
+        }],
+        "wp:term": [{
+            "taxonomy": "category",
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/categories?post=60"
+        }, {
+            "taxonomy": "post_tag",
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/tags?post=60"
+        }],
+        "curies": [{
+            "name": "wp",
+            "href": "https:\/\/api.w.org\/{rel}",
+            "templated": true
+        }]
     }
-
-    if (!UNCODE.isFullPage || UNCODE.isMobile) {
-      $('a[href*="#"]')
-        .click(function (e) {
-
-          var hash = (e.currentTarget).hash,
-            is_scrolltop = $(e.currentTarget).hasClass('scroll-top')
-              ? true
-              : false,
-            anchor = '';
-          if ($(e.currentTarget).data('toggle') == 'tab' || $(e.currentTarget).data('toggle') == 'collapse') 
-            return;
-          if ($(e.currentTarget).hasClass('woocommerce-review-link')) {
-            e.preventDefault();
-            if (!$('#tab-reviews').is(':visible')) {
-              $('a[href="#tab-reviews"]').trigger('click');
-            }
-            var calc_scroll = $('.wootabs .tab-content')
-              .offset()
-              .top;
-            calc_scroll -= UNCODE.get_scroll_offset();
-
-            var shrink = typeof $('.navbar-brand').data('padding-shrink') !== 'undefined'
-              ? $('.navbar-brand').data('padding-shrink') * 2
-              : 36;
-
-            if ($('.menu-sticky .menu-container:not(.menu-hide)').length && $('.menu-shrink').length) {
-              scrollTo += UNCODE.menuHeight - ($('.navbar-brand').data('minheight') + shrink);
-            }
-
-            var bodyTop = document.documentElement['scrollTop'] || document.body['scrollTop'],
-              delta = bodyTop - calc_scroll,
-              scrollSpeed = (SiteParameters.constant_scroll == 'on')
-                ? Math.abs(delta) / parseFloat(SiteParameters.scroll_speed)
-                : SiteParameters.scroll_speed;
-            if (scrollSpeed < 1000 && SiteParameters.constant_scroll == 'on') 
-              scrollSpeed = 1000;
-            
-            setTimeout(function () {
-              if (scrollSpeed == 0) {
-                $('html, body').scrollTop(calc_scroll);
-                UNCODE.scrolling = false;
-              } else {
-                $('html, body')
-                  .animate({
-                    scrollTop: calc_scroll
-                  }, scrollSpeed, 'easeInOutCubic', function () {
-                    UNCODE.scrolling = false;
-                  });
-              }
-            }, 200);
-            return;
-          }
-          if (hash != undefined) {
-            if (location.pathname.replace(/^\//g, '') == this.pathname.replace(/^\//g, '') && location.hostname == this.hostname) {
-              var anchor = $(hash);
-              anchor = anchor.length
-                ? anchor
-                : this
-                  .hash
-                  .slice(1);
-            }
-          }
-
-          if (is_scrolltop || anchor != '') {
-            if (is_scrolltop) {
-              e.preventDefault();
-              var bodyTop = document.documentElement['scrollTop'] || document.body['scrollTop'],
-                scrollSpeed = (SiteParameters.constant_scroll == 'on')
-                  ? Math.abs(bodyTop) / parseFloat(SiteParameters.scroll_speed)
-                  : SiteParameters.scroll_speed;
-              if (scrollSpeed < 1000 && SiteParameters.constant_scroll == 'on') 
-                scrollSpeed = 1000;
-              
-              if (scrollSpeed == 0) {
-                $('html, body').scrollTop(0);
-                UNCODE.scrolling = false;
-              } else {
-                $('html, body')
-                  .animate({
-                    scrollTop: 0
-                  }, scrollSpeed, 'easeInOutCubic', function () {
-                    UNCODE.scrolling = false;
-                  });
-              }
-            } else {
-              var scrollSection = (typeof anchor === 'string')
-                ? $('[data-name=' + anchor + ']')
-                : anchor;
-              $.each($('.menu-container .menu-item > a, .widget_nav_menu .menu-smart .menu-item > a'), function (index, val) {
-                var get_href = $(val).attr('href');
-                if (get_href != undefined) {
-                  if (get_href.substring(get_href.indexOf('#') + 1) == anchor) 
-                    $(val).parent().addClass('active');
-                  else 
-                    $(val)
-                      .parent()
-                      .removeClass('active');
-                  }
-                });
-              if (scrollSection.length) {
-                e.preventDefault();
-
-                if (UNCODE.menuOpened) {
-                  if (UNCODE.wwidth < UNCODE.mediaQuery) 
-                    window.dispatchEvent(UNCODE.menuMobileTriggerEvent);
-                  else 
-                    $('.mmb-container-overlay .overlay-close').trigger('click');
-                  }
-                
-                var calc_scroll = scrollSection
-                    .offset()
-                    .top,
-                  getOffset = UNCODE.get_scroll_offset();
-                calc_scroll -= getOffset;
-
-                var bodyTop = document.documentElement['scrollTop'] || document.body['scrollTop'],
-                  delta = bodyTop - calc_scroll,
-                  scrollSpeed = (SiteParameters.constant_scroll == 'on')
-                    ? Math.abs(delta) / parseFloat(SiteParameters.scroll_speed)
-                    : SiteParameters.scroll_speed;
-                if (scrollSpeed < 1000 && SiteParameters.constant_scroll == 'on') 
-                  scrollSpeed = 1000;
-                
-                if (scrollSpeed == 0) {
-                  $('html, body').scrollTop(calc_scroll);
-                  UNCODE.scrolling = false;
-                } else {
-                  $('html, body')
-                    .animate({
-                      scrollTop: (delta > 0)
-                        ? calc_scroll - 0.1
-                        : calc_scroll
-                    }, scrollSpeed, 'easeInOutCubic', function () {
-                      UNCODE.scrolling = false;
-                      if (getOffset != UNCODE.get_scroll_offset()) {
-                        calc_scroll = scrollSection
-                          .offset()
-                          .top;
-                        getOffset = UNCODE.get_scroll_offset();
-                        calc_scroll -= getOffset;
-                        $('html, body').animate({
-                          scrollTop: (delta > 0)
-                            ? calc_scroll - 0.1
-                            : calc_scroll
-                        }, scrollSpeed, 'easeInOutCubic', function () {
-                          UNCODE.scrolling = false;
-                        });
-                      }
-                    });
-                }
-              }
-            }
-          }
-        });
-      $('.header-scrolldown').on('click', function (event) {
-
-        event.preventDefault();
-
-        var pageHeader = $(event.target).closest('#page-header'),
-          pageHeaderTop = pageHeader
-            .offset()
-            .top,
-          pageHeaderHeight = pageHeader.outerHeight(),
-          scrollSpeed = (SiteParameters.constant_scroll == 'on')
-            ? Math.abs(pageHeaderTop + pageHeaderHeight) / parseFloat(SiteParameters.scroll_speed)
-            : SiteParameters.scroll_speed;
-        if (scrollSpeed < 1000 && SiteParameters.constant_scroll == 'on') 
-          scrollSpeed = 1000;
-        
-        var calc_scroll = pageHeaderTop + pageHeaderHeight,
-          getOffset = UNCODE.get_scroll_offset();
-        calc_scroll -= getOffset;
-
-        var shrink = typeof $('.navbar-brand').data('padding-shrink') !== 'undefined'
-          ? $('.navbar-brand').data('padding-shrink') * 2
-          : 36;
-
-        if ($('.menu-sticky .menu-container:not(.menu-hide)').length && $('.menu-shrink').length) {
-          scrollTo += UNCODE.menuHeight - ($('.navbar-brand').data('minheight') + shrink);
-        }
-
-        if (scrollSpeed == 0) {
-          $('html, body').scrollTop(calc_scroll);
-          UNCODE.scrolling = false;
-        } else {
-          $('html, body')
-            .animate({
-              scrollTop: calc_scroll
-            }, scrollSpeed, 'easeInOutCubic', function () {
-              UNCODE.scrolling = false;
-              if (getOffset != UNCODE.get_scroll_offset()) {
-                calc_scroll = pageHeaderTop + pageHeaderHeight;
-                getOffset = UNCODE.get_scroll_offset();
-                calc_scroll -= getOffset;
-                $('html, body').animate({
-                  scrollTop: calc_scroll
-                }, scrollSpeed, 'easeInOutCubic', function () {
-                  UNCODE.scrolling = false;
-                });
-              }
-            });
-        }
-      });
+}, {
+    "id": 108,
+    "date": "2018-03-08T22:41:55",
+    "date_gmt": "2018-03-08T22:41:55",
+    "guid": {
+        "rendered": "http:\/\/localhost\/wp-agency\/2018\/03\/08\/veritatis-architecto-dicta-exercitationem-voluptatem-doloremque-libero\/"
+    },
+    "modified": "2018-03-21T12:18:04",
+    "modified_gmt": "2018-03-21T12:18:04",
+    "slug": "veritatis-architecto-dicta-exercitationem-voluptatem-doloremque-libero",
+    "status": "publish",
+    "type": "post",
+    "link": "http:\/\/localhost\/wp-agency\/2018\/03\/08\/veritatis-architecto-dicta-exercitationem-voluptatem-doloremque-libero\/",
+    "title": {
+        "rendered": "Veritatis architect"
+    },
+    "content": {
+        "rendered": "<h4>Explicabo et dicta cum qui quibusdam ut natus. Eum deserunt est nesciunt cum sint. Cum alias dicta distinctio voluptatem quis. Eum nihil et culpa sunt temporibus et<\/h4>\n<p><img src=\"http:\/\/localhost\/wp-agency\/wp-content\/uploads\/2018\/03\/eceedc35-e79c-3ad9-9f71-8faf6d67567a.jpg\"><\/p>\n<h1>Est blanditiis et impedit consequatur non hic<\/h1>\n<p><!--more--><\/p>\n<ul>\n<li>Et commodi deserunt aut dolor<\/li>\n<li>Veritatis temporibus dolor qui ut explicabo vero<\/li>\n<li>Sint aut voluptatem<\/li>\n<\/ul>\n<h2>Qui nisi placeat nesciunt est expedita occaecati fuga. Sed eligendi ipsum tenetur voluptatem esse<\/h2>\n<blockquote><p><a title=\"Nihil tempora fugit.\" href=\"http:\/\/ratke.info\/aut-autem-beatae-et-dolorum-fugiat\">Tempore debitis consectetur autem<\/a> <a title=\"Rerum ad facere.\" href=\"http:\/\/www.hoppe.com\/eum-et-est-animi-vitae-natus-temporibus\">excepturi reprehenderit pariatur pariatur. Esse minima<\/a> nesciunt et et <a title=\"Recusandae blanditiis.\" href=\"http:\/\/cruickshank.com\/\"><a title=\"Est.\" href=\"http:\/\/www.flatley.com\/\">Exercitationem<\/a><\/a> hic blanditiis <a title=\"Earum consequuntur minus.\" href=\"https:\/\/www.weimann.com\/fuga-pariatur-ipsam-doloribus-et\">autem eaque. Suscipit<\/a> <a title=\"Non aut.\" href=\"http:\/\/www.reinger.com\/est-provident-culpa-aut-ut-fugit-voluptas-quia\">provident quasi aut molestiae voluptatem quasi.<\/a><\/p><\/blockquote>\n",
+        "protected": false
+    },
+    "excerpt": {
+        "rendered": "<p>Explicabo [&hellip;]<\/p>\n",
+        "protected": false
+    },
+    "author": 4,
+    "featured_media": 109,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": [],
+    "categories": [3, 4, 1],
+    "tags": [6, 11],
+    "_links": {
+        "self": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts\/108"
+        }],
+        "collection": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts"
+        }],
+        "about": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/types\/post"
+        }],
+        "author": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/users\/4"
+        }],
+        "replies": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/comments?post=108"
+        }],
+        "version-history": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts\/108\/revisions"
+        }],
+        "wp:featuredmedia": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/media\/109"
+        }],
+        "wp:attachment": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/media?parent=108"
+        }],
+        "wp:term": [{
+            "taxonomy": "category",
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/categories?post=108"
+        }, {
+            "taxonomy": "post_tag",
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/tags?post=108"
+        }],
+        "curies": [{
+            "name": "wp",
+            "href": "https:\/\/api.w.org\/{rel}",
+            "templated": true
+        }]
     }
-    // TAB DATA-API ============
-    $(document)
-      .on('click.bs.tab.data-api', '[data-toggle="tab"], [data-toggle="pill"]', function (e) {
-        e.preventDefault()
-        $(this).tab('show');
-        setTimeout(function () {
-          window.dispatchEvent(UNCODE.boxEvent);
-        }, 300);
-      });
-    // COLLAPSE DATA-API =================
-    $(document).on('click.bs.collapse.data-api', '[data-toggle="collapse"]', function (e) {
-      var $this = $(this),
-        href
-      var target = $this.attr('data-target') || e.preventDefault() || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
-      var $target = $(target)
-      var data = $target.data('bs.collapse')
-      var option = data
-        ? 'toggle'
-        : $this.data()
-      var parent = $this.attr('data-parent')
-      var $parent = parent && $(parent)
-      var $title = $(this).parent()
-      if ($parent) {
-        $parent
-          .find('[data-toggle="collapse"][data-parent="' + parent + '"]')
-          .not($this)
-          .addClass('collapsed')
-        if ($title.hasClass('active')) {
-          $title.removeClass('active');
-        } else {
-          $parent
-            .find('.panel-title')
-            .removeClass('active')
-          $title[!$target.hasClass('in')
-              ? 'addClass'
-              : 'removeClass']('active')
-        }
-      }
-      $this[$target.hasClass('in')
-          ? 'addClass'
-          : 'removeClass']('collapsed')
-    });
-    // FitText =================
-    window.uncode_textfill = function (el, loaded) {
-      if (el == undefined) 
-        el = $('body');
-      $
-        .each($('.bigtext', el), function (index, val) {
-          $(val).bigtext({minfontsize: 24});
-          if (!$(val).parent().hasClass('blocks-animation') && !$(val).hasClass('animate_when_almost_visible')) 
-            $(val).css({opacity: 1});
-          setTimeout(function () {
-            if ($(val).find('.animate_when_almost_visible').length != 0) {
-              $(val).css({opacity: 1});
-            }
-          }, 400);
-        });
+}, {
+    "id": 110,
+    "date": "2018-03-08T22:35:51",
+    "date_gmt": "2018-03-08T22:35:51",
+    "guid": {
+        "rendered": "http:\/\/localhost\/wp-agency\/2018\/03\/08\/voluptas-cum-optio-tempore-nobis-nesciunt-reprehenderit\/"
+    },
+    "modified": "2018-03-21T12:18:09",
+    "modified_gmt": "2018-03-21T12:18:09",
+    "slug": "voluptas-cum-optio-tempore-nobis-nesciunt-reprehenderit",
+    "status": "publish",
+    "type": "post",
+    "link": "http:\/\/localhost\/wp-agency\/2018\/03\/08\/voluptas-cum-optio-tempore-nobis-nesciunt-reprehenderit\/",
+    "title": {
+        "rendered": "Voluptas cum optio tempore"
+    },
+    "content": {
+        "rendered": "<h5>Aperiam beatae voluptas rerum atque sit. Iure perspiciatis nulla odit et tenetur. Commodi earum voluptatem culpa nemo libero velit sint<\/h5>\n<ul>\n<li>At alias vero id natus hic<\/li>\n<li>Et eaque voluptas perferendis<\/li>\n<li>Odio porro aut rem nulla et<\/li>\n<li>Animi est a exercitationem id animi<\/li>\n<\/ul>\n<p>Consectetur sint ullam vero qui Commodi qui et omnis earum. Unde sit ut fugit Ea unde natus Cumque id commodi non. Ullam aperiam aut laudantium vel. Aut natus soluta officiis ducimus. Soluta in et necessitatibus Odit exercitationem aut voluptatem. Eveniet ut architecto dolorem. Est <a title=\"Possimus.\" href=\"http:\/\/harvey.com\/minima-natus-sint-saepe-numquam-cum-labore\">quis explicabo similique necessitatibus<\/a> est. veritatis blanditiis voluptas quis. quam vel maxime aut ut. Sed eligendi aut numquam. Esse impedit vero porro iusto consequatur doloremque. Labore soluta id repellat labore nam consequatur. Quod commodi beatae distinctio. illo nulla similique amet temporibus. Praesentium nisi nesciunt est sequi. Voluptatem <a title=\"Eligendi voluptatem eaque rerum.\" href=\"http:\/\/mosciski.com\/laborum-doloremque-dicta-nihil-qui\">eum<\/a> vel voluptatem voluptatibus. Asperiores recusandae aliquam debitis.<\/p>\n<h1><\/h1>\n",
+        "protected": false
+    },
+    "excerpt": {
+        "rendered": "<p>Reprehenderit rerum nobis libero in ea asperiores ut sed eveniet exercitationem id repellendus eius nulla molestias non perspiciatis quisquam veritatis numquam quis et minima reiciendis assumenda sit dolor fugit voluptatem quo velit velit similique ea qui rem nulla est eum architecto laborum consequatur cumque corporis autem dolore eius ut sint a repudiandae reiciendis dolorum ut et ratione saepe quisquam voluptates accusamus omnis possimus omnis aut excepturi ex sed eveniet molestiae velit praesentium at voluptates voluptatem magnam eveniet et incidunt corporis ab provident hic consequuntur nihil dolores.<\/p>\n",
+        "protected": false
+    },
+    "author": 6,
+    "featured_media": 111,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": [],
+    "categories": [3, 4, 1],
+    "tags": [15, 9, 11, 16],
+    "_links": {
+        "self": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts\/110"
+        }],
+        "collection": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts"
+        }],
+        "about": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/types\/post"
+        }],
+        "author": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/users\/6"
+        }],
+        "replies": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/comments?post=110"
+        }],
+        "version-history": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts\/110\/revisions"
+        }],
+        "wp:featuredmedia": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/media\/111"
+        }],
+        "wp:attachment": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/media?parent=110"
+        }],
+        "wp:term": [{
+            "taxonomy": "category",
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/categories?post=110"
+        }, {
+            "taxonomy": "post_tag",
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/tags?post=110"
+        }],
+        "curies": [{
+            "name": "wp",
+            "href": "https:\/\/api.w.org\/{rel}",
+            "templated": true
+        }]
     }
-    window.uncode_textfill();
-
-    // Colomun hover effect =================
-    $(document).on('mouseenter', '.col-link', function (e) {
-      var uncol = $(e.target).prev('.uncol'),
-        el = uncol.find('.column-background');
-      if (el) {
-        $('.btn-container .btn', uncol).toggleClass('active');
-        var elOverlay = $(el[0]).find('.block-bg-overlay');
-        if (elOverlay.length) {
-          var getOpacity = $(elOverlay).css('opacity');
-          if (getOpacity != 1) {
-            getOpacity = Math.round(getOpacity * 100) / 100;
-            var newOpacity = getOpacity + .1;
-            $(elOverlay).data('data-opacity', getOpacity);
-            $(elOverlay).css('opacity', newOpacity);
-            }
-          }
-        }
-      })
-      .on('mouseleave', '.col-link', function (e) {
-        var uncol = $(e.target).prev('.uncol'),
-          el = uncol.find('.column-background');
-        $('.btn-container .btn', uncol).toggleClass('active');
-        if (el) {
-          var elOverlay = $(el[0]).find('.block-bg-overlay');
-          if (elOverlay.length) {
-            var getOpacity = $(elOverlay).data('data-opacity');
-            $(elOverlay).css('opacity', getOpacity);
-          }
-        }
-      });
-
-    // REVSLIDER API ============
-    $(window).on("load", function () {
-      $('.rev_slider_wrapper')
-        .each(function () {
-          var $this = jQuery(this),
-            id_array = $this
-              .attr("id")
-              .split("_"),
-            id = id_array[2];
-          if (id != undefined && id != '') {
-            $.globalEval('revapi' + id + '.bind("revolution.slide.onloaded",function (e, data) { if (jQuery(e.currentTarge' +
-                't).closest(".header-revslider").length) { var style = jQuery(e.currentTarget).fi' +
-                'nd("li").eq(0).attr("data-skin"), scrolltop = jQuery(document).scrollTop(); if (' +
-                'style != undefined) UNCODE.switchColorsMenu(scrolltop, style);}})');
-            $.globalEval('revapi' + id + '.bind("revolution.slide.onchange",function (e,data) { if (jQuery(e.currentTarget' +
-                ').closest(".header-revslider").length) { var style = jQuery(e.currentTarget).fin' +
-                'd("li").eq(data.slideIndex - 1).attr("data-skin"), scrolltop = jQuery(document).' +
-                'scrollTop(); if (style != undefined) UNCODE.switchColorsMenu(scrolltop, style);}' +
-                '})');
-          }
-        });
-    });
-    // LAYERSLIDE API ============
-    $(window).on("load", function () {
-
-      $('.ls-wp-container')
-        .on('slideTimelineDidStart', function (event, slider) {
-
-          var slideData = slider.slides.current.data,
-            scrolltop = $(document).scrollTop();
-          if (slideData && slideData.skin) {
-
-            UNCODE.switchColorsMenu(scrolltop, slideData.skin);
-
-          }
-        });
-
-    });
-    // Admin bar ============
-    $(window).resize(function () {
-      if ($('html').hasClass('admin-mode')) {
-        var getAdminBar = $('#wpadminbar');
-        if (getAdminBar.length) {
-          if (getAdminBar.css('position') !== 'hidden') {
-            var getAdminBarHeight = getAdminBar.height();
-            if (getAdminBar.css('position') === 'fixed') {
-              $('html').css({
-                'margin-top': getAdminBarHeight + 'px',
-                'padding-top': UNCODE.bodyBorder + 'px'
-              });
-              $('.body-borders .top-border').css({
-                'margin-top': getAdminBarHeight + 'px'
-              });
-            } else {
-              $('html').css({
-                'padding-top': UNCODE.bodyBorder + 'px',
-                'margin-top': '0px'
-              });
-              $('.body-borders .top-border').css({'margin-top': '0px'});
-            }
-          }
-        }
-      }
-    });
-    // Facebook ===========
-    this.fb_timeout = undefined;
-    $(window).resize(function () {
-      $('.facebook-object')
-        .each(function (index, el) {
-          var el = $(el),
-            parentWidth = el
-              .closest('.tmb')
-              .width();
-          el.width(parentWidth);
-        });
-      if (this.fb_timeout == undefined) {
-        if ($('.facebook-object').length) {
-          window.clearTimeout(this.fb_timeout);
-          this.fb_timeout = window.setTimeout(function (msg) {
-            window.dispatchEvent(UNCODE.boxEvent);
-          }, 1000);
-        }
-      }
-    });
-    // Print ===========
-    var beforePrint = function () {
-      window.dispatchEvent(new CustomEvent('resize'));
-      window.dispatchEvent(UNCODE.boxEvent);
-    };
-
-    if (window.matchMedia) {
-      var mediaQueryList = window.matchMedia('print');
-      mediaQueryList.addListener(function (mql) {
-        if (mql.matches) {
-          beforePrint();
-        }
-      });
+}, {
+    "id": 81,
+    "date": "2018-03-08T22:07:34",
+    "date_gmt": "2018-03-08T22:07:34",
+    "guid": {
+        "rendered": "http:\/\/localhost\/wp-agency\/2018\/03\/08\/et-et-doloribus-laudantium-quia\/"
+    },
+    "modified": "2018-03-21T12:18:13",
+    "modified_gmt": "2018-03-21T12:18:13",
+    "slug": "et-et-doloribus-laudantium-quia",
+    "status": "publish",
+    "type": "post",
+    "link": "http:\/\/localhost\/wp-agency\/2018\/03\/08\/et-et-doloribus-laudantium-quia\/",
+    "title": {
+        "rendered": "Et et doloribus laudantium quia"
+    },
+    "content": {
+        "rendered": "<p>Voluptate quaerat id rerum. Tempore sapiente dolor. odio voluptatum modi voluptatem. Asperiores magni nostrum qui nihil. quis sint <a title=\"Labore velit perspiciatis provident et magni nobis.\" href=\"http:\/\/www.wilkinson.com\/aliquid-temporibus-tempore-illo-veniam-non-magnam-quis-animi\">sed nemo libero. Occaecati sed<\/a> rerum voluptatem unde omnis. Nihil possimus quaerat voluptas dicta Facere id rerum corporis doloribus debitis. eaque laborum expedita. <a title=\"Ratione.\" href=\"http:\/\/www.cole.com\/optio-temporibus-quam-autem-dolore\">laborum doloribus sit et rerum. Sit et maxime eius<\/a> ut fugit. Sunt soluta laborum molestias. Exercitationem animi nam odio repellendus. Autem qui ea ducimus. Sed accusantium excepturi et ut. <a title=\"Incidunt.\" href=\"http:\/\/www.stoltenberg.com\/\">modi<\/a> eius sed. Quos et et Animi quo consequatur voluptas officia.<\/p>\n<p><img alt=\"Sapiente dicta unde cumque ad\" src=\"http:\/\/localhost\/wp-agency\/wp-content\/uploads\/2018\/03\/fb5c6195-e725-3027-87db-afb914d66c91.jpg\"><\/p>\n<ul>\n<li>Aspernatur id autem magnam<\/li>\n<li>Et aut in ut ab quos repellendus<\/li>\n<li>Magnam et quis velit dolor qui<\/li>\n<\/ul>\n<p><!--more--><\/p>\n<h3>Ut in eius libero at corporis explicabo. Quam qui praesentium pariatur eum. Eos temporibus vero a aliquam qui voluptatem eum<\/h3>\n<ol>\n<li>Doloremque quos<\/li>\n<li>Repellendus non dolor et sint autem deleniti<\/li>\n<li>Neque dolor non ut quisquam<\/li>\n<\/ol>\n<h1>Veritatis iusto praesentium vel vel dolor eos. Eaque blanditiis et praesentium. Occaecati laboriosam cupiditate neque repudiandae at reprehenderit<\/h1>\n<p><img alt=\"Similique ut laudantium\" src=\"http:\/\/localhost\/wp-agency\/wp-content\/uploads\/2018\/03\/15f1483c-76bf-3be7-86d5-494ef908ae00.jpg\"><\/p>\n<p>Quo et nobis voluptatem nesciunt quos corporis in. Nisi ut laudantium tenetur ut perspiciatis ratione. Debitis qui sapiente quidem tempora eos qui. Ea quo voluptatum aperiam perferendis illo maxime quia. Similique magnam molestiae esse optio qui a. Animi maiores aspernatur iusto laudantium. Fugit voluptatem maiores illo. Eos similique illo error in. Officiis blanditiis velit nostrum quas. Libero in neque eveniet quisquam. Nostrum quibusdam ex earum delectus. Assumenda excepturi qui officiis vitae. Est eius enim aut laudantium suscipit ducimus. Inventore eius debitis rerum unde. Nesciunt qui qui itaque nobis assumenda minima. Perspiciatis ut facilis iure aut ea. Ipsum voluptatem blanditiis neque enim beatae itaque. Quae qui deleniti modi architecto. Quas quae suscipit doloremque mollitia vero. Voluptas ipsa nobis nihil quaerat perferendis dolores placeat qui. Impedit enim repellendus cupiditate. Et eos fugit ab commodi omnis et. Et sed consequatur et saepe et. Eos corrupti quos necessitatibus accusamus. Id placeat blanditiis unde maxime.<\/p>\n",
+        "protected": false
+    },
+    "excerpt": {
+        "rendered": "<p>Distinctio laborum omnis magnam explicabo asperiores blanditiis ipsa qui sit tempore ullam harum rem et tempore reiciendis impedit dolor ab et veniam delectus vero consequatur sit quia dicta placeat qui ducimus sapiente expedita unde corrupti ex id voluptatem quis quod quo dolorem non debitis nesciunt cum deleniti vel alias omnis ipsam nemo in ut quibusdam aut id nobis id illo iure possimus consectetur minima distinctio iusto similique earum esse natus.<\/p>\n",
+        "protected": false
+    },
+    "author": 2,
+    "featured_media": 82,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": [],
+    "categories": [3],
+    "tags": [15, 6, 16, 13],
+    "_links": {
+        "self": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts\/81"
+        }],
+        "collection": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts"
+        }],
+        "about": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/types\/post"
+        }],
+        "author": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/users\/2"
+        }],
+        "replies": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/comments?post=81"
+        }],
+        "version-history": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts\/81\/revisions"
+        }],
+        "wp:featuredmedia": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/media\/82"
+        }],
+        "wp:attachment": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/media?parent=81"
+        }],
+        "wp:term": [{
+            "taxonomy": "category",
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/categories?post=81"
+        }, {
+            "taxonomy": "post_tag",
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/tags?post=81"
+        }],
+        "curies": [{
+            "name": "wp",
+            "href": "https:\/\/api.w.org\/{rel}",
+            "templated": true
+        }]
     }
-
-    window.onbeforeprint = beforePrint;
-  }
-
-  UNCODE.menuSystem = function () {
-
-    function menuMobile() {
-      var $mobileToggleButton = $('.mobile-menu-button'),
-        $box,
-        $el,
-        $el_transp,
-        elHeight,
-        check,
-        animating = false,
-        stickyMobile = false,
-        menuClose = new CustomEvent('menuMobileClose'),
-        menuOpen = new CustomEvent('menuMobileOpen');
-      UNCODE.menuOpened = false;
-      $mobileToggleButton.on('click', function (event) {
-        var btn = this;
-        if ($(btn).hasClass('overlay-close')) 
-          return;
-        event.preventDefault();
-        if (UNCODE.wwidth < UNCODE.mediaQuery) {
-          $box = $(this)
-            .closest('.box-container')
-            .find('.main-menu-container');
-          $el = $(this)
-            .closest('.box-container')
-            .find('.menu-horizontal-inner:not(.row-brand), .menu-sidebar-inner');
-          $el_transp = $('.menu-absolute.menu-transparent');
-          if (UNCODE.isMobile && $('.menu-wrapper.menu-sticky, .menu-wrapper.menu-hide-only, .main-header .menu-stic' +
-              'ky-vertical, .main-header .menu-hide-only-vertical').length) {
-            stickyMobile = true;
-            elHeight = window.innerHeight - UNCODE.menuMobileHeight - (UNCODE.bodyBorder * 2) - UNCODE.adminBarHeight + 1;
-          } else {
-            elHeight = 0;
-            $.each($el, function (index, val) {
-              elHeight += $(val).outerHeight();
-            });
-          }
-          var open = function () {
-            if (!animating) {
-              window.dispatchEvent(menuOpen);
-              animating = true;
-              UNCODE.menuOpened = true;
-              if ($('body[class*="vmenu-"], body.hmenu-center').length && ($('.menu-hide, .menu-sticky, .menu-transparent').length)) {
-                $('.main-header > .vmenu-container').css({
-                  position: 'fixed',
-                  top: ($('.menu-container').outerHeight() + UNCODE.bodyBorder + UNCODE.adminBarHeight) + 'px'
-                });
-                if ($('body.menu-offcanvas').length) {
-                  $('.menu-container:not(.sticky-element):not(.isotope-filters)').css({position: 'fixed'});
-                  $('.vmenu-container.menu-container:not(.sticky-element):not(.isotope-filters)').css({
-                    position: 'fixed',
-                    top: (UNCODE.menuMobileHeight + UNCODE.bodyBorder + UNCODE.adminBarHeight) + 'px'
-                  });
-                } else 
-                  $('.menu-container:not(.sticky-element):not(.isotope-filters)').css({position: 'fixed'});
-                }
-              if ($('body.hmenu-center').length && ($('.menu-hide, .menu-sticky').length)) {
-                $('.menu-container:not(.sticky-element):not(.isotope-filters)').css({
-                  position: 'fixed',
-                  top: (UNCODE.menuMobileHeight + UNCODE.bodyBorder + UNCODE.adminBarHeight) + 'px'
-                });
-              }
-              btn
-                .classList
-                .add('close');
-              $box.addClass('open-items');
-              if ($el_transp.length && $('body.menu-mobile-transparent').length) {
-                $el_transp.addClass('is_mobile_open');
-              }
-              $box
-                .animate({
-                  height: elHeight
-                }, 600, "easeInOutCirc", function () {
-                  animating = false;
-                  if (!stickyMobile) 
-                    $box.css('height', 'auto');
-                  }
-                );
-            }
-          };
-
-          var close = function () {
-            if (!animating) {
-              window.dispatchEvent(menuClose);
-              animating = true;
-              UNCODE.menuOpened = false;
-              btn
-                .classList
-                .remove('close');
-              btn
-                .classList
-                .add('closing');
-              $box.addClass('close');
-              setTimeout(function () {
-                $box.removeClass('close');
-                $box.removeClass('open-items');
-                btn
-                  .classList
-                  .remove('closing');
-                if ($el_transp.length) {
-                  $el_transp.removeClass('is_mobile_open');
-                }
-              }, 500);
-              $box.animate({
-                height: 0
-              }, {
-                duration: 600,
-                easing: "easeInOutCirc",
-                complete: function (elements) {
-                  $(elements).css('height', '');
-                  animating = false;
-                  if ($('body[class*="vmenu-"]').length) 
-                    $('.main-header > .vmenu-container').css('position', 'relative');
-                  }
-                });
-            }
-          };
-          check = (!UNCODE.menuOpened)
-            ? open()
-            : close();
-        }
-      });
-      window.addEventListener('menuMobileTrigged', function (e) {
-        $mobileToggleButton.trigger('click');
-      });
-      window.addEventListener("resize", function () {
-        if ($(window).width() < UNCODE.mediaQuery) {
-          if (UNCODE.isMobile) {
-            var $box = $('.box-container .main-menu-container'),
-              $el = $('.box-container .menu-horizontal-inner, .box-container .menu-sidebar-inner');
-            if ($($box).length && $($box).hasClass('open-items') && $($box).css('height') != 'auto') {
-              if ($('.menu-wrapper.menu-sticky, .menu-wrapper.menu-hide-only').length) {
-                elHeight = 0;
-                $.each($el, function (index, val) {
-                  elHeight += $(val).outerHeight();
-                });
-                elHeight = window.innerHeight - $('.menu-wrapper.menu-sticky .menu-container .row-menu-inner, .menu-wrapper.menu-hi' +
-                    'de-only .menu-container .row-menu-inner').height() - (UNCODE.bodyBorder * 2) + 1;
-                $($box).css('height', elHeight + 'px');
-              }
-            }
-          }
-        } else {
-          $('.menu-hide-vertical').removeAttr('style');
-          $('.menu-container-mobile').removeAttr('style');
-          $('.vmenu-container.menu-container').removeAttr('style');
-        }
-      });
-    };
-
-    function menuOffCanvas() {
-      var menuClose = new CustomEvent('menuCanvasClose'),
-        menuOpen = new CustomEvent('menuCanvasOpen');
-      $('.menu-primary .menu-button-offcanvas').click(function (event) {
-        if ($(window).width() > UNCODE.mediaQuery) {
-          if ($(event.currentTarget).hasClass('close')) {
-            $(event.currentTarget).removeClass('close');
-            $(event.currentTarget).addClass('closing');
-            setTimeout(function () {
-              $(event.currentTarget).removeClass('closing');
-              window.dispatchEvent(menuClose);
-            }, 500);
-          } else {
-            $(event.currentTarget).addClass('close');
-            window.dispatchEvent(menuOpen);
-          }
-
-        }
-        $('body').toggleClass('off-opened');
-      });
-    };
-    function menuSmart() {
-      var $menusmart = $('[class*="menu-smart"]');
-      if ($menusmart.length > 0) {
-        $menusmart.smartmenus({
-          subIndicators: false,
-          subIndicatorsPos: 'append',
-          subMenusMinWidth: '13em',
-          subIndicatorsText: '',
-          showTimeout: 50,
-          hideTimeout: 50,
-          showFunction: function ($ul, complete) {
-            $ul.fadeIn(0, 'linear', complete);
-            $ul.addClass('open-animated');
-          },
-          hideFunction: function ($ul, complete) {
-            var fixIE = $('html.ie').length;
-            if (fixIE) {
-              var $rowParent = $($ul).closest('.main-menu-container');
-              $rowParent.height('auto');
-            }
-            $ul.fadeOut(0, 'linear', complete);
-            $ul.removeClass('open-animated');
-          },
-          collapsibleShowFunction: function ($ul, complete) {
-            $ul
-              .slideDown(400, 'easeInOutCirc', function () {
-                12
-              });
-          },
-          collapsibleHideFunction: function ($ul, complete) {
-            $ul.slideUp(200, 'easeInOutCirc', complete);
-          },
-          hideOnClick: true
-        });
-
-        if ($('body').hasClass('menu-accordion-active')) {
-          setTimeout(function () {
-            $menusmart.smartmenus('itemActivate', $menusmart.find('.current-menu-item > a').eq(-1));
-            $menusmart.addClass('menu-smart-init');
-          }, 1000);
-        }
-      }
-
-    };
-    function menuOverlay() {
-      if ($('.overlay-sequential, .menu-mobile-animated').length > 0) {
-        $('.overlay-sequential .menu-smart > li, .menu-sticky .menu-container .menu-smart >' +
-              ' li, .menu-hide.menu-container .menu-smart > li, .vmenu-container .menu-smart > ' +
-              'li')
-          .each(function (index, el) {
-            var transDelay = (index / 20) + 0.1;
-            if ($('body').hasClass('menu-mobile-centered') && $(window).width() < UNCODE.mediaQuery) 
-              transDelay = transDelay + 0.3;
-            $(this)[0].setAttribute('style', '-webkit-transition-delay:' + transDelay + 's; -moz-transition-delay:' + transDelay + 's; -ms-transition-delay:' + transDelay + 's; -o-transition-delay:' + transDelay + 's; transition-delay:' + transDelay + 's');
-          });
-      }
-    };
-    //menuMobileButton();
-    menuMobile();
-    menuOffCanvas();
-    menuSmart();
-    menuOverlay();
-    var setMenuOverlay;
-    $(window).on('resize', function () {
-      clearTimeout(setMenuOverlay);
-      setMenuOverlay = setTimeout(menuOverlay, 150);
-    });
-  };
-
-  UNCODE.okvideo = function () {
-    var BLANK_GIF = "data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw" +
-        "%3D%3D";
-    $.okvideo = function (options) {
-      // if the option var was just a string, turn it into an object
-      if (typeof options !== 'object') 
-        options = {
-          'video': options
-        };
-      var base = this;
-      // kick things off
-      base.init = function () {
-        base.options = $.extend({}, $.okvideo.options, options);
-        // support older versions of okvideo
-        if (base.options.video === null) 
-          base.options.video = base.options.source;
-        base.setOptions();
-        var target = base.options.target || $('body');
-        var position = target[0] == $('body')[0]
-          ? 'fixed'
-          : 'absolute';
-        var zIndex = base.options.controls === 3
-          ? -999
-          : "auto";
-        if ($('#okplayer-' + base.options.id).length == 0) { //base.options.id = String(Math.round(Math.random() * 100000));
-          var mask = '<div id="okplayer-mask-' + base.options.id + '" style="position:' + position + ';left:0;top:0;overflow:hidden;z-index:-998;height:100%;width:100%;"></div>';
-          if (OKEvents.utils.isMobile()) {
-            target.append('<div id="okplayer-' + base.options.id + '" style="position:' + position + ';left:0;top:0;overflow:hidden;z-index:' + zIndex + ';height:100%;width:100%;"></div>');
-          } else {
-            if (base.options.controls === 3) {
-              target.append(mask)
-            }
-            if (base.options.adproof === 1) {
-              target.append('<div id="okplayer-' + base.options.id + '" style="position:' + position + ';left:-10%;top:-10%;overflow:hidden;z-index:' + zIndex + ';height:120%;width:120%;"></div>');
-            } else {
-              target.append('<div id="okplayer-' + base.options.id + '" style="position:' + position + ';left:0;top:0;overflow:hidden;z-index:' + zIndex + ';height:100%;width:100%;"></div>');
-            }
-          }
-          $("#okplayer-mask-" + base.options.id).css("background-image", "url(" + BLANK_GIF + ")");
-          if (base.options.playlist.list === null) {
-            if (base.options.video.provider === 'youtube') {
-              base.loadYouTubeAPI();
-            } else if (base.options.video.provider === 'vimeo') {
-              base.options.volume /= 100;
-              base.loadVimeoAPI();
-            }
-          } else {
-            base.loadYouTubeAPI();
-          }
-        }
-      };
-      // clean the options
-      base.setOptions = function () {
-        // exchange 'true' for '1' and 'false' for 3
-        for (var key in this.options) {
-          if (this.options[key] === true) 
-            this.options[key] = 1;
-          if (this.options[key] === false) 
-            this.options[key] = 3;
-          }
-        if (base.options.playlist.list === null) {
-          base.options.video = base.determineProvider();
-        }
-        // pass options to the window
-        $(window).data('okoptions-' + base.options.id, base.options);
-      };
-      // insert js into the head and exectue a callback function
-      base.insertJS = function (src, callback) {
-        var tag = document.createElement('script');
-        if (callback) {
-          if (tag.readyState) { //IE
-            tag.onreadystatechange = function () {
-              if (tag.readyState === "loaded" || tag.readyState === "complete") {
-                tag.onreadystatechange = null;
-                callback();
-              }
-            };
-          } else {
-            tag.onload = function () {
-              callback();
-            };
-          }
-        }
-        tag.src = src;
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag
-          .parentNode
-          .insertBefore(tag, firstScriptTag);
-      };
-      // load the youtube api
-      base.loadYouTubeAPI = function (callback) {
-        base.insertJS('https://www.youtube.com/player_api');
-      };
-      base.loadYouTubePlaylist = function () {
-        player.loadPlaylist(base.options.playlist.list, base.options.playlist.index, base.options.playlist.startSeconds, base.options.playlist.suggestedQuality);
-      };
-      // load the vimeo api by replacing the div with an iframe and loading js
-      base.loadVimeoAPI = function () {
-        var source = '//player.vimeo.com/video/' + base.options.video.id + '?background=1&api=1&title=0&byline=0&portrait=0&playbar=0&loop=' + base.options.loop + '&autoplay=' + (base.options.autoplay === 1
-            ? 1
-            : 0) + '&player_id=okplayer-' + base.options.id,
-          jIframe = $('<iframe data-src="' + source + '" frameborder="0" id="okplayer-' + base.options.id + '" style="visibility: hidden;" class="vimeo-background" />');
-        $(window)
-          .data('okoptions-' + base.options.id)
-          .jobject = jIframe;
-        $('#okplayer-' + base.options.id).replaceWith(jIframe[0]);
-        base.insertJS('//origin-assets.vimeo.com/js/froogaloop2.min.js', function () {
-          vimeoPlayerReady(base.options.id);
-        });
-      };
-      // is it from youtube or vimeo?
-      base.determineProvider = function () {
-        var a = document.createElement('a');
-        a.href = base.options.video;
-        if (/youtube.com/.test(base.options.video) || /youtu.be/.test(base.options.video)) {
-          var videoid = a
-            .href
-            .split('/')[3]
-            .toString();
-          var query = videoid.substring(videoid.indexOf('?') + 1);
-          if (query != '') {
-            var vars = query.split('&');
-            for (var i = 0; i < vars.length; i++) {
-              var pair = vars[i].split('=');
-              if (pair[0] == 'v') {
-                videoid = pair[1];
-              }
-            }
-          }
-          return {"provider": "youtube", "id": videoid};
-        } else if (/vimeo.com/.test(base.options.video)) {
-          return {
-            "provider": "vimeo",
-            "id": (a.href.split('/')[3].toString()).split('#')[0]
-          };
-        } else if (/[-A-Za-z0-9_]+/.test(base.options.video)) {
-          var id = new String(base.options.video.match(/[-A-Za-z0-9_]+/));
-          if (id.length == 11) {
-            return {
-              "provider": "youtube",
-              "id": id.toString()
-            };
-          } else {
-            for (var i = 0; i < base.options.video.length; i++) {
-              if (typeof parseInt(base.options.video[i]) !== "number") {
-                throw 'not vimeo but thought it was for a sec';
-              }
-            }
-            return {"provider": "vimeo", "id": base.options.video};
-          }
-        } else {
-          throw "OKVideo: Invalid video source";
-        }
-      };
-      base.init();
-    };
-    $.okvideo.options = {
-      id: null,
-      source: null, // Deprecate dis l8r
-      video: null,
-      playlist: { // eat ur heart out @brokyo
-        list: null,
-        index: 0,
-        startSeconds: 0,
-        suggestedQuality: "default" // options: small, medium, large, hd720, hd1080, highres, default
-      },
-      disableKeyControl: 1,
-      captions: 0,
-      loop: 1,
-      hd: 1,
-      volume: 0,
-      adproof: false,
-      unstarted: null,
-      onFinished: null,
-      onReady: null,
-      onPlay: null,
-      onPause: null,
-      buffering: null,
-      controls: false,
-      autoplay: true,
-      annotations: true,
-      cued: null
-    };
-    $.fn.okvideo = function (options) {
-      options.target = this;
-      return this.each(function () {
-        (new $.okvideo(options));
-      });
-    };
-
-    $(".no-touch .uncode-video-container.video").each(function (index, el) {
-      var $this = $(this),
-        url = $this.attr('data-video'),
-        id = $this.attr('data-id'),
-        cloned = $this.closest('.owl-item');
-      if (!cloned.hasClass('cloned') || cloned.length == 0) {
-        $this.okvideo({
-          id: id,
-          source: url.split('#')[0],
-          time: ((url).indexOf("#") > -1)
-            ? (url).substring((url).indexOf('#') + 1)
-            : null,
-          autoplay: 1,
-          controls: 0,
-          volume: 0,
-          adproof: 0,
-          caller: $this,
-          hd: 1,
-          onReady: function (player) {
-            var getPlayer = player.c || player,
-              getContainer = $(getPlayer).closest('.background-element');
-            if (getContainer.length) {
-              UNCODE.initVideoComponent(getContainer[0], '.uncode-video-container.video');
-            }
-          }
-        });
-      }
-    });
-    $(".no-touch .background-video-shortcode").each(function (index, el) {
-      var $video_el = $(this),
-        $parent_carousel = $video_el
-          .parents('.uncode-slider')
-          .eq(0),
-        video_id = $video_el.attr('id');
-      if (typeof MediaElement === "function") {
-        new MediaElement(video_id, {
-          startVolume: 0,
-          loop: true,
-          success: function (mediaElement, domObject) {
-            domObject.volume = 0;
-            $(mediaElement).data('started', false);
-            mediaElement.addEventListener('timeupdate', function (e) {
-              if (!$(e.target).data('started')) {
-                $(mediaElement).data('started', true);
-                $(mediaElement)
-                  .closest('.uncode-video-container')
-                  .css('opacity', '1');
-              }
-            });
-            mediaElement.addEventListener('loadedmetadata', function (e) {
-              mediaElement.play();
-            });
-            if (!UNCODE.isMobile) {
-              setTimeout(function () {
-                UNCODE.initVideoComponent(document.body, '.uncode-video-container.video, .uncode-video-container.self-video');
-              }, 100);
-            }
-            if (($('html.firefox').length) && !$parent_carousel.length) {
-              mediaElement.play();
-            }
-          },
-          // fires when a problem is detected
-          error: function () {}
-        });
-      }
-    });
-
-  };
-
-  UNCODE.disableHoverScroll = function () {
-
-    if (!UNCODE.isMobile && !UNCODE.isFullPage) {
-      var body = document.body,
-        timer;
-
-      window.addEventListener('scroll', function () {
-        clearTimeout(timer);
-        if (body.classList) {
-          if (!body.classList.contains('disable-hover')) {
-            body
-              .classList
-              .add('disable-hover')
-          }
-
-          timer = setTimeout(function () {
-            body
-              .classList
-              .remove('disable-hover')
-          }, 300);
-        }
-      }, false);
+}, {
+    "id": 88,
+    "date": "2018-03-08T19:34:37",
+    "date_gmt": "2018-03-08T19:34:37",
+    "guid": {
+        "rendered": "http:\/\/localhost\/wp-agency\/2018\/03\/08\/veritatis-recusandae-sed-aut-aut\/"
+    },
+    "modified": "2018-03-21T12:18:19",
+    "modified_gmt": "2018-03-21T12:18:19",
+    "slug": "veritatis-recusandae-sed-aut-aut",
+    "status": "publish",
+    "type": "post",
+    "link": "http:\/\/localhost\/wp-agency\/2018\/03\/08\/veritatis-recusandae-sed-aut-aut\/",
+    "title": {
+        "rendered": "Veritatis recusandae sed aut aut"
+    },
+    "content": {
+        "rendered": "<blockquote><p><a title=\"Dolor atque quod qui.\" href=\"https:\/\/mosciski.info\/mollitia-voluptates-iste-tempore-voluptatem-dicta-laborum-accusantium.html\">Magni nihil sunt<\/a> eius. <a title=\"Voluptatum libero officia.\" href=\"http:\/\/www.pollich.com\/rem-omnis-repellendus-soluta-id-aperiam\">necessitatibus ex aut iste odit<\/a> Accusantium modi eveniet autem. Rerum et <a title=\"Ab.\" href=\"http:\/\/williamson.info\/\">non architecto dolores et.<\/a> inventore odit quis officiis eos. <a title=\"Quam eum eum.\" href=\"http:\/\/grady.com\/qui-sint-doloremque-ipsum-exercitationem-eveniet-qui\">laudantium ut et<\/a> fugiat repellendus. <a title=\"Libero animi temporibus officia.\" href=\"http:\/\/okuneva.biz\/cumque-nemo-dolor-sit-aut-sit-odit-odio\"><a title=\"Explicabo iusto.\" href=\"http:\/\/reynolds.com\/\">qui beatae aut sed doloribus<\/a><\/a> voluptatum nisi. Minima ea velit quas culpa. Blanditiis sunt illo sed. Odit explicabo exercitationem debitis.<\/p><\/blockquote>\n<blockquote><p>Ad blanditiis magnam recusandae. et debitis aut. Laborum ea enim et eveniet. Omnis culpa quia molestiae sit mollitia molestiae. Non facere molestiae autem id quia Reprehenderit quia explicabo veritatis. commodi sapiente veniam dolores et. Est est aliquam voluptas ipsum vel aut. sunt architecto architecto tenetur quo. Fugiat possimus ea tenetur sunt Aut et sed a odio Error nesciunt reiciendis est autem expedita. Ratione qui eos sit et qui ex. Ut minus modi iure odio. Quas excepturi nulla facere tempora modi odio. Aspernatur eaque et aut enim sit velit est. Accusantium porro et Et est mollitia id. Repellat rerum aut et et in. commodi harum Distinctio occaecati eos in nam consequuntur labore et. Ut reprehenderit <a title=\"Voluptates aut.\" href=\"http:\/\/kihn.com\/architecto-quos-omnis-assumenda-quia-voluptate-rem-aut-consequatur\">sequi eveniet molestiae.<\/a> aliquid consequatur suscipit sint laboriosam distinctio. Officia dolorem quasi.<\/p><\/blockquote>\n<p><!--more--><\/p>\n<blockquote><p><a title=\"Voluptatem et error aliquam.\" href=\"http:\/\/www.rosenbaum.com\/eaque-dolorem-necessitatibus-voluptatem-aliquid-quos\"><a title=\"Temporibus nostrum et dolores necessitatibus sit similique voluptate.\" href=\"https:\/\/wilderman.com\/impedit-quisquam-et-molestiae-odit-qui-unde-et-unde.html\"><a title=\"Expedita dolorem est.\" href=\"http:\/\/hansen.info\/sunt-ut-enim-aperiam-ut\"><a title=\"Aliquam quo.\" href=\"http:\/\/veum.com\/\"><a title=\"Omnis molestiae est dignissimos porro.\" href=\"https:\/\/fritsch.com\/voluptas-earum-nemo-ullam-culpa-nostrum.html\"><a title=\"Eum illum.\" href=\"http:\/\/ferry.net\/suscipit-velit-inventore-id\"><a title=\"Non sed iste.\" href=\"http:\/\/www.nolan.com\/incidunt-deleniti-ex-odit-et\"><a title=\"Autem et voluptatum.\" href=\"https:\/\/mann.com\/et-quo-blanditiis-sunt-doloribus-molestiae-libero-blanditiis.html\"><a title=\"Ratione quia.\" href=\"https:\/\/www.homenick.com\/repellat-laborum-cumque-praesentium-omnis-nam\">Distinctio ullam<\/a><\/a><\/a><\/a><\/a><\/a><\/a><\/a><\/a> doloremque aut. Nihil et voluptatem et. Ut dolor nam suscipit autem. Sunt quasi occaecati enim deleniti Asperiores quas inventore et suscipit non et. est sit et qui.<\/p><\/blockquote>\n<h5>Labore temporibus molestiae nihil minima quo non<\/h5>\n<ol>\n<li>Molestiae sit quia qui<\/li>\n<li>Cumque enim saepe<\/li>\n<li>Explicabo<\/li>\n<li>Est voluptatem ex saepe<\/li>\n<li>Est aliquam dolorem aliquid nisi<\/li>\n<li>Ut et nostrum fugit at<\/li>\n<\/ol>\n<blockquote><p>Consectetur saepe qui unde consequuntur iure dignissimos libero. Ut nihil voluptates voluptas voluptatem fugit. Ut nihil eveniet earum voluptate culpa exercitationem maiores. Asperiores sint quos quis non quidem id. Et ea consequatur dolorum labore ea quod. Rerum aspernatur ullam soluta nobis exercitationem neque praesentium. Voluptates voluptas et maiores eum sed sed nisi. Repellat placeat in amet ipsa nesciunt. Repellendus eveniet et sit qui maxime ea ea. Vitae pariatur voluptatibus aliquid quia. Quidem illum explicabo possimus voluptas maxime hic ducimus laudantium. Quia id ipsum in eveniet accusantium consequuntur.<\/p><\/blockquote>\n",
+        "protected": false
+    },
+    "excerpt": {
+        "rendered": "<p>Velit voluptatem quia odit at aut magni inventore alias voluptates quisquam ratione alias eos hic excepturi deserunt fugiat officia autem ea maiores consequatur debitis inventore est earum aliquid quae molestiae mollitia qui nulla consequatur corrupti et nostrum ipsam ipsum mollitia nobis eos autem animi quaerat nesciunt earum unde magni nisi autem voluptatem sit quod iusto aut sed in quos voluptatem ratione soluta et harum omnis voluptate rerum iste reiciendis aliquam voluptatem dolor blanditiis quo facilis exercitationem quam harum vitae assumenda enim velit voluptatibus at sunt quia rerum nulla doloremque aperiam rem nobis praesentium animi eveniet aspernatur impedit aliquid.<\/p>\n<p>Vel minus qui nihil voluptatum et pariatur voluptatem fugit fugiat est qui officiis omnis natus quia doloremque quo reprehenderit recusandae sequi tempora itaque aliquid omnis vel et adipisci earum eum et rerum tenetur aut qui quo aut quos ut quia quidem laudantium tempora accusamus consequatur natus culpa unde sed hic molestiae numquam reiciendis est nihil sint facere sit aliquid illum qui doloribus soluta ut cumque recusandae officiis deserunt dolorum dolores sed quaerat magni consequatur laborum atque voluptatem iure et vitae optio corrupti laboriosam sed aut deserunt et aut laboriosam aliquid nesciunt est architecto.<\/p>\n<p>Tenetur adipisci in qui aspernatur suscipit repudiandae eum similique modi minima esse laboriosam suscipit inventore aperiam sed asperiores exercitationem voluptatibus fugit voluptatibus explicabo magnam sapiente consequatur quo magni velit quo in nisi odit voluptatem rerum sequi ea quo nesciunt accusamus molestiae similique itaque impedit sed quas soluta reprehenderit velit dolores pariatur sint voluptatem excepturi ut facere et nemo aut magni omnis ut reiciendis dignissimos voluptatibus voluptas consequatur optio.<\/p>\n",
+        "protected": false
+    },
+    "author": 3,
+    "featured_media": 89,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": [],
+    "categories": [4],
+    "tags": [14, 15, 6],
+    "_links": {
+        "self": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts\/88"
+        }],
+        "collection": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts"
+        }],
+        "about": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/types\/post"
+        }],
+        "author": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/users\/3"
+        }],
+        "replies": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/comments?post=88"
+        }],
+        "version-history": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts\/88\/revisions"
+        }],
+        "wp:featuredmedia": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/media\/89"
+        }],
+        "wp:attachment": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/media?parent=88"
+        }],
+        "wp:term": [{
+            "taxonomy": "category",
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/categories?post=88"
+        }, {
+            "taxonomy": "post_tag",
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/tags?post=88"
+        }],
+        "curies": [{
+            "name": "wp",
+            "href": "https:\/\/api.w.org\/{rel}",
+            "templated": true
+        }]
     }
-  };
-
-  UNCODE.isotopeLayout = function () {
-    if ($('.isotope-layout').length > 0) {
-      var isotopeContainersArray = [],
-        typeGridArray = [],
-        layoutGridArray = [],
-        screenLgArray = [],
-        screenMdArray = [],
-        screenSmArray = [],
-        transitionDuration = [],
-        $filterItems = [],
-        $filters = $('.isotope-filters'),
-        $itemSelector = '.tmb',
-        $items,
-        itemMargin,
-        correctionFactor = 0,
-        firstLoad = true,
-        isOriginLeft = $('body').hasClass('rtl')
-          ? false
-          : true;
-      $('[class*="isotope-container"]').each(function () {
-        var isoData = $(this).data(),
-          $data_lg,
-          $data_md,
-          $data_sm;
-        if (isoData.lg !== undefined) 
-          $data_lg = $(this).attr('data-lg');
-        else 
-          $data_lg = '1000';
-        if (isoData.md !== undefined) 
-          $data_md = $(this).attr('data-md');
-        else 
-          $data_md = '600';
-        if (isoData.sm !== undefined) 
-          $data_sm = $(this).attr('data-sm');
-        else 
-          $data_sm = '480';
-        screenLgArray.push($data_lg);
-        screenMdArray.push($data_md);
-        screenSmArray.push($data_sm);
-        transitionDuration.push($('.t-inside.animate_when_almost_visible', this).length > 0
-          ? 0
-          : '0.5s');
-        if (isoData.type == 'metro') 
-          typeGridArray.push(true);
-        else 
-          typeGridArray.push(false);
-        if (isoData.layout !== undefined) 
-          layoutGridArray.push(isoData.layout);
-        else 
-          layoutGridArray.push('masonry');
-        isotopeContainersArray.push($(this));
-      });
-      var colWidth = function (index) {
-          $(isotopeContainersArray[index]).width('');
-          var isPx = $(isotopeContainersArray[index])
-              .parent()
-              .hasClass('px-gutter'),
-            widthAvailable = $(isotopeContainersArray[index]).width(),
-            columnNum = 12,
-            columnWidth = 0,
-            data_vp_height = $(isotopeContainersArray[index]).attr('data-vp-height'),
-            consider_menu = $(isotopeContainersArray[index]).attr('data-vp-menu'),
-            winHeight = UNCODE.wheight - UNCODE.adminBarHeight,
-            $rowContainer,
-            paddingRow,
-            $colContainer,
-            paddingCol;
-
-          if (consider_menu) 
-            winHeight = winHeight - UNCODE.menuHeight;
-          
-          if (data_vp_height === '1') {
-            $rowContainer = $(isotopeContainersArray[index])
-              .parents('.row-parent')
-              .eq(0),
-            paddingRow = parseInt($rowContainer.css('padding-top')) + parseInt($rowContainer.css('padding-bottom')),
-            $colContainer = $(isotopeContainersArray[index])
-              .parents('.uncell')
-              .eq(0),
-            paddingCol = parseInt($colContainer.css('padding-top')) + parseInt($colContainer.css('padding-bottom'));
-            winHeight = winHeight - (paddingRow + paddingCol);
-          }
-
-          if (isPx) {
-            columnWidth = Math.ceil(widthAvailable / columnNum);
-            $(isotopeContainersArray[index]).width(columnNum * Math.ceil(columnWidth));
-          } else {
-            columnWidth = ($('html.firefox').length)
-              ? Math.floor(widthAvailable / columnNum)
-              : widthAvailable / columnNum;
-          }
-          $items = $(isotopeContainersArray[index]).find('.tmb:not(.tmb-carousel)');
-          itemMargin = parseInt($(isotopeContainersArray[index]).find('.t-inside').css("margin-top"));
-          for (var i = 0, len = $items.length; i < len; i++) {
-            var $item = $($items[i]),
-              multiplier_w = $item
-                .attr('class')
-                .match(/tmb-iso-w(\d{0,2})/),
-              multiplier_h = $item
-                .attr('class')
-                .match(/tmb-iso-h(\d{0,3})/),
-              multiplier_fixed = multiplier_h !== null
-                ? multiplier_h[1]
-                : 1;
-
-            if (widthAvailable >= screenMdArray[index] && widthAvailable < screenLgArray[index]) {
-              if (multiplier_w != null && multiplier_w[1] !== undefined) {
-                switch (parseInt(multiplier_w[1])) {
-                  case(5):
-                  case(4):
-                  case(3):
-                    if (typeGridArray[index]) 
-                      multiplier_h[1] = (6 * multiplier_h[1]) / multiplier_w[1];
-                    multiplier_w[1] = 6;
-                    break;
-                  case(2):
-                  case(1):
-                    if (typeGridArray[index]) 
-                      multiplier_h[1] = (3 * multiplier_h[1]) / multiplier_w[1];
-                    multiplier_w[1] = 3;
-                    break;
-                  default:
-                    if (typeGridArray[index]) 
-                      multiplier_h[1] = (12 * multiplier_h[1]) / multiplier_w[1];
-                    multiplier_w[1] = 12;
-                    break;
-                }
-              }
-            } else if (widthAvailable >= screenSmArray[index] && widthAvailable < screenMdArray[index]) {
-              if (multiplier_w != null && multiplier_w[1] !== undefined) {
-                switch (parseInt(multiplier_w[1])) {
-                  case(5):
-                  case(4):
-                  case(3):
-                  case(2):
-                  case(1):
-                    if (typeGridArray[index]) 
-                      multiplier_h[1] = (6 * multiplier_h[1]) / multiplier_w[1];
-                    multiplier_w[1] = 6;
-                    break;
-                  default:
-                    if (typeGridArray[index]) 
-                      multiplier_h[1] = (12 * multiplier_h[1]) / multiplier_w[1];
-                    multiplier_w[1] = 12;
-                    break;
-                }
-              }
-            } else if (widthAvailable < screenSmArray[index]) {
-              if (multiplier_w != null && multiplier_w[1] !== undefined) {
-                // if (typeGridArray[index]) multiplier_h[1] = (12 * multiplier_h[1]) /
-                // multiplier_w[1];
-                multiplier_w[1] = 12;
-                if (typeGridArray[index]) 
-                  multiplier_h[1] = 12;
-                }
-              }
-            var width = multiplier_w
-                ? Math.floor(columnWidth * multiplier_w[1])
-                : columnWidth,
-              height;
-
-            if (data_vp_height === '1' && typeof multiplier_h[1] !== 'undefined') {
-              height = multiplier_h
-                ? Math['ceil'](winHeight / (100 / multiplier_fixed)) - itemMargin
-                : columnWidth;
-              if (widthAvailable < screenSmArray[index]) {
-                height = Math['ceil']((2 * Math.ceil(columnWidth / 2)) * 12) - itemMargin;
-              }
-            } else {
-              height = multiplier_h
-                ? Math['ceil']((2 * Math.ceil(columnWidth / 2)) * multiplier_h[1]) - itemMargin
-                : columnWidth;
-            }
-
-            if (width >= widthAvailable) {
-              $item.css({width: widthAvailable});
-              if (typeGridArray[index]) {
-                $item
-                  .children()
-                  .add($item.find('.backimg'))
-                  .css({height: height});
-              }
-            } else {
-              $item.css({width: width});
-              if (typeGridArray[index]) {
-                $item
-                  .children()
-                  .add($item.find('.backimg'))
-                  .css({height: height});
-              }
-            }
-          }
-          return columnWidth;
-        },
-        init_isotope = function () {
-          for (var i = 0, len = isotopeContainersArray.length; i < len; i++) {
-            var isotopeSystem = $(isotopeContainersArray[i]).closest($('.isotope-system')),
-              isotopeId = isotopeSystem.attr('id'),
-              $layoutMode = layoutGridArray[i];
-            $(isotopeContainersArray[i]).isotope({
-              //resizable: true,
-              itemSelector: $itemSelector,
-              layoutMode: $layoutMode,
-              transitionDuration: transitionDuration[i],
-              masonry: {
-                columnWidth: colWidth(i)
-              },
-              vertical: {
-                horizontalAlignment: 0.5
-              },
-              sortBy: 'original-order',
-              isOriginLeft: isOriginLeft
-            }).on('layoutComplete', onLayout($(isotopeContainersArray[i]), 0));
-            if ($(isotopeContainersArray[i]).hasClass('isotope-infinite')) {
-              $(isotopeContainersArray[i])
-                .infinitescroll({
-                  navSelector: '#' + isotopeId + ' .loadmore-button', // selector for the pagination container
-                  nextSelector: '#' + isotopeId + ' .loadmore-button a', // selector for the NEXT link (to page 2)
-                  itemSelector: '#' + isotopeId + ' .isotope-layout .tmb, #' + isotopeId + ' .isotope-filters li', // selector for all items you'll retrieve
-                  animate: false,
-                  behavior: 'local',
-                  debug: false,
-                  loading: {
-                    selector: '#' + isotopeId + '.isotope-system .isotope-footer-inner',
-                    speed: 0,
-                    finished: undefined,
-                    msg: $('#' + isotopeId + ' .loadmore-button')
-                  },
-                  errorCallback: function () {
-                    var isotope_system = $(this).closest('.isotope-system');
-                    $('.loading-button', isotope_system).hide();
-                    $('.loadmore-button', isotope_system).attr('style', 'display:none !important');
-                  }
-                },
-                // append the new items to isotope on the infinitescroll callback function.
-                function (newElements, opts) {
-                  var $isotope = $(this),
-                    isotopeId = $isotope
-                      .closest('.isotope-system')
-                      .attr('id'),
-                    filters = new Array(),
-                    $loading_button = $isotope
-                      .closest('.isotope-system')
-                      .find('.loading-button'),
-                    $infinite_button = $isotope
-                      .closest('.isotope-system')
-                      .find('.loadmore-button'),
-                    $numPages = $('a', $infinite_button).data('pages'),
-                    delay = 300;
-                  $('a', $infinite_button).html($('a', $infinite_button).data('label'));
-                  $infinite_button.show();
-                  $loading_button.hide();
-                  if ($numPages != undefined && opts.state.currPage == $numPages) 
-                    $infinite_button.hide();
-                  $('> li', $isotope).remove();
-                  $.each($(newElements), function (index, val) {
-                    if ($(val).is("li")) {
-                      filters.push($(val)[0]);
-                    }
-                  });
-                  newElements = newElements.filter(function (x) {
-                    return filters.indexOf(x) < 0
-                  });
-                  $.each($(filters), function (index, val) {
-                    if ($('#' + isotopeId + ' a[data-filter="' + $('a', val).attr('data-filter') + '"]').length == 0) 
-                      $('#' + isotopeId + ' .isotope-filters ul').append($(val));
-                    }
-                  );
-                  $isotope.isotope('reloadItems', onLayout($isotope, newElements.length));
-                  var getLightbox = UNCODE.lightboxArray['ilightbox_' + isotopeId];
-                  if (typeof getLightbox === 'object') 
-                    getLightbox.refresh();
-                  if (typeof twttr !== 'undefined') 
-                    twttr.widgets.load(isotopeContainersArray[i]);
-
-                  }
-                );
-              if ($(isotopeContainersArray[i]).hasClass('isotope-infinite-button')) {
-                var $infinite_isotope = $(isotopeContainersArray[i]),
-                  $infinite_button = $infinite_isotope
-                    .closest('.isotope-system')
-                    .find('.loadmore-button a');
-                $infinite_isotope.infinitescroll('pause');
-                $infinite_button.on('click', function (event) {
-                  event.preventDefault();
-                  var $infinite_system = $(event.target).closest('.isotope-system'),
-                    $infinite_isotope = $infinite_system.find('.isotope-container'),
-                    isotopeId = $infinite_system.attr('id');
-                  $(event.currentTarget).html(SiteParameters.loading);
-                  $infinite_isotope.infinitescroll('resume');
-                  $infinite_isotope.infinitescroll('retrieve');
-                  $infinite_isotope.infinitescroll('pause');
-                });
-              }
-            }
-          }
-        },
-        onLayout = function (isotopeObj, startIndex) {
-          window.uncode_textfill();
-          isotopeObj.css('opacity', 1);
-          isotopeObj
-            .closest('.isotope-system')
-            .find('.isotope-footer')
-            .css('opacity', 1);
-          setTimeout(function () {
-            window.dispatchEvent(UNCODE.boxEvent);
-            UNCODE.adaptive();
-            $(isotopeObj)
-              .find('audio,video')
-              .each(function () {
-                $(this).mediaelementplayer({pauseOtherPlayers: false});
-              });
-            if ($(isotopeObj).find('.nested-carousel').length) {
-              UNCODE.carousel($(isotopeObj).find('.nested-carousel'));
-              setTimeout(function () {
-                boxAnimation($('.tmb', isotopeObj), startIndex, true, isotopeObj);
-              }, 200);
-            } else {
-              boxAnimation($('.tmb', isotopeObj), startIndex, true, isotopeObj);
-            }
-          }, 100);
-        },
-        boxAnimation = function (items, startIndex, sequential, container) {
-          var $allItems = items.length - startIndex,
-            showed = 0,
-            index = 0;
-          if (container.closest('.owl-item').length == 1) 
-            return false;
-          $
-            .each(items, function (index, val) {
-              var elInner = $('> .t-inside', val);
-              if (val[0]) 
-                val = val[0];
-              if (elInner.hasClass('animate_when_almost_visible') && !elInner.hasClass('force-anim')) {
-                new Waypoint({
-                  element: val,
-                  handler: function () {
-                    var element = $('> .t-inside', this.element),
-                      parent = $(this.element),
-                      currentIndex = parent.index();
-                    var delay = (!sequential)
-                        ? index
-                        : ((startIndex !== 0)
-                          ? currentIndex - $allItems
-                          : currentIndex),
-                      delayAttr = parseInt(element.attr('data-delay'));
-                    if (isNaN(delayAttr)) 
-                      delayAttr = 100;
-                    delay -= showed;
-                    var objTimeout = setTimeout(function () {
-                      element
-                        .removeClass('zoom-reverse')
-                        .addClass('start_animation');
-                      showed = parent.index();
-                    }, delay * delayAttr)
-                    parent.data('objTimeout', objTimeout);
-                    this.destroy();
-                  },
-                  offset: '100%'
-                })
-              } else {
-                if (elInner.hasClass('force-anim')) {
-                  elInner.addClass('start_animation');
-                } else {
-                  elInner.css('opacity', 1);
-                }
-              }
-              index++;
-            });
-        };
-      if ($('.isotope-pagination').length > 0) {
-        $('.isotope-system')
-          .on('click', '.pagination a', function (evt) {
-            evt.preventDefault();
-
-            var filterContainer = $(this)
-                .closest('.isotope-system')
-                .find('.isotope-filters'),
-              container = $(this).closest('.isotope-system'),
-              calc_scroll = container
-                .closest('.uncol')
-                .offset()
-                .top,
-              getFilterSpanPadding = (!filterContainer.hasClass('with-bg'))
-                ? $('.filter-show-all span', filterContainer).css("padding-bottom")
-                : 0,
-              getFilterPadding = (!filterContainer.hasClass('with-bg'))
-                ? $('.filter-show-all span a', filterContainer).css("padding-bottom")
-                : 0,
-              filterOffset = (getFilterSpanPadding != undefined && getFilterSpanPadding != 0)
-                ? parseInt(getFilterSpanPadding.replace("px", ""))
-                : 0;
-            filterOffset += (getFilterPadding != undefined && getFilterPadding != 0)
-              ? parseInt(getFilterPadding.replace("px", ""))
-              : 0;
-
-            calc_scroll -= filterOffset - 1;
-            calc_scroll -= UNCODE.get_scroll_offset();
-
-            var bodyTop = document.documentElement['scrollTop'] || document.body['scrollTop'],
-              delta = bodyTop - calc_scroll,
-              scrollSpeed = (SiteParameters.constant_scroll == 'on')
-                ? Math.abs(delta) / parseFloat(SiteParameters.scroll_speed)
-                : SiteParameters.scroll_speed;
-            if (scrollSpeed < 1000 && SiteParameters.constant_scroll == 'on') 
-              scrollSpeed = 1000;
-            
-            if (!UNCODE.isFullPage) {
-              if (scrollSpeed == 0) {
-                $('html, body').scrollTop(calc_scroll);
-              } else {
-                $('html, body').animate({
-                  scrollTop: calc_scroll
-                }, {
-                  easing: 'easeInOutQuad',
-                  duration: scrollSpeed,
-                  complete: function () {
-                    UNCODE.scrolling = false;
-                  }
-                });
-              }
-            }
-
-            loadIsotope($(this));
-            evt.preventDefault();
-          });
-      }
-      $filters
-        .on('click', 'a', function (evt) {
-          var $filter = $(this),
-            filterContainer = $filter.closest('.isotope-filters'),
-            filterValue = $filter.attr('data-filter'),
-            container = $filter
-              .closest('.isotope-system')
-              .find($('.isotope-layout')),
-            transitionDuration = container
-              .data()
-              .isotope
-              .options
-              .transitionDuration,
-            delay = 300,
-            filterItems = [];
-          if (!$filter.hasClass('active')) {
-            /** Scroll top with filtering */
-            if (filterContainer.hasClass('filter-scroll')) {
-              var calc_scroll = container
-                  .closest('.uncol')
-                  .offset()
-                  .top,
-                getFilterSpanPadding = (!filterContainer.hasClass('with-bg'))
-                  ? $('.filter-show-all span', filterContainer).css("padding-bottom")
-                  : 0,
-                getFilterPadding = (!filterContainer.hasClass('with-bg'))
-                  ? $('.filter-show-all span a', filterContainer).css("padding-bottom")
-                  : 0,
-                filterOffset = (getFilterSpanPadding != undefined && getFilterSpanPadding != 0)
-                  ? parseInt(getFilterSpanPadding.replace("px", ""))
-                  : 0;
-              filterOffset += (getFilterPadding != undefined && getFilterPadding != 0)
-                ? parseInt(getFilterPadding.replace("px", ""))
-                : 0;
-
-              calc_scroll -= filterOffset - 1;
-              calc_scroll -= UNCODE.get_scroll_offset();
-
-              var bodyTop = document.documentElement['scrollTop'] || document.body['scrollTop'],
-                delta = bodyTop - calc_scroll,
-                scrollSpeed = (SiteParameters.constant_scroll == 'on')
-                  ? Math.abs(delta) / parseFloat(SiteParameters.scroll_speed)
-                  : SiteParameters.scroll_speed;
-              if (scrollSpeed < 1000 && SiteParameters.constant_scroll == 'on') 
-                scrollSpeed = 1000;
-              
-              if (!UNCODE.isFullPage) {
-                if (scrollSpeed == 0) {
-                  $('html, body').scrollTop(calc_scroll);
-                  UNCODE.scrolling = false;
-                } else {
-                  $('html, body').animate({
-                    scrollTop: calc_scroll
-                  }, {
-                    easing: 'easeInOutQuad',
-                    duration: scrollSpeed,
-                    complete: function () {
-                      UNCODE.scrolling = false;
-                    }
-                  });
-                }
-              }
-            }
-            if (filterValue !== undefined) {
-              $
-                .each($('> .tmb > .t-inside', container), function (index, val) {
-                  var parent = $(val).parent(),
-                    objTimeout = parent.data('objTimeout');
-                  if (objTimeout) {
-                    $(val)
-                      .removeClass('zoom-reverse')
-                      .removeClass('start_animation')
-                    clearTimeout(objTimeout);
-                  }
-                  if (transitionDuration == 0) {
-                    if ($(val).hasClass('animate_when_almost_visible')) {
-                      $(val)
-                        .addClass('zoom-reverse')
-                        .removeClass('start_animation');
-                    } else {
-                      $(val).addClass('animate_when_almost_visible zoom-reverse zoom-anim force-anim');
-                    }
-                  }
-                });
-              setTimeout(function () {
-                container.isotope({
-                  filter: function () {
-                    var block = $(this),
-                      filterable = (filterValue == '*') || block.hasClass(filterValue),
-                      lightboxElements = $('[data-lbox^=ilightbox]', block);
-                    if (filterable) {
-                      if (lightboxElements.length) {
-                        lightboxElements.removeClass('lb-disabled');
-                        container.data('lbox', $(lightboxElements[0]).data('lbox'));
-                      }
-                      filterItems.push(block);
-                    } else {
-                      if (lightboxElements.length) 
-                        lightboxElements.addClass('lb-disabled');
-                      }
-                    return filterable;
-                  }
-                });
-                $('.t-inside.zoom-reverse', container).removeClass('zoom-reverse');
-              }, delay);
-              /** once filtered - start **/
-              container.isotope('once', 'arrangeComplete', function () {
-                var getLightbox = UNCODE.lightboxArray[container.data('lbox')];
-                if (typeof getLightbox === 'object') 
-                  getLightbox.refresh();
-                if (transitionDuration == 0) {
-                  setTimeout(function () {
-                    boxAnimation(filterItems, 0, false, container);
-                  }, 100);
-                }
-                setTimeout(function () {
-                  Waypoint.refreshAll();
-                }, 2000);
-              });
-              /** once filtered - end **/
-            } else {
-              $
-                .each($('> .tmb > .t-inside', container), function (index, val) {
-                  var parent = $(val).parent(),
-                    objTimeout = parent.data('objTimeout');
-                  if (objTimeout) {
-                    $(val)
-                      .removeClass('zoom-reverse')
-                      .removeClass('start_animation')
-                    clearTimeout(objTimeout);
-                  }
-                  if (transitionDuration == 0) {
-                    if ($(val).hasClass('animate_when_almost_visible')) {
-                      $(val)
-                        .addClass('zoom-reverse')
-                        .removeClass('start_animation');
-                    } else {
-                      $(val).addClass('animate_when_almost_visible zoom-reverse zoom-anim force-anim');
-                    }
-                  }
-                });
-              container
-                .parent()
-                .addClass('isotope-loading');
-              loadIsotope($filter);
-            }
-          }
-          evt.preventDefault();
-        });
-      $(window).on("popstate", function (e) {
-        if (e.originalEvent.state === null) 
-          return;
-        var params = {};
-        if (location.search) {
-          var parts = location
-            .search
-            .substring(1)
-            .split('&');
-          for (var i = 0; i < parts.length; i++) {
-            var nv = parts[i].split('=');
-            if (!nv[0]) 
-              continue;
-            params[nv[0]] = nv[1] || true;
-          }
-        }
-        if (params.id === undefined) {
-          $
-            .each($('.isotope-system'), function (index, val) {
-              loadIsotope($(val));
-            });
-        } else 
-          loadIsotope($('#' + params.id));
-        }
-      );
-
-      var loadIsotope = function ($href) {
-        var href = ($href.is("a")
-            ? $href.attr('href')
-            : location),
-          isotopeSystem = ($href.is("a")
-            ? $href.closest($('.isotope-system'))
-            : $href),
-          isotopeWrapper = isotopeSystem.find($('.isotope-wrapper')),
-          isotopeFooter = isotopeSystem.find($('.isotope-footer-inner')),
-          isotopeContainer = isotopeSystem.find($('.isotope-layout')),
-          isotopeId = isotopeSystem.attr('id');
-        if ($href.is("a")) 
-          history.pushState({
-            myIsotope: true
-          }, document.title, href);
-        $
-          .ajax({url: href})
-          .done(function (data) {
-            var $resultItems = $(data)
-                .find('#' + isotopeId + ' .isotope-layout')
-                .html(),
-              $resultPagination = $(data).find('#' + isotopeId + ' .pagination');
-            isotopeWrapper.addClass('isotope-reloaded');
-            setTimeout(function () {
-              isotopeWrapper.removeClass('isotope-loading');
-              isotopeWrapper.removeClass('isotope-reloaded');
-            }, 500);
-            $.each($('> .tmb > .t-inside', isotopeContainer), function (index, val) {
-              var parent = $(val).parent(),
-                objTimeout = parent.data('objTimeout');
-              if (objTimeout) {
-                $(val)
-                  .removeClass('zoom-reverse')
-                  .removeClass('start_animation')
-                clearTimeout(objTimeout);
-              }
-              if ($(val).hasClass('animate_when_almost_visible')) {
-                $(val)
-                  .addClass('zoom-reverse')
-                  .removeClass('start_animation');
-              } else {
-                $(val).addClass('animate_when_almost_visible zoom-reverse zoom-in force-anim');
-              }
-            });
-            setTimeout(function () {
-              if (isotopeContainer.data('isotope')) {
-                isotopeContainer
-                  .html($resultItems)
-                  .isotope('reloadItems', onLayout(isotopeContainer, 0));
-                UNCODE.adaptive();
-                var getLightbox = UNCODE.lightboxArray['ilightbox_' + isotopeContainer
-                    .closest('.isotope-system')
-                    .attr('id')
-                ];
-                if (typeof getLightbox === 'object') 
-                  getLightbox.refresh();
-                }
-              }, 300);
-            $('.pagination', isotopeFooter).remove();
-            isotopeFooter.append($resultPagination);
-          });
-      };
-      $filters.each(function (i, buttonGroup) {
-        var $buttonGroup = $(buttonGroup);
-        $buttonGroup.on('click', 'a', function () {
-          $buttonGroup
-            .find('.active')
-            .removeClass('active');
-          $(this).addClass('active');
-        });
-      });
-      window.addEventListener('boxResized', function (e) {
-        $
-          .each($('.isotope-layout'), function (index, val) {
-            var $layoutMode = ($(this).data('layout'));
-            if ($layoutMode === undefined) 
-              $layoutMode = 'masonry';
-            if ($(this).data('isotope')) {
-              $(this).isotope({
-                itemSelector: $itemSelector,
-                layoutMode: $layoutMode,
-                transitionDuration: transitionDuration[index],
-                masonry: {
-                  columnWidth: colWidth(index)
-                },
-                vertical: {
-                  horizontalAlignment: 0.5
-                },
-                sortBy: 'original-order',
-                isOriginLeft: isOriginLeft
-              });
-              $(this).isotope('unbindResize');
-            }
-            $(this)
-              .find('.mejs-video,.mejs-audio')
-              .each(function () {
-                $(this).trigger('resize');
-              });
-          });
-      }, false);
-      init_isotope();
-    };
-  }
-
-  UNCODE.lightbox = function () {
-    UNCODE.lightboxArray = {};
-    setTimeout(function () {
-      var groupsArr = {};
-      $('[data-lbox^=ilightbox]:not(.lb-disabled)').each(function () {
-        var group = this.getAttribute("data-lbox"),
-          values = $(this).data();
-        groupsArr[group] = values;
-      });
-      for (var i in groupsArr) {
-        var skin = groupsArr[i].skin || 'black',
-          path = groupsArr[i].dir || 'horizontal',
-          thumbs = !groupsArr[i].notmb || false,
-          arrows = !groupsArr[i].noarr || false,
-          social = groupsArr[i].social || false,
-          deeplink = groupsArr[i].deep || false,
-          $els = $('[data-lbox="' + i + '"]:not(.lb-disabled)'),
-          counter = $els.length,
-          dataAlbum = $els.attr('data-album');
-        if (social) 
-          social = {
-            facebook: true,
-            twitter: true,
-            googleplus: true,
-            reddit: true,
-            digg: true,
-            delicious: true
-          };
-        UNCODE.lightboxArray[i] = $els.iLightBox({
-          skin: skin, path: path, linkId: deeplink, infinite: false,
-          //fullViewPort: 'fit',
-          smartRecognition: false,
-          fullAlone: true,
-          maxScale: 1,
-          minScale: .02,
-          //fullStretchTypes: 'flash, video',
-          overlay: {
-            opacity: .94
-          },
-          controls: {
-            arrows: (counter > 1 || (typeof dataAlbum !== 'undefined')
-              ? arrows
-              : false),
-            fullscreen: true,
-            thumbnail: thumbs,
-            slideshow: (counter > 1 || (typeof dataAlbum !== 'undefined')
-              ? true
-              : false)
-          },
-          show: {
-            speed: 200
-          },
-          hide: {
-            speed: 200
-          },
-          social: {
-            start: false,
-            buttons: social
-          },
-          caption: {
-            start: false
-          },
-          styles: {
-            nextOpacity: 1,
-            nextScale: 1,
-            prevOpacity: 1,
-            prevScale: 1
-          },
-          effects: {
-            switchSpeed: 400
-          },
-          slideshow: {
-            pauseTime: 5000
-          },
-          thumbnails: {
-            maxWidth: 60,
-            maxHeight: 60,
-            activeOpacity: .2
-          },
-          html5video: {
-            preload: true
-          }
-        });
-
-        $(document).on('infinite-loaded', function () {
-          UNCODE
-            .lightboxArray[i]
-            .refresh();
-        });
-      };
-    }, 100);
-  };
-
-  /*UNCODE.backVideo = function() {
-	$(function() {
-		$.each($('.background-video-shortcode'), function() {
-			var video_id = $(this).attr('id');
-			if (typeof MediaElement === "function") {
-				new MediaElement(video_id, {
-					startVolume: 0,
-					loop: true,
-					success: function(mediaElement, domObject) {
-						mediaElement.play();
-						$(mediaElement).closest('.uncode-video-container').css('opacity','1');
-						domObject.volume = 0;
-					},
-					// fires when a problem is detected
-					error: function() {}
-				});
-			}
-		});
-	});
-};*/
-
-  UNCODE.carousel = function (container) {
-    var $owlContainer = $('.owl-carousel-container', container),
-      $owlSelector = $('> [class*="owl-carousel"]', $owlContainer),
-      values = {},
-      tempTimeStamp,
-      currentIndex,
-      $owlInsideEqual = [];
-    $owlSelector.each(function () {
-      var itemID = $(this).attr('id'),
-        $elSelector = $(('#' + itemID).toString());
-      values['id'] = itemID;
-      values['items'] = 1;
-      values['columns'] = 3;
-      values['fade'] = false;
-      values['nav'] = false;
-      values['navmobile'] = false;
-      values['navskin'] = 'light';
-      values['navspeed'] = 400;
-      values['dots'] = false;
-      values['dotsmobile'] = false;
-      values['loop'] = false;
-      values['autoplay'] = false;
-      values['timeout'] = 3000;
-      values['autoheight'] = false;
-      values['stagepadding'] = 0;
-      values['margin'] = 0;
-      values['lg'] = 1;
-      values['md'] = 1;
-      values['sm'] = 1;
-      $.each($(this).data(), function (i, v) {
-        values[i] = v;
-      });
-
-      if ($(this).closest('.uncode-slider').length) {
-        values['navskin'] = '';
-        values['navmobile'] = false;
-        values['dotsmobile'] = true;
-      } else {
-        values['navskin'] = ' style-' + values['navskin'] + ' style-override';
-      }
-
-      /** Initialized */
-      $elSelector
-        .on('initialized.owl.carousel', function (event) {
-
-          var thiis = $(event.currentTarget),
-            // get the time from the data method
-            time = thiis.data("timer-id");
-          if (time) {
-            clearTimeout(time);
-          }
-
-          thiis.addClass('showControls');
-          var new_time = setTimeout(function () {
-            thiis
-              .closest('.owl-carousel-container')
-              .removeClass('owl-carousel-loading');
-            if (thiis.hasClass('owl-height-viewport')) 
-              setItemsRelHeight(event.currentTarget);
-            if (thiis.hasClass('owl-height-equal')) 
-              setItemsHeight(event.currentTarget);
-            if (!UNCODE.isMobile && !$elSelector.closest('.header-wrapper').length) 
-              navHover($elSelector.parent());
-            if (thiis.closest('.unequal, .unexpand').length) {
-              var rowParent = thiis.closest('.row-parent');
-              UNCODE.setRowHeight(rowParent[0], true);
-            }
-          }, 350);
-          // save the new time
-          thiis.data("timer-id", new_time);
-
-          var scrolltop = $(document).scrollTop();
-          $(event.currentTarget)
-            .closest('.uncode-slider')
-            .find('video')
-            .removeAttr('poster');
-
-          //if (!UNCODE.isMobile) {
-          /** fix autoplay when visible **/
-          $(window).on('load', function () {
-            if ($(event.currentTarget).data('autoplay')) {
-              $(event.currentTarget).trigger('stop.autoplay.owl');
-            }
-            var carouselInView = new Waypoint.Inview({
-              element: $(event.currentTarget)[0],
-              exited: function () {
-                var el = $(this.element);
-                if (el.data('autoplay')) {
-                  el.trigger('stop.owl.autoplay');
-                  el.data('stopped', 'true');
-                }
-              },
-              enter: function (direction) {
-                var el = $(this.element);
-                setTimeout(function () {
-                  if (el.data('autoplay')) {
-                    el.trigger('play.owl.autoplay');
-                    el.data('stopped', 'false');
-                  }
-                }, 100);
-              }
-            });
-          });
-          //}
-
-          if (!$(event.currentTarget).closest('.isotope-system').length) {
-            setTimeout(function () {
-              animate_thumb($('.t-inside', el), event);
-            }, 400);
-          }
-
-          var currentItem = $(event.currentTarget).find("> .owl-stage-outer > .owl-stage > .owl-item")[event.item.index],
-            currentIndex = $(currentItem).attr('data-index');
-
-          $.each($('.owl-item:not(.active) .start_animation', $(event.target)), function (index, val) {
-            if ($(val).closest('.uncode-slider').length) {
-              $(val).removeClass('start_animation');
-            }
-          });
-
-          $.each($('.owl-item.cloned', event.currentTarget), function (index, val) {
-            $('.t-entry-visual-cont > a', $(val)).attr('data-lbox-clone', true);
-          });
-
-          $.each($('.owl-item:not(.active)', event.currentTarget), function (index, val) {
-            if ($(val).attr('data-index') != currentIndex) {
-              $('.start_animation:not(.t-inside)', val).removeClass('start_animation');
-            }
-            if ($(val).attr('data-index') == currentIndex) {
-              $('.animate_when_almost_visible:not(.t-inside)', val).addClass('start_animation');
-            }
-          });
-
-          if ($(event.currentTarget).closest('.uncode-slider').length) {
-            var el = $(event.currentTarget).closest('.row-parent')[0];
-            if ($(el).data('imgready')) {
-              firstLoaded(el, event);
-            } else {
-              el
-                .addEventListener("imgLoaded", function (el) {
-                  firstLoaded(el.target, event);
-                }, false);
-            }
-            var transHeight = $('.hmenu .menu-transparent.menu-primary .menu-container').height() - UNCODE.bodyBorder;
-            if (transHeight != null) {
-              setTimeout(function () {
-                $(event.currentTarget)
-                  .closest('.uncode-slider')
-                  .find('.owl-prev, .owl-next')
-                  .css('paddingTop', transHeight / 2 + 'px');
-              }, 100);
-            }
-          } else {
-            var el = $(event.currentTarget);
-            el
-              .closest('.uncode-slider')
-              .addClass('slider-loaded');
-          }
-
-          setTimeout(function () {
-            window.uncode_textfill(thiis);
-            if ($(event.currentTarget).closest('.uncode-slider').length) {
-              if ($(event.currentTarget).data('autoplay')) 
-                pauseOnHover(event.currentTarget);
-              }
-            }, 500);
-
-          if ($(event.currentTarget).closest('.unequal').length) {
-            $owlInsideEqual.push($(event.currentTarget).closest('.row-parent'));
-          }
-
-          var containerClasses = '',
-            containerStyle = '';
-          if ($('.owl-dots-classes', $owlContainer).length) {
-            containerClasses = $('.owl-dots-classes', $owlContainer).attr('class');
-            containerStyle = $('.owl-dots-classes', $owlContainer).attr('style');
-            $('.owl-dots-classes', $owlContainer).remove();
-          }
-
-          if (containerClasses !== '') {
-            setTimeout(function () {
-              if (containerClasses !== '') 
-                $('.owl-dots', $owlContainer).attr('style', containerStyle);
-              if (containerStyle !== '') 
-                $('.owl-dots', $owlContainer).addClass(containerClasses);
-              }
-            , 100);
-          }
-
-          $
-            .each($('.column_child.pos-bottom', event.currentTarget), function (index, val) {
-              $(val)
-                .closest('.row-inner')
-                .css({'margin-top': '-1px'});
-            });
-
-        });
-
-      $elSelector.on('resized.owl.carousel', function (event) {
-        if ($(this).closest('.nested-carousel').length) {
-          setTimeout(function () {
-            window.dispatchEvent(UNCODE.boxEvent);
-          }, 200);
-        }
-        if ($(event.currentTarget).hasClass('owl-height-equal')) 
-          setItemsHeight(event.currentTarget);
-        
-        setItemsRelHeight($elSelector);
-      });
-
-      /** detect resize window for fluid height layout */
-      var setFluidResize;
-      function manageFluidCarouseHeight() {
-        clearTimeout(setFluidResize);
-        setFluidResize = setTimeout(function () {
-          setItemsRelHeight($elSelector);
-        }, 100);
-      }
-      window.addEventListener('resize', manageFluidCarouseHeight);
-
-      /** Change */
-      $elSelector.on('change.owl.carousel', function (event) {
-        if (!UNCODE.isMobile) 
-          UNCODE.owlStopVideo(event.currentTarget);
-        }
-      );
-
-      /** Changed */
-      $elSelector.on('changed.owl.carousel', function (event) {
-        if (tempTimeStamp != event.timeStamp) {
-          var scrolltop = $(document).scrollTop();
-          var currentItem = $(event.currentTarget).find("> .owl-stage-outer > .owl-stage > .owl-item")[(event.item.index != null)
-              ? event.item.index
-              : 0];
-          if ($(event.currentTarget).closest('.row-slider').length) {
-            if (currentItem == undefined) {
-              currentItem = $(event.currentTarget).children()[0];
-            }
-            if ($(currentItem).closest('#page-header').length) {
-              if ($('.row-container > .row > .row-inner > div > .style-dark', currentItem).closest('.uncode-slider').length) {
-                UNCODE.switchColorsMenu(scrolltop, 'dark');
-              } else if ($('.row-container > .row > .row-inner > div > .style-light', currentItem).closest('.uncode-slider').length) {
-                UNCODE.switchColorsMenu(scrolltop, 'light');
-              }
-            }
-          }
-          var itendIndex = $(currentItem).attr('data-index');
-          if (isNaN(itendIndex)) 
-            itendIndex = 1;
-          setTimeout(function () {
-            $elSelector
-              .find('.owl-item:not([data-index="' + itendIndex + '"])')
-              .removeClass('index-active');
-            $elSelector
-              .find('.owl-item[data-index="' + itendIndex + '"]')
-              .addClass('index-active');
-          }, 200);
-        }
-        tempTimeStamp = event.timeStamp;
-      });
-
-      $elSelector.on('translate.owl.carousel', function (event) {
-        if (UNCODE.isMobile) {
-          $(event.currentTarget).addClass('owl-translating');
-        }
-      });
-
-      /** Translated */
-      $elSelector.on('translated.owl.carousel', function (event) {
-
-        var currentItem = $(event.currentTarget).find("> .owl-stage-outer > .owl-stage > .owl-item")[event.item.index],
-          currentIndex = $(currentItem).attr('data-index'),
-          stagePadding = $(event.currentTarget).data('stagepadding');
-
-        stagePadding = (stagePadding == undefined || stagePadding == 0)
-          ? false
-          : true;
-
-        if (!UNCODE.isMobile) {
-          UNCODE.owlPlayVideo(event.currentTarget);
-        }
-
-        setTimeout(function () {
-          var lastDelayElems = animate_elems($('.owl-item.active', event.currentTarget));
-          var lastDelayThumb = animate_thumb($('.owl-item' + (stagePadding
-            ? ''
-            : '.active') + ' .t-inside', event.currentTarget), event);
-          if ($(event.currentTarget).closest('.uncode-slider').length && $(event.currentTarget).data('autoplay')) {
-            if (lastDelayElems == undefined) 
-              lastDelayElems = 0;
-            if (lastDelayThumb == undefined) 
-              lastDelayThumb = 0;
-            var maxDelay = Math.max(lastDelayElems, lastDelayThumb);
-            $(event.currentTarget).trigger('stop.owl.autoplay');
-            setTimeout(function () {
-              if (!$(event.currentTarget).hasClass('owl-mouseenter') && $(event.currentTarget).data('stopped') != 'true') 
-                $(event.currentTarget).trigger('play.owl.autoplay');
-              }
-            , maxDelay);
-          }
-        }, 200);
-
-        $.each($('.owl-item:not(.active) .start_animation', $(event.target)), function (index, val) {
-          if ($(val).closest('.uncode-slider').length) {
-            $(val).removeClass('start_animation');
-          }
-        });
-
-        $.each($('.owl-item:not(.active)', event.currentTarget), function (index, val) {
-          if ($(val).attr('data-index') != currentIndex) {
-            $('.start_animation:not(.t-inside)', val).removeClass('start_animation');
-          }
-          if ($(val).attr('data-index') == currentIndex) {
-            $('.animate_when_almost_visible:not(.t-inside)', val).addClass('start_animation');
-          }
-        });
-
-        if (UNCODE.isMobile) {
-          $(event.currentTarget).removeClass('owl-translating');
-        }
-
-      });
-
-      if (UNCODE.wwidth < UNCODE.mediaQuery && $(this).data('stagepadding') > 25) 
-        values['stagepadding'] = 25;
-      
-      /** Init carousel */
-      $elSelector.owlCarousel({
-        items: values['items'],
-        animateOut: (values['fade'] == true)
-          ? 'fadeOut'
-          : null,
-        nav: values['nav'],
-        dots: values['dots'],
-        loop: values['loop'],
-        stagePadding: values['stagepadding'],
-        margin: 0,
-        video: true,
-        autoWidth: false,
-        autoplay: false,
-        autoplayTimeout: values['timeout'],
-        autoplaySpeed: values['navspeed'],
-        autoplayHoverPause: $(this)
-          .closest('.uncode-slider')
-          .length
-          ? false
-          : true,
-        autoHeight: ($(this).hasClass('owl-height-equal')
-          ? false
-          : ($(this).hasClass('owl-height-auto')
-            ? true
-            : values['autoheight'])),
-        rtl: $('body').hasClass('rtl')
-          ? true
-          : false,
-        fluidSpeed: true,
-        navSpeed: values['navspeed'],
-        navClass: [
-          'owl-prev' + values['navskin'],
-          'owl-next' + values['navskin']
-        ],
-        navText: [
-          '<div class="owl-nav-container btn-default btn-hover-nobg"><i class="fa fa-fw fa-' +
-              'angle-left"></i></div>',
-          '<div class="owl-nav-container btn-default btn-hover-nobg"><i class="fa fa-fw fa-' +
-              'angle-right"></i></div>'
-        ],
-        navContainer: values['nav']
-          ? $elSelector
-          : false,
-        responsiveClass: true,
-        responsiveBaseElement: '.box-container',
-        responsive: {
-          0: {
-            items: values['sm'],
-            nav: values['navmobile'],
-            dots: values['dotsmobile']
-          },
-          480: {
-            items: values['sm'],
-            nav: values['navmobile'],
-            dots: values['dotsmobile']
-          },
-          570: {
-            items: values['md'],
-            nav: values['navmobile'],
-            dots: values['dotsmobile']
-          },
-          960: {
-            items: values['lg']
-          }
-        }
-      });
-
-      setTimeout(function () {
-        for (var i = $owlInsideEqual.length - 1; i >= 0; i--) {
-          UNCODE.setRowHeight($owlInsideEqual[i]);
-        };
-      }, 300);
-
-      $(window).on('load', function () {
-        var $elCarousel = $elSelector.data('owl.carousel');
-        if (typeof $elCarousel !== 'undefined') {
-          $elCarousel.trigger('refreshed');
-          for (var i = $owlInsideEqual.length - 1; i >= 0; i--) {
-            UNCODE.setRowHeight($owlInsideEqual[i]);
-          };
-        }
-      });
-    });
-
-    function firstLoaded(el, event) {
-      var el = $(el),
-        uncode_slider = el.find('.uncode-slider');
-      el
-        .find('.owl-carousel')
-        .css('opacity', 1);
-      uncode_slider.addClass('slider-loaded');
-      window.uncode_textfill(el.find('.owl-item.active'));
-      //if (!UNCODE.isMobile) {
-      setTimeout(function () {
-        var lastDelayElems = animate_elems(el.find('.owl-item.active'));
-        var lastDelayThumb = animate_thumb(el.find('.owl-item.active .t-inside'), event);
-        if (uncode_slider.length && el.find('.owl-carousel').data('autoplay')) {
-          if (lastDelayElems == undefined) 
-            lastDelayElems = 0;
-          if (lastDelayThumb == undefined) 
-            lastDelayThumb = 0;
-          var maxDelay = Math.max(lastDelayElems, lastDelayThumb);
-          $('> .owl-carousel', uncode_slider).trigger('stop.owl.autoplay');
-          setTimeout(function () {
-            $('> .owl-carousel', uncode_slider).trigger('play.owl.autoplay');
-          }, maxDelay);
-        }
-      }, 500);
-      //}
+}, {
+    "id": 83,
+    "date": "2018-03-08T18:28:57",
+    "date_gmt": "2018-03-08T18:28:57",
+    "guid": {
+        "rendered": "http:\/\/localhost\/wp-agency\/2018\/03\/08\/neque-quisquam-iste-labore\/"
+    },
+    "modified": "2018-03-21T12:18:24",
+    "modified_gmt": "2018-03-21T12:18:24",
+    "slug": "neque-quisquam-iste-labore",
+    "status": "publish",
+    "type": "post",
+    "link": "http:\/\/localhost\/wp-agency\/2018\/03\/08\/neque-quisquam-iste-labore\/",
+    "title": {
+        "rendered": "Neque quisquam iste labore"
+    },
+    "content": {
+        "rendered": "<h1>Deleniti rerum consectetur qui culpa enim. Est facilis est sed inventore. Quos qui et quo nemo temporibus<\/h1>\n<ol>\n<li>Et quas et doloribus sunt non<\/li>\n<li>Voluptatem ut dignissimos facere<\/li>\n<li>Earum nulla velit veniam voluptatem omnis<\/li>\n<li>Ut placeat dolor aliquid quos aut rem<\/li>\n<\/ol>\n<h2>Aut adipisci in veritatis autem culpa. Rem ducimus vel et deleniti<\/h2>\n<p><!--more--><\/p>\n<p><a title=\"Et ut.\" href=\"http:\/\/www.ryan.com\/\">Temporibus perferendis<\/a> et rerum quod dolores accusamus. Est unde ipsam est. Sint molestiae quisquam consequatur laudantium. Rerum et nemo voluptatem modi possimus. Quod possimus accusantium ut fugit et doloribus laboriosam. Blanditiis eos nisi voluptatem Perspiciatis sit in aut hic omnis possimus. Velit quia magnam consectetur facere et. Nihil aspernatur illum sed et eligendi necessitatibus facilis. Maxime deleniti aut perspiciatis voluptas aut. Quis sint fugit ducimus. Dicta dolor velit a voluptatem Dolorem dolores earum temporibus officiis in ea quas. Quo eaque alias animi Non earum eos vero. At quod et voluptatem aliquid esse id. Vel provident aspernatur id voluptate exercitationem. molestiae vitae velit esse sequi sed. et magni animi Pariatur voluptates impedit officiis aliquam. Eos eveniet est dolores placeat Ut et eum deserunt voluptatem hic. Et sequi ea dolore deleniti soluta Facere voluptatibus impedit blanditiis omnis non. a temporibus eos dicta. ipsam dolore recusandae necessitatibus dolor labore. veritatis tenetur minima sit nostrum. consequuntur officia assumenda voluptas. Est tenetur qui dolorem quo Quasi enim quia ut excepturi facere. fuga eum maxime fugit velit. omnis autem illum voluptatem labore Libero cupiditate libero sit. reprehenderit odit qui quibusdam. A qui vel assumenda Consequatur et quisquam cum placeat quos. Qui ex voluptates Qui vel perferendis consequatur quam. error repudiandae deleniti. iure eaque illo Qui ut nemo sit nisi. facere ut magnam voluptas doloribus. Quidem tempora quibusdam enim accusantium explicabo Est ut animi ratione eos. Rerum architecto vitae et. Quod aut quisquam. Quam facere quia porro corporis.<\/p>\n<ul>\n<li>Quas et quia sit<\/li>\n<li>Ut blanditiis ad quod officia<\/li>\n<\/ul>\n<h2>Eius perspiciatis ducimus dignissimos iusto ducimus hic. Labore fuga incidunt dolor. Eius impedit ex aut voluptatem ut. Impedit eius magnam magnam dolores rem nam quaerat<\/h2>\n<hr>\n<ol>\n<li>Qui<\/li>\n<li>Culpa quis consectetur et<\/li>\n<li>Ipsum fugiat<\/li>\n<li>Reiciendis amet id sit est reiciendis quasi ut<\/li>\n<li>Commodi repudiandae dicta quis numquam nam<\/li>\n<li>Culpa maiores aut alias ut<\/li>\n<li>Consequatur modi repellat quas minus et ut sapiente<\/li>\n<li>Sed ipsa nam totam<\/li>\n<li>Aspernatur quis unde hic quam<\/li>\n<li>Qui accusamus aut atque<\/li>\n<li>Voluptatem et dolorum tenetur et velit aut ut<\/li>\n<\/ol>\n",
+        "protected": false
+    },
+    "excerpt": {
+        "rendered": "<p>Deleniti [&hellip;]<\/p>\n",
+        "protected": false
+    },
+    "author": 6,
+    "featured_media": 84,
+    "comment_status": "open",
+    "ping_status": "closed",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": [],
+    "categories": [3],
+    "tags": [],
+    "_links": {
+        "self": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts\/83"
+        }],
+        "collection": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts"
+        }],
+        "about": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/types\/post"
+        }],
+        "author": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/users\/6"
+        }],
+        "replies": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/comments?post=83"
+        }],
+        "version-history": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts\/83\/revisions"
+        }],
+        "wp:featuredmedia": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/media\/84"
+        }],
+        "wp:attachment": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/media?parent=83"
+        }],
+        "wp:term": [{
+            "taxonomy": "category",
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/categories?post=83"
+        }, {
+            "taxonomy": "post_tag",
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/tags?post=83"
+        }],
+        "curies": [{
+            "name": "wp",
+            "href": "https:\/\/api.w.org\/{rel}",
+            "templated": true
+        }]
     }
-
-    function navHover(el) {
-      var $owlCont = el,
-        $owlPrev = $owlCont.find('.owl-prev'),
-        $owlNext = $owlCont.find('.owl-next'),
-        $owlDots = $owlCont.find('.owl-dots-inside .owl-dots'),
-        $owlPagination = $owlCont.next(),
-        owlPrevW = $owlPrev.outerWidth(),
-        owlNextW = $owlNext.outerWidth(),
-        owlDotsH = $owlDots.innerHeight(),
-        owlTime = 400,
-        owlNested = $owlCont
-          .parent()
-          .parent()
-          .hasClass('nested-carousel');
-      $owlPrev.css("margin-left", -owlPrevW);
-      $owlNext.css("margin-right", -owlNextW);
-      if (!owlNested) 
-        $owlDots.css("bottom", -owlDotsH);
-      $owlCont
-        .mouseenter(function () {
-          owlNested = $owlCont
-            .parent()
-            .parent()
-            .hasClass('nested-carousel');
-          $owlPrev.css({marginLeft: 0});
-          $owlNext.css({marginRight: 0});
-          if (!owlNested) {
-            $owlDots.css({opacity: 1, bottom: 0});
-          }
-        })
-        .mouseleave(function () {
-          owlNested = $owlCont
-            .parent()
-            .parent()
-            .hasClass('nested-carousel');
-          $owlPrev.css({
-            marginLeft: -owlPrevW
-          });
-          $owlNext.css({
-            marginRight: -owlNextW
-          });
-          if (!owlNested) {
-            $owlDots.css({
-              opacity: 1,
-              bottom: -owlDotsH
-            });
-          }
-        });
-    };
-
-    function animate_elems($this) {
-      var lastDelay;
-      $.each($('.animate_when_almost_visible:not(.t-inside)', $this), function (index, val) {
-        var element = $(val),
-          delayAttr = element.attr('data-delay');
-        if (delayAttr == undefined) 
-          delayAttr = 0;
-        setTimeout(function () {
-          element.addClass('start_animation');
-        }, delayAttr);
-        lastDelay = delayAttr;
-      });
-      return lastDelay;
+}, {
+    "id": 86,
+    "date": "2018-03-08T15:39:40",
+    "date_gmt": "2018-03-08T15:39:40",
+    "guid": {
+        "rendered": "http:\/\/localhost\/wp-agency\/2018\/03\/08\/sit-et-placeat-eligendi\/"
+    },
+    "modified": "2018-03-21T12:18:29",
+    "modified_gmt": "2018-03-21T12:18:29",
+    "slug": "sit-et-placeat-eligendi",
+    "status": "publish",
+    "type": "post",
+    "link": "http:\/\/localhost\/wp-agency\/2018\/03\/08\/sit-et-placeat-eligendi\/",
+    "title": {
+        "rendered": "Sit et placeat eligendi"
+    },
+    "content": {
+        "rendered": "<ol>\n<li>Atque nostrum sit vel ullam<\/li>\n<li>Labore error aliquid sunt ut aut ipsum<\/li>\n<li>Quas odio vero et fugiat<\/li>\n<li>Quae eaque rem debitis vero beatae ut<\/li>\n<li>Enim voluptas quisquam<\/li>\n<\/ol>\n<ol>\n<li>Dicta iste vero earum dolorem<\/li>\n<li>Aut cum qui officiis excepturi vitae et vel<\/li>\n<\/ol>\n<h5>Delectus praesentium praesentium cumque aut enim quidem sequi. Dolorem eius corrupti saepe debitis<\/h5>\n<ul>\n<li>Architecto commodi<\/li>\n<li>Sunt nulla sunt sit ut voluptatem molestiae<\/li>\n<li>Hic quae molestiae<\/li>\n<li>Vel aut dolorum facilis minus<\/li>\n<li>Vitae eaque odio natus provident<\/li>\n<li>Est est inventore qui eos<\/li>\n<li>Est error praesentium quo fugit<\/li>\n<li>Totam nesciunt vero<\/li>\n<li>Est pariatur magni<\/li>\n<\/ul>\n<blockquote><p>Dolor quisquam provident itaque illo. Voluptas perferendis quis ratione exercitationem temporibus Velit et explicabo qui ut. Eum ut officiis occaecati. Fugiat ut enim dolores velit. Tenetur eaque ipsum hic quis. Voluptatum voluptatem omnis qui aut voluptatum In officia ut ut Dolores sapiente consectetur est libero non aut. Sit aut sed ducimus Consequuntur similique excepturi officiis explicabo praesentium odio. Voluptatem fuga optio molestias repellat omnis. Quo tempore fugit maxime nesciunt qui. Explicabo minus nostrum. dolorum aperiam minima dolorem et illo. Ea dolores quia magni <a title=\"Occaecati et rem delectus est.\" href=\"https:\/\/www.sipes.com\/sint-ea-provident-consectetur-veniam-sequi\">modi. Placeat ratione vel architecto<\/a> Ad ad nisi deleniti. Eum hic rerum voluptatem iusto autem. Distinctio quibusdam praesentium beatae et ut debitis. commodi non autem dolores. Quo ducimus assumenda suscipit. Incidunt quo molestiae Sed ea laudantium qui. Dolores omnis suscipit vel corporis. Ut est et hic.<\/p><\/blockquote>\n<h4>Quis nihil molestias deleniti quia et dolores. Dolorem autem quia sint consequatur officiis<\/h4>\n<p><!--more--><\/p>\n<ul>\n<li>Numquam aut laudantium nemo impedit<\/li>\n<\/ul>\n<p><a title=\"Eum ipsa.\" href=\"http:\/\/trantow.info\/nulla-suscipit-magnam-dolores-quam-perferendis-libero-aut\">Ducimus molestiae sit ratione hic ut<\/a> vel et. dignissimos rerum totam voluptate Et ut ipsum iusto qui ex. magnam quod nemo reprehenderit nostrum ut illum. Dicta aliquid beatae esse accusantium. Pariatur qui veritatis. Aut maiores voluptatibus soluta Ut non eos nam veniam. Eligendi corporis aut non. Laboriosam voluptatem dolores eveniet quia. Eum sunt perspiciatis vel repellendus quia Veritatis eveniet asperiores itaque id quis non hic.<\/p>\n<h1>Repudiandae nihil nemo possimus dolores. Assumenda totam laudantium qui quia modi. Ab voluptatem rerum facilis et fuga earum aspernatur corrupti<\/h1>\n<p><img class=\"alignright\" alt=\"Odit fugit\" src=\"http:\/\/localhost\/wp-agency\/wp-content\/uploads\/2018\/03\/c150999c-a127-36ac-9033-951b734d337b.jpg\"><\/p>\n<h3>Quia est voluptatem voluptatem laudantium quas alias. Error aspernatur dolore architecto et. Veniam in exercitationem est soluta at aperiam numquam itaque<\/h3>\n<blockquote><p>Et in vel a expedita ut <a title=\"Eveniet dignissimos qui.\" href=\"http:\/\/www.rogahn.biz\/autem-distinctio-debitis-iusto-nobis-atque-quia-molestias\">Voluptas beatae sit<\/a> ea. Occaecati suscipit cupiditate assumenda consequatur. Et amet omnis. Nostrum architecto molestiae et voluptatem. Nulla et velit similique voluptate <a title=\"Qui aut iure aliquam voluptates.\" href=\"https:\/\/www.hessel.info\/omnis-aut-quia-ratione-et-tenetur\">Fugiat<\/a> facilis rerum sint placeat. Deserunt et laboriosam perferendis debitis incidunt Voluptas exercitationem eum sapiente consequatur ipsum Tempore aspernatur <a title=\"Beatae cumque atque et voluptas ipsam consequatur et.\" href=\"http:\/\/www.bosco.com\/laboriosam-aliquam-rerum-tempora-voluptate-molestiae.html\">ab. Minus tenetur<\/a> explicabo doloribus. Id qui quo et Aut voluptas temporibus ut nisi <a title=\"Autem animi dolorem.\" href=\"http:\/\/www.volkman.com\/accusamus-et-impedit-assumenda-unde-ut-iste-aut-laboriosam\">Rem in<\/a> vel autem similique <a title=\"Blanditiis perspiciatis reprehenderit omnis et ipsam eligendi repellendus maxime nihil.\" href=\"https:\/\/goldner.net\/voluptatem-nisi-eligendi-aut.html\">laborum sed. Ut<\/a> cupiditate laboriosam rerum. Atque dicta rerum repellat ab. Sequi recusandae quia et et sint. Ab sunt adipisci ut. Aperiam iure ratione nisi quia eius.<\/p><\/blockquote>\n<h6>Excepturi sed rerum corrupti odio officia. Labore id quisquam voluptatibus maiores et. Voluptatibus rem et labore possimus. Possimus ut ea eveniet<\/h6>\n<ol>\n<li>At nobis et ut suscipit nisi<\/li>\n<li>Voluptatem<\/li>\n<li>Et error aliquid aperiam harum in voluptas ab<\/li>\n<li>Eum qui saepe magnam est<\/li>\n<li>Non error<\/li>\n<li>Aliquid<\/li>\n<\/ol>\n<ol>\n<li>Ratione ducimus ea provident quo<\/li>\n<li>Mollitia quae ut eum quia<\/li>\n<li>Ad aliquid atque nobis<\/li>\n<li>Commodi nisi<\/li>\n<li>Officiis qui velit<\/li>\n<li>Quidem alias rerum ullam aut aperiam id beatae<\/li>\n<li>Earum facere qui et<\/li>\n<\/ol>\n",
+        "protected": false
+    },
+    "excerpt": {
+        "rendered": "<p>Fugiat assumenda voluptates adipisci tenetur enim illum ducimus omnis iure quam impedit commodi veritatis repudiandae inventore consectetur et ea ipsa itaque quos excepturi ut perferendis et quibusdam soluta minus asperiores saepe quam inventore aspernatur voluptate maxime repudiandae fugiat voluptatibus molestiae dolor sunt ut harum est at ea atque mollitia deleniti occaecati nemo sed voluptate sint et suscipit ut fugiat optio dolorum totam a tempore dolorum quia et consequatur reiciendis quia optio culpa sit libero qui odio dolores et recusandae sed quaerat harum nemo minus atque nihil qui minima repellat voluptate harum vel.<\/p>\n<p>Perferendis sunt minima corporis blanditiis earum officiis non possimus aut et maxime explicabo ipsum provident quis voluptatem amet quia nihil animi iusto eum ut aut voluptatem quia ullam cupiditate nulla qui et sint fugit pariatur ab iusto rem quos repellendus harum rerum assumenda delectus ex non illo in quo autem laboriosam minima quas et adipisci est.<\/p>\n<p>Est sit similique ea qui aut sapiente enim distinctio fugiat eos fugit et quaerat neque corrupti at ut alias sit vel et iusto sit fugiat in culpa animi modi provident perferendis sit nihil molestiae nobis quos aut dolores commodi enim ut ab eaque tempore laborum consequatur aperiam omnis totam vel qui rerum voluptatum molestiae est nihil sit aliquid vel similique ut ea numquam ipsam facilis quasi vero nemo qui molestiae praesentium officia et praesentium iusto sed.<\/p>\n<p>Consequuntur et voluptates sit aliquid quaerat enim beatae deleniti nobis eaque beatae ratione dolorem voluptas possimus voluptatem molestiae commodi eos et numquam et sit tenetur quis nam facilis eligendi porro ut qui eaque laborum eaque accusantium itaque voluptatem minima est incidunt excepturi impedit harum unde quasi expedita impedit voluptatem optio id sit libero autem ipsa.<\/p>\n",
+        "protected": false
+    },
+    "author": 4,
+    "featured_media": 87,
+    "comment_status": "open",
+    "ping_status": "open",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": [],
+    "categories": [4],
+    "tags": [9, 16],
+    "_links": {
+        "self": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts\/86"
+        }],
+        "collection": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts"
+        }],
+        "about": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/types\/post"
+        }],
+        "author": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/users\/4"
+        }],
+        "replies": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/comments?post=86"
+        }],
+        "version-history": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts\/86\/revisions"
+        }],
+        "wp:featuredmedia": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/media\/87"
+        }],
+        "wp:attachment": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/media?parent=86"
+        }],
+        "wp:term": [{
+            "taxonomy": "category",
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/categories?post=86"
+        }, {
+            "taxonomy": "post_tag",
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/tags?post=86"
+        }],
+        "curies": [{
+            "name": "wp",
+            "href": "https:\/\/api.w.org\/{rel}",
+            "templated": true
+        }]
     }
-
-    function animate_thumb(items, event) {
-      var lastDelay,
-        itemIndex,
-        tempIndex = ($(event.currentTarget).data('tempIndex') == undefined)
-          ? $('.owl-item.active', event.currentTarget)
-            .first()
-            .index()
-          : $(event.currentTarget).data('tempIndex'),
-        numActives = $('.owl-item.active', event.currentTarget).length,
-        stagePadding = $(event.currentTarget).data('stagepadding');
-
-      stagePadding = (stagePadding == undefined || stagePadding == 0)
-        ? false
-        : true;
-
-      $(event.currentTarget).data('tempIndex', event.item.index);
-      $.each(items, function (index, val) {
-        var parent = $(val).closest('.owl-item');
-        if (!$(val).hasClass('start_animation')) {
-          if (parent.hasClass('active') || stagePadding) {
-            var thumbInView = new Waypoint.Inview({
-              element: val,
-              enter: function (direction) {
-                var element = $(this.element),
-                  delayAttr = parseInt(element.attr('data-delay')),
-                  itemIndex = element
-                    .closest('.owl-item')
-                    .index() + 1,
-                  diffItem = Math.abs(itemIndex - tempIndex) - 1;
-                if (itemIndex > tempIndex) {
-                  $(event.currentTarget).data('tempIndex', itemIndex);
-                }
-                if (isNaN(delayAttr)) 
-                  delayAttr = 100;
-                if (stagePadding) {
-                  var objTimeout = setTimeout(function () {
-                    element.addClass('start_animation');
-                  }, index * delayAttr);
-                  lastDelay = index * delayAttr;
-                } else {
-                  $('.owl-item.cloned[data-index="' + (element.closest('.owl-item').data('index')) + '"] .t-inside', event.currentTarget).addClass('start_animation');
-                  var objTimeout = setTimeout(function () {
-                    element.addClass('start_animation');
-                  }, diffItem * delayAttr);
-                  lastDelay = diffItem * delayAttr;
-                }
-                parent.data('objTimeout', objTimeout);
-                this.destroy();
-              }
-            });
-          }
-        }
-      });
-      return lastDelay;
+}, {
+    "id": 97,
+    "date": "2018-03-08T14:02:32",
+    "date_gmt": "2018-03-08T14:02:32",
+    "guid": {
+        "rendered": "http:\/\/localhost\/wp-agency\/2018\/03\/08\/repellat-voluptas-accusamus-et-iste-alias-officia\/"
+    },
+    "modified": "2018-03-21T12:18:33",
+    "modified_gmt": "2018-03-21T12:18:33",
+    "slug": "repellat-voluptas-accusamus-et-iste-alias-officia",
+    "status": "publish",
+    "type": "post",
+    "link": "http:\/\/localhost\/wp-agency\/2018\/03\/08\/repellat-voluptas-accusamus-et-iste-alias-officia\/",
+    "title": {
+        "rendered": "Repellat voluptas accusamus"
+    },
+    "content": {
+        "rendered": "<p>Veritatis libero repellat eos accusamus in. Saepe officia a laudantium libero accusantium <a title=\"Placeat rerum.\" href=\"http:\/\/www.skiles.com\/aut-iusto-consectetur-rerum-omnis-autem-et-maxime.html\">dolorum. Officia a et<\/a> quis ipsum nulla. Blanditiis provident est enim repudiandae. Exercitationem officia et est vel sint at. Eum eos et minus sit possimus at. Quis repellat odit maxime libero sequi nostrum Sequi ullam iste deserunt aut quam quae Incidunt et enim impedit. Maxime asperiores <a title=\"Vel porro.\" href=\"https:\/\/www.swift.com\/consequatur-similique-vel-numquam-repudiandae-sint-sapiente-facere\">ullam voluptatem ex<\/a> libero. Aliquid labore labore ullam dolorem. Dicta perspiciatis illo distinctio non quo Quia sunt molestias et accusantium ut. alias nulla molestias quia aut. quos minima quis laudantium et quia. et amet dolor deleniti doloribus. esse quia quia consequuntur <a title=\"Dignissimos dignissimos.\" href=\"http:\/\/rowe.biz\/\">hic. Ut dolores esse dolores commodi. Error<\/a> id fugiat et sit. Omnis ut consequatur vel eius Neque occaecati doloribus nulla enim similique. Consequatur aut quasi et a. temporibus ab sit quo officia velit. similique explicabo dolorem sed voluptatem.<\/p>\n<ul>\n<li>Voluptatem<\/li>\n<\/ul>\n<h2>Corrupti consequatur neque inventore rerum. Enim aut ad tempora ipsam amet.<br \/>\nVoluptas itaque deleniti asperiores rerum rerum voluptatem. Quia ex odit autem nulla<\/h2>\n<hr>\n<h5>Voluptas eaque omnis aut laboriosam ex<\/h5>\n<ul>\n<li>Quae sit repellat et molestias est perspiciatis<\/li>\n<li>Iusto et nostrum eum maiores<\/li>\n<li>Ut vero illo pariatur<\/li>\n<li>Voluptatem minus qui et<\/li>\n<li>Totam illo sit quidem ut<\/li>\n<li>Culpa quia quasi rerum totam soluta<\/li>\n<\/ul>\n<p>Ullam quisquam omnis. Consequatur qui animi sed molestiae et provident. Ex architecto est illo excepturi. Rem dolorem impedit voluptatum. Unde non <a title=\"Dolorum.\" href=\"https:\/\/moore.com\/amet-odio-repudiandae-rerum-dolorem.html\">natus omnis ut<\/a> <a title=\"A accusamus nulla.\" href=\"http:\/\/www.herzog.com\/error-consequatur-iste-consequatur-laborum-quasi-est-eos-vero.html\">Et sint<\/a> distinctio aperiam. Sit ipsa delectus mollitia. Itaque ex qui perspiciatis. facere voluptatem reiciendis occaecati in repudiandae. Alias <a title=\"Voluptatibus pariatur.\" href=\"http:\/\/www.mante.org\/\">id in<\/a> vel excepturi. Alias sit consectetur voluptatum aspernatur repellendus Voluptates fuga aliquid quam illo autem officiis. Vero enim corrupti eos. Veniam voluptatem et sed possimus quod Est totam eum id id consequatur eveniet. Aliquam dicta iure soluta asperiores <a title=\"Placeat explicabo.\" href=\"http:\/\/www.cormier.biz\/sapiente-asperiores-saepe-sit-reprehenderit\">quod qui. Modi aperiam non<\/a> tempore numquam Aliquid consequatur modi illum totam Quos magni eos vero blanditiis. Ut <a title=\"Maxime magni in libero quidem voluptas quasi aliquam.\" href=\"http:\/\/kutch.com\/voluptates-eveniet-culpa-fuga-quae-blanditiis\">ut maxime<\/a> molestiae distinctio dolores. Blanditiis amet incidunt alias ut. Laboriosam nobis tenetur ut voluptate.<\/p>\n<p>Consectetur iure distinctio ipsa id. Et voluptas odit numquam saepe. Atque consequuntur magnam rem asperiores enim ea modi. Distinctio ducimus saepe cupiditate ut eos. Dolorum ipsum quia eveniet quo maiores ut. Iure consequatur ad unde iure neque nesciunt maxime aliquid. Sunt inventore aperiam dolores cumque in dolorem et. Repellendus quo voluptates nostrum numquam. Adipisci perspiciatis consequatur omnis eius nam vel ut. Velit praesentium iste minus et voluptas distinctio nulla. Distinctio voluptate distinctio dolores quisquam. Quod ullam qui culpa aut ea modi. Magnam repellat voluptas sint nemo labore. Voluptas sunt officiis quibusdam et et et ab. Accusamus et facere voluptas aut rem. Architecto saepe recusandae aut temporibus et minus. Et vel error nemo sunt maiores. Aperiam reprehenderit et consequatur accusamus velit. Veritatis illum qui similique architecto ratione. Hic et totam nostrum et vel unde quod. Saepe rem natus iure ut nemo. Adipisci numquam laborum minus ab assumenda est. Sed et consequuntur iste cupiditate.<\/p>\n<blockquote><p>Alias esse sit pariatur <a title=\"Quia adipisci vel.\" href=\"http:\/\/cartwright.biz\/aut-rerum-non-temporibus-et-reiciendis-quo-qui-nam\">suscipit quo. Illum<\/a> <a title=\"Officiis natus.\" href=\"http:\/\/leuschke.com\/\"><a title=\"Aut ipsa hic asperiores aut.\" href=\"https:\/\/www.hoppe.com\/expedita-velit-tempora-adipisci-sint-placeat-et\">voluptatem<\/a><\/a> atque <a title=\"Ex.\" href=\"http:\/\/www.denesik.com\/voluptatibus-omnis-ea-aliquid.html\"><a title=\"Aut ut.\" href=\"http:\/\/rice.info\/\">vero<\/a><\/a> <a title=\"Aut eum.\" href=\"http:\/\/www.schumm.com\/eveniet-magni-et-consequatur-iste-ab-illum.html\">Nesciunt qui et eos tenetur excepturi<\/a> <a title=\"Qui sit expedita.\" href=\"http:\/\/www.donnelly.info\/accusamus-possimus-est-saepe-et-eos-iste-doloremque-debitis\">cumque. Ut iste<\/a> <a title=\"Quidem.\" href=\"https:\/\/www.hintz.com\/id-doloremque-iure-repudiandae-a\">ratione<\/a> <a title=\"Dolores.\" href=\"http:\/\/www.herzog.biz\/ullam-perspiciatis-ullam-dicta-praesentium\">Rerum nihil<\/a> illo numquam sed est.<\/p><\/blockquote>\n<p><!--more--><\/p>\n<h3>Quaerat sit dolorem molestiae dolor rerum accusantium. Voluptas autem architecto ut aliquam delectus dolorem. Eos dolor dicta perferendis eos ut eveniet aut<\/h3>\n<hr>\n<hr>\n",
+        "protected": false
+    },
+    "excerpt": {
+        "rendered": "<p>Qui consequatur quae odit temporibus in sed qui et facilis voluptas quos occaecati debitis itaque molestias placeat porro aut porro quibusdam praesentium est facere repellendus et eum omnis eum iusto voluptates dolorem dignissimos veritatis dolores laborum ab voluptates.<\/p>\n<p>Consequuntur quia omnis dolor error officia doloremque id nemo possimus fugiat voluptatibus sed aut voluptate non sunt iusto reiciendis assumenda perferendis libero sapiente molestias voluptas sint consequatur blanditiis non molestias rerum dolores facere commodi voluptatem delectus voluptatem temporibus dolorem in magnam quidem distinctio reprehenderit mollitia in culpa ut veritatis quibusdam iure commodi odit autem voluptas in eaque pariatur quia minima dolores in est mollitia repellendus tenetur possimus illum.<\/p>\n<p>Nostrum distinctio velit consequatur quia sed adipisci velit exercitationem aut nulla sit qui inventore magni tenetur et est perspiciatis at totam beatae magnam ab dolorem adipisci sit tempora deleniti delectus dolores ipsa dolore omnis debitis quam reiciendis et corrupti magnam vero totam nemo eaque voluptate distinctio dolor nobis nobis veniam rerum eligendi facilis sit ullam repellendus consequuntur et voluptatibus qui est dolorem rerum suscipit beatae modi beatae magnam quae esse inventore perferendis esse incidunt sint et quae aperiam tempora nihil exercitationem dolores quam saepe quo fugit nulla quia sint.<\/p>\n",
+        "protected": false
+    },
+    "author": 5,
+    "featured_media": 98,
+    "comment_status": "open",
+    "ping_status": "closed",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": [],
+    "categories": [3],
+    "tags": [5, 7, 11],
+    "_links": {
+        "self": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts\/97"
+        }],
+        "collection": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts"
+        }],
+        "about": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/types\/post"
+        }],
+        "author": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/users\/5"
+        }],
+        "replies": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/comments?post=97"
+        }],
+        "version-history": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts\/97\/revisions"
+        }],
+        "wp:featuredmedia": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/media\/98"
+        }],
+        "wp:attachment": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/media?parent=97"
+        }],
+        "wp:term": [{
+            "taxonomy": "category",
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/categories?post=97"
+        }, {
+            "taxonomy": "post_tag",
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/tags?post=97"
+        }],
+        "curies": [{
+            "name": "wp",
+            "href": "https:\/\/api.w.org\/{rel}",
+            "templated": true
+        }]
     }
-
-    function setItemsHeight(item) {
-      $
-        .each($('.owl-item', item), function (index, val) {
-          var availableThumbHeight = $('.t-inside', $(val)).height(),
-            innerThumbHeight = $('.t-entry-text-tc', $(val)).outerHeight(),
-            difference = availableThumbHeight - innerThumbHeight;
-          if ($('.tmb-content-under', val).length) {
-            var visualPart = $('.t-entry-visual', val);
-            if (visualPart.length) {
-              difference -= $('.t-entry-visual', val).height();
-            }
-          }
-          if (!$('.tmb-content-lateral', val).length) 
-            $('.t-entry > *:last-child', val).css('transform', 'translateY(' + difference + 'px)');
-          }
-        );
+}, {
+    "id": 103,
+    "date": "2018-03-08T13:48:16",
+    "date_gmt": "2018-03-08T13:48:16",
+    "guid": {
+        "rendered": "http:\/\/localhost\/wp-agency\/2018\/03\/08\/omnis-vitae-nobis-esse-autem-consequatur-ad\/"
+    },
+    "modified": "2018-03-21T12:18:37",
+    "modified_gmt": "2018-03-21T12:18:37",
+    "slug": "omnis-vitae-nobis-esse-autem-consequatur-ad",
+    "status": "publish",
+    "type": "post",
+    "link": "http:\/\/localhost\/wp-agency\/2018\/03\/08\/omnis-vitae-nobis-esse-autem-consequatur-ad\/",
+    "title": {
+        "rendered": "Omnis vitae nobis esse autem consequatur ad"
+    },
+    "content": {
+        "rendered": "<h1>Voluptas non praesentium et atque inventore. Quasi ex reprehenderit dolorem atque. Iste quia ipsam quae quis facere dolore<\/h1>\n<hr>\n<ul>\n<li>Et dolor saepe<\/li>\n<li>Eaque eius enim quia sed<\/li>\n<li>Quisquam<\/li>\n<\/ul>\n<blockquote><p>Dolorem ratione doloribus quia minima. Sit provident molestias non sit vitae. Est nisi quo magni aut ea. Dolores nemo nemo asperiores facilis atque. Aut culpa aliquam expedita sequi et. Labore iure et ab exercitationem rerum omnis. Velit et perspiciatis et animi cumque.<\/p><\/blockquote>\n<h6>Maxime aut a blanditiis suscipit. Sed recusandae exercitationem exercitationem. Repudiandae repellendus dignissimos eum totam<\/h6>\n<ul>\n<li>Enim est cum excepturi iusto<\/li>\n<li>Autem eius dolores et et<\/li>\n<li>Dolor qui suscipit dolor veniam est veniam<\/li>\n<li>Porro quidem fugiat inventore<\/li>\n<li>Quo deserunt laborum<\/li>\n<\/ul>\n<blockquote><p>Impedit doloribus ipsa quia dicta. Corrupti at illo itaque quo et est. Excepturi odio perferendis eum doloremque. Fuga non dolorem ad voluptatum. Iusto excepturi et animi hic qui nobis. Similique qui optio rerum. Ipsa aliquam occaecati explicabo fugit. Quisquam sed dolorum qui asperiores magni temporibus tenetur itaque. Provident aut sit aut id. Voluptatem repellendus sapiente et optio quidem et sit et. Velit corporis sunt amet quo voluptatem quidem. Dolores ex minima quos non est qui recusandae. Nihil accusamus et consequatur aliquid. Eligendi molestiae laboriosam dignissimos omnis ut. Iure tempora delectus vel voluptas. Consequatur est accusamus commodi sit pariatur quia perferendis consequatur. At quidem rerum sequi nesciunt dicta cumque. Quaerat et eum necessitatibus temporibus laboriosam nam minima dicta. Iusto nulla recusandae omnis perspiciatis qui minima earum. Dolores pariatur delectus doloribus animi nihil. Consequatur vitae ab ratione ut voluptatem. Nesciunt qui nihil ut animi. Possimus ducimus est eos dolorum porro facere. Quo consequatur quia nemo sapiente delectus. Eum modi qui et. Natus molestiae beatae blanditiis omnis placeat. Non error voluptatem ut saepe adipisci. Beatae magni vel et nemo. Suscipit deleniti similique vitae omnis. Magnam minus sint impedit. Facere voluptatum quisquam illum rerum ut. Earum officiis at ea dolores. Cumque sed quis enim omnis non. Consectetur error et ipsam nobis animi repellat. Sed veritatis inventore tenetur provident aut inventore. Nisi porro ea cumque quis sed dolorem.<\/p><\/blockquote>\n<p><!--more--><\/p>\n<blockquote><p>Doloremque eaque occaecati praesentium magnam. Et architecto voluptatum dolorem id. Ad illum et modi. Non quo magni veniam dolorem quia. Debitis saepe quisquam eum pariatur. Laboriosam eos iusto sequi architecto est. Harum cupiditate doloribus ipsa illum sint sed. Enim accusamus tenetur corporis fuga. Culpa qui ullam est voluptas iusto voluptate. Qui eligendi culpa assumenda quidem qui ut omnis similique. Commodi nemo atque voluptas debitis aliquam. Est alias nulla perspiciatis iste. Error id quia qui. Magnam architecto est quaerat facere enim occaecati. Sequi facilis molestias aut dolorem nulla laudantium. Deserunt eligendi dolorem amet magni.<\/p><\/blockquote>\n<h4>Perferendis nobis ipsum aut. Velit itaque sit voluptatum reiciendis doloremque pariatur. Optio totam nesciunt et pariatur esse voluptatem<\/h4>\n<ul>\n<li>Magni fugit iure assumenda<\/li>\n<\/ul>\n<p><img src=\"http:\/\/localhost\/wp-agency\/wp-content\/uploads\/2018\/03\/e44b6a8e-df3a-3357-82ab-6badaa09b567.jpg\"><br \/>\n<img alt=\"Reiciendis unde minima\" src=\"http:\/\/localhost\/wp-agency\/wp-content\/uploads\/2018\/03\/6db3b9fe-a46f-314b-8a65-bbde61db89bf.jpg\"><\/p>\n<ol>\n<li>Eum sit et eum incidunt sed et rerum<\/li>\n<li>Labore ea numquam mollitia<\/li>\n<li>Debitis adipisci placeat totam ea vel ad<\/li>\n<li>Omnis assumenda aut optio in<\/li>\n<li>Mollitia error eos sint quia<\/li>\n<\/ol>\n<h6>Et eaque quaerat in eius eos ut rem. Aut commodi adipisci reiciendis ut pariatur<\/h6>\n<ul>\n<li>Rerum reiciendis ut repellat quia<\/li>\n<\/ul>\n",
+        "protected": false
+    },
+    "excerpt": {
+        "rendered": "<p>Quibusdam quod nam mollitia et qui tenetur quo illum quo consequuntur autem et et corrupti vitae voluptate sit necessitatibus sit impedit sequi magnam eum magnam ut aspernatur doloribus quisquam libero qui amet voluptate enim aperiam assumenda eveniet quas dolores itaque ea eum velit est omnis veniam dolorum id quod quibusdam ut voluptatem ut cum id harum vero suscipit et occaecati tenetur est iure hic modi qui iure quia cupiditate quibusdam magnam voluptatem debitis et omnis qui voluptas aut est magni natus tempora sunt aliquam doloribus consequatur dolorem quidem quasi ipsam quibusdam earum.<\/p>\n<p>A molestias quae voluptate perferendis pariatur est impedit maiores distinctio fuga dolor aut delectus enim aut expedita aut veritatis et velit impedit voluptate aut velit eaque quisquam voluptatibus minima quis quaerat nisi sit sunt eveniet sed ut enim sed adipisci aut.<\/p>\n<p>Velit et officia provident omnis placeat aut beatae eaque vero voluptas reiciendis exercitationem esse deleniti repudiandae quia consequatur est dignissimos quod tempora beatae voluptate quia ut ullam corporis autem magni harum qui dignissimos ipsam ipsa animi minus harum perferendis ipsam nobis.<\/p>\n<p>Mollitia qui ut ad in consectetur sint incidunt inventore fugiat necessitatibus reprehenderit perferendis doloribus id ratione similique quia debitis necessitatibus corrupti suscipit dicta aut consequatur dolores reprehenderit distinctio ut vitae maxime adipisci libero aut sit quisquam fuga quia perferendis dolorum unde veritatis officia voluptatum odit nemo quia magnam cumque pariatur nemo porro provident est similique dignissimos nostrum et culpa.<\/p>\n",
+        "protected": false
+    },
+    "author": 2,
+    "featured_media": 104,
+    "comment_status": "open",
+    "ping_status": "closed",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": [],
+    "categories": [3, 4, 1],
+    "tags": [7],
+    "_links": {
+        "self": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts\/103"
+        }],
+        "collection": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts"
+        }],
+        "about": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/types\/post"
+        }],
+        "author": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/users\/2"
+        }],
+        "replies": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/comments?post=103"
+        }],
+        "version-history": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts\/103\/revisions"
+        }],
+        "wp:featuredmedia": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/media\/104"
+        }],
+        "wp:attachment": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/media?parent=103"
+        }],
+        "wp:term": [{
+            "taxonomy": "category",
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/categories?post=103"
+        }, {
+            "taxonomy": "post_tag",
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/tags?post=103"
+        }],
+        "curies": [{
+            "name": "wp",
+            "href": "https:\/\/api.w.org\/{rel}",
+            "templated": true
+        }]
     }
-
-    function setItemsRelHeight(item) {
-      $
-        .each($('.owl-item', item), function (index, val) {
-          var $rowContainer = $(item)
-              .parents('.row-parent')
-              .eq(0),
-            paddingRow = parseInt($rowContainer.css('padding-top')) + parseInt($rowContainer.css('padding-bottom')),
-            $colContainer = $(item)
-              .parents('.uncell')
-              .eq(0),
-            paddingCol = parseInt($colContainer.css('padding-top')) + parseInt($colContainer.css('padding-bottom')),
-            winHeight = UNCODE.wheight - UNCODE.adminBarHeight,
-            multiplier_h = parseInt($(item).attr('data-vp-height')),
-            data_viewport_h,
-            consider_menu = $(item).data('vp-menu');
-
-          if (consider_menu) 
-            winHeight = winHeight - UNCODE.menuHeight;
-          
-          data_viewport_h = Math.ceil(winHeight / (100 / multiplier_h)) - (UNCODE.bodyBorder + paddingRow + paddingCol);
-
-          $('.t-inside', val).css('height', data_viewport_h);
-        });
+}, {
+    "id": 77,
+    "date": "2018-03-08T12:59:53",
+    "date_gmt": "2018-03-08T12:59:53",
+    "guid": {
+        "rendered": "http:\/\/localhost\/wp-agency\/2018\/03\/08\/voluptatibus-sunt-iusto-nemo\/"
+    },
+    "modified": "2018-03-21T12:18:41",
+    "modified_gmt": "2018-03-21T12:18:41",
+    "slug": "voluptatibus-sunt-iusto-nemo",
+    "status": "publish",
+    "type": "post",
+    "link": "http:\/\/localhost\/wp-agency\/2018\/03\/08\/voluptatibus-sunt-iusto-nemo\/",
+    "title": {
+        "rendered": "Voluptatibus sunt iusto nemo"
+    },
+    "content": {
+        "rendered": "<h4>Occaecati odio nulla sed. Et harum exercitationem et quasi. Omnis illum nulla reprehenderit architecto sed aut modi voluptatem. Ullam quia pariatur aliquam<\/h4>\n<p><img alt=\"Est rem provident dolorem corrupti voluptates\" src=\"http:\/\/localhost\/wp-agency\/wp-content\/uploads\/2018\/03\/3ac51488-e2dc-337a-bbb4-d9f7cdb4fb6e.jpg\"><\/p>\n<ul>\n<li>Maiores nam est ipsum unde aut<\/li>\n<li>Ea amet aut tempora molestiae autem deleniti consequatur<\/li>\n<li>Corrupti inventore deserunt quis<\/li>\n<\/ul>\n<h6>Beatae quos doloribus rem et. Aut recusandae quam amet minus. Quaerat eveniet quidem quae quo ut iure eveniet<\/h6>\n<ul>\n<li>Neque sunt<\/li>\n<li>Mollitia itaque et cumque<\/li>\n<li>Aut doloribus et accusantium expedita officiis<\/li>\n<li>Eaque debitis quod est sed dolor quasi<\/li>\n<\/ul>\n<p><!--more--><\/p>\n<h6>Esse inventore autem voluptatem cum quis<\/h6>\n<hr>\n<ol>\n<li>Enim autem sed ut<\/li>\n<li>Sed sequi architecto<\/li>\n<\/ol>\n<h1>Ab ratione soluta ut rerum laudantium aut. Officia sint delectus earum natus est possimus. Libero corporis alias quaerat sint<\/h1>\n<p>Et aut rem eum ex. Officia et qui. Cum qui aperiam ut. Ipsam libero suscipit et explicabo modi. vitae nemo rerum nihil. Aperiam sint consequatur rerum eligendi in. Excepturi esse inventore reiciendis fugiat autem non. Delectus qui quia alias. Similique doloremque iure. Architecto dolor nulla soluta explicabo error Id dolorem ab blanditiis laborum aut id. Sit possimus autem voluptatem quis vel. Nisi sint inventore fuga <a title=\"Voluptates.\" href=\"http:\/\/www.bailey.com\/et-sed-velit-sint-odit-optio-sed.html\">quam soluta perspiciatis. Ut modi<\/a> vero enim at adipisci omnis qui. ut sequi quae dolorem Hic facilis dignissimos doloremque explicabo Labore numquam magni eligendi. Est placeat minus et nihil qui libero in. eligendi et sint rem eum. Nostrum et quibusdam qui voluptatum odit nihil. necessitatibus velit provident id accusantium Molestiae neque eius inventore est Accusamus est aliquid nostrum. Qui ut qui qui Labore consequatur temporibus qui quis <a title=\"Repellendus dignissimos assumenda quibusdam nihil.\" href=\"http:\/\/www.anderson.com\/\">Omnis quod quae eaque<\/a> hic nihil quia Quaerat ut repudiandae quo alias velit. Occaecati commodi et rerum. Suscipit nihil voluptas Facere repellendus quae consequuntur nihil repellendus quasi. In voluptatem molestias sint porro deserunt culpa. Ut vel cupiditate et. Fugiat aspernatur pariatur in. blanditiis error nisi qui eius maxime. Perspiciatis sapiente dolor dolore repudiandae ut blanditiis. Earum et distinctio non ad maiores. Quia molestias magni natus. harum incidunt enim aspernatur eum.<\/p>\n<ol>\n<li>Fugit<\/li>\n<li>Nihil et neque<\/li>\n<li>Accusamus qui unde perferendis<\/li>\n<\/ol>\n<h3>Eum nemo officiis necessitatibus omnis eum. Dolorum et et illum ipsum voluptas. Ratione ducimus est accusamus ut iure sunt voluptatibus architecto<\/h3>\n<blockquote><p>Et nobis omnis et minima magnam est. omnis distinctio. Aut commodi quia ut consequuntur. Consequatur quibusdam sit et voluptatibus perferendis. Tempore excepturi <a title=\"Animi omnis provident ipsa.\" href=\"http:\/\/www.quitzon.org\/ut-tempora-adipisci-debitis-ab-quia-qui.html\">autem sunt<\/a> inventore. Ut sit earum qui vel ad nihil velit. Voluptas commodi ipsa ducimus omnis modi aliquam. Est culpa velit occaecati. Quis et qui quis quia. Quaerat cupiditate sint. Placeat quo fugiat quis quia non. Eius sequi cumque in et aliquam quae. laboriosam et ipsam. Quo vel consequuntur voluptatibus ipsam excepturi. Pariatur sunt quia consequatur voluptates iure. neque provident Sapiente quibusdam in dolores voluptas tenetur. Voluptatem laboriosam impedit est illum. sapiente voluptatem inventore. Officiis vitae vel aut. perspiciatis aspernatur excepturi ab ipsa pariatur esse ab. Voluptates corrupti dolorum consequatur necessitatibus. Odit et velit qui suscipit architecto. Velit quo suscipit enim vitae architecto. Et ut qui quibusdam nesciunt aut reprehenderit. Non nesciunt occaecati.<\/p><\/blockquote>\n<hr>\n",
+        "protected": false
+    },
+    "excerpt": {
+        "rendered": "<p>Error ut iusto est similique non dolorum dolores architecto modi est velit quo quae sunt autem a eum aut quasi nihil at eos et.<\/p>\n",
+        "protected": false
+    },
+    "author": 3,
+    "featured_media": 78,
+    "comment_status": "open",
+    "ping_status": "closed",
+    "sticky": false,
+    "template": "",
+    "format": "standard",
+    "meta": [],
+    "categories": [3, 4, 1],
+    "tags": [12, 15, 16, 13],
+    "_links": {
+        "self": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts\/77"
+        }],
+        "collection": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts"
+        }],
+        "about": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/types\/post"
+        }],
+        "author": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/users\/3"
+        }],
+        "replies": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/comments?post=77"
+        }],
+        "version-history": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/posts\/77\/revisions"
+        }],
+        "wp:featuredmedia": [{
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/media\/78"
+        }],
+        "wp:attachment": [{
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/media?parent=77"
+        }],
+        "wp:term": [{
+            "taxonomy": "category",
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/categories?post=77"
+        }, {
+            "taxonomy": "post_tag",
+            "embeddable": true,
+            "href": "http:\/\/localhost\/wp-agency\/wp-json\/wp\/v2\/tags?post=77"
+        }],
+        "curies": [{
+            "name": "wp",
+            "href": "https:\/\/api.w.org\/{rel}",
+            "templated": true
+        }]
     }
-
-    function pauseOnHover(slider) {
-      $('.owl-dots, .owl-prev, .owl-next', slider).on({
-        mouseenter: function () {
-          $(slider).addClass('owl-mouseenter');
-          $(slider).trigger('stop.owl.autoplay');
-        },
-        mouseleave: function () {
-          $(slider).removeClass('owl-mouseenter')
-          $(slider).trigger('play.owl.autoplay');
-        }
-      });
-    }
-  };
-
-  UNCODE.owlPlayVideo = function (carousel) {
-    var player,
-      iframe;
-    $('.owl-item.active .uncode-video-container', carousel).each(function (index, val) {
-      var content = $(val).html();
-      if (content == '') {
-        var getCloned = $('.owl-item:not(.active) .uncode-video-container[data-id="' + $(this).attr('data-id') + '"]')
-          .children()
-          .first()
-          .clone();
-        $(val).append(getCloned);
-      }
-      if ($(this).attr('data-provider') == 'vimeo') {
-        iframe = $(this).find('iframe');
-        player = $f(iframe[0]);
-        player.api('play');
-      } else if ($(this).attr('data-provider') == 'youtube') {
-        if (youtubePlayers[$(this).attr('data-id')] != undefined) 
-          youtubePlayers[$(this).attr('data-id')].playVideo();
-        }
-      else {
-        var player = $(this).find('video');
-        if (player.length) {
-          $(this).find('video')[0].volume = 0;
-          $(this)
-            .find('video')[0]
-            .play();
-          $(val).css('opacity', 1);
-        }
-      }
-    });
-  };
-
-  UNCODE.owlStopVideo = function (carousel) {
-    $('.owl-item .uncode-video-container', carousel)
-      .each(function (index, val) {
-        var player,
-          iframe;
-        if ($(this).attr('data-provider') == 'vimeo') {
-          iframe = $(this).find('iframe');
-          player = $f(iframe[0]);
-          player.api('pause');
-        } else if ($(this).attr('data-provider') == 'youtube') {
-          if (youtubePlayers[$(this).attr('data-id')] != undefined) 
-            youtubePlayers[$(this).attr('data-id')].pauseVideo();
-          }
-        else {
-          var player = $(this).find('video');
-          if (player.length) {
-            $(this).find('video')[0].volume = 0;
-            $(this)
-              .find('video')[0]
-              .play();
-          }
-        }
-      });
-  };
-
-  UNCODE.animations = function () {
-    //if (!UNCODE.isMobile) {
-    $
-      .each($('.header-content-inner'), function (index, val) {
-        var element = $(val),
-          transition = '';
-        if (element.hasClass('top-t-bottom')) 
-          transition = 'top-t-bottom';
-        if (element.hasClass('bottom-t-top')) 
-          transition = 'bottom-t-top';
-        if (element.hasClass('left-t-right')) 
-          transition = 'left-t-right';
-        if (element.hasClass('right-t-left')) 
-          transition = 'right-t-left';
-        if (element.hasClass('zoom-in')) 
-          transition = 'zoom-in';
-        if (element.hasClass('zoom-out')) 
-          transition = 'zoom-out';
-        if (element.hasClass('alpha-anim')) 
-          transition = 'alpha-anim';
-        if (transition != '') {
-          $(val).removeClass(transition);
-          var container = element,
-            containerDelay = container.attr('data-delay'),
-            containerSpeed = container.attr('data-speed'),
-            items = $('.header-title > *, .post-info', container);
-          $.each(items, function (index, val) {
-            var element = $(val),
-              //speedAttr = (containerSpeed == undefined) ? containerSpeed : '',
-              delayAttr = (containerDelay != undefined)
-                ? containerDelay
-                : 400;
-            if (!element.hasClass('animate_when_almost_visible')) {
-              delayAttr = Number(delayAttr) + (400 * index);
-              if (containerSpeed != undefined) 
-                element.attr('data-speed', containerSpeed);
-              element
-                .addClass(transition + ' animate_when_almost_visible')
-                .attr('data-delay', delayAttr);
-            }
-          });
-          container.css('opacity', 1);
-        }
-      });
-    //}
-
-    if (!window.waypoint_animation) {
-      window.waypoint_animation = function () {
-        $
-          .each($('.animate_when_almost_visible:not(.start_animation):not(.t-inside), .tmb-media .a' +
-              'nimate_when_almost_visible:not(.start_animation)'), function (index, val) {
-            var run = true;
-            if ($(val).closest('.owl-carousel').length > 0) 
-              run = false;
-            if (run) {
-              new Waypoint({
-                element: val,
-                handler: function () {
-                  var element = $(this.element),
-                    index = element.index(),
-                    delayAttr = element.attr('data-delay');
-                  if (delayAttr == undefined) 
-                    delayAttr = 0;
-                  setTimeout(function () {
-                    element.addClass('start_animation');
-                  }, delayAttr);
-                  this.destroy();
-                },
-                offset: UNCODE.isFullPage
-                  ? '100%'
-                  : '90%'
-              });
-            }
-          });
-      }
-    }
-    var runWaypoints = function () {
-      setTimeout(function () {
-        window.waypoint_animation();
-      }, 100);
-    };
-    runWaypoints();
-    $(document.body).on('uncode_waypoints', runWaypoints);
-  };
-
-  UNCODE.tapHover = function () {
-
-    var $el = $('html.touch .tmb:not(.tmb-no-double-tap) .t-entry-visual-cont > a'), //.length //html.touch a.btn
-      elClass = "hover";
-
-    $el.on("click", function (e) { // cambia click con touch start 'touchstart'
-      var link = $(this);
-      if (link.hasClass(elClass)) {
-        return true;
-      } else {
-        link.addClass("hover");
-        $el
-          .not(this)
-          .removeClass(elClass);
-        e.preventDefault();
-        return false;
-      }
-    });
-  };
-
-  UNCODE.onePage = function (isMobile) {
-    var current = 0,
-      last = 0,
-      lastScrollTop = 0,
-      forceScroll = false,
-      lastScrolled = 0,
-      isSectionscroller = ($('.main-onepage').length)
-        ? true
-        : false,
-      getOffset = function () {
-        var calculateOffset = (($('.menu-sticky .menu-container:not(.menu-hide)').length && ($(window).width() > UNCODE.mediaQuery))
-          ? $('.menu-sticky .menu-container:not(.menu-hide)').outerHeight()
-          : 0);
-        return calculateOffset;
-      }
-
-    if (UNCODE.isFullPage || UNCODE.isFullPageSnap) 
-      return false;
-    
-    function init_onepage() {
-      if (isSectionscroller && !isMobile && !$('body').hasClass('uncode-scroll-no-dots') && !UNCODE.isFullPageSnap) {
-        $("<ul class='onepage-pagination'></ul>").prependTo("body");
-      }
-      last = $('.onepage-pagination li')
-        .last()
-        .find('a')
-        .data('index');
-      $.each($('div[data-parent=true]'), function (index, val) {
-        $(this).attr('data-section', index);
-        if (isMobile) 
-          return;
-        var sectionDown = new Waypoint({
-          element: val,
-          handler: function (direction) {
-            if (direction == 'down') {
-              changeMenuActive(this.element, index);
-            }
-          },
-          offset: function () {
-            return 5 + getOffset()
-          }
-        });
-        var sectionUp = new Waypoint({
-          element: val,
-          handler: function (direction) {
-            if (direction == 'up') {
-              changeMenuActive(this.element, index);
-            }
-          },
-          offset: function () {
-            return -5 + getOffset()
-          }
-        });
-
-        if (isSectionscroller) {
-          var label;
-          if ($(this).attr('data-label') != undefined) 
-            label = $(this).attr('data-label');
-          else 
-            label = '';
-          var getName = $(this).attr('data-name');
-          if (getName == undefined) 
-            getName = index;
-          if (label != '') {
-            label = '<span class="cd-label style-accent-bg border-accent-color">' + label + '</span>';
-            $('ul.onepage-pagination').append("<li><a class='one-dot-link' data-index='" + (index) + "' href='#" + (getName) + "'><span class='cd-dot-cont'><span class='cd-dot'></span></span>" + label + "</a></li>");
-          }
-        }
-      });
-
-      if (isSectionscroller) {
-        $
-          .each($('ul.onepage-pagination li'), function (index, val) {
-            var $this = $(val);
-            $this.on('click', function (evt) {
-              if ($('body').hasClass('uncode-scroll-no-history')) 
-                evt.preventDefault();
-              Waypoint.refreshAll();
-              var el = $('a', evt.currentTarget);
-              current = lastScrolled = parseInt(el.attr('data-index'));
-              lastScrolled += 1;
-              scrollBody(current);
-            });
-          });
-      }
-
-      var goToSection = parseInt((window.location.hash).replace(/[^\d.]/g, ''));
-      if (isNaN(goToSection) && window.location.hash != undefined && window.location.hash != '') {
-        goToSection = String(window.location.hash).replace(/^#/, "");
-        goToSection = Number($('[data-name=' + goToSection + ']').attr('data-section'));
-      }
-
-      if (typeof goToSection === 'number' && !isNaN(goToSection)) {
-        current = lastScrolled = goToSection;
-        setTimeout(function () {
-          scrollBody(goToSection);
-        }, 500);
-      }
-
-    }
-
-    function changeMenuActive(section, index) {
-      current = lastScrolled = parseInt($(section).attr('data-section'));
-      if (isSectionscroller) {
-        var newSection = $('.onepage-pagination li a[data-index=' + index + ']');
-        if (newSection.length) {
-          $('ul.onepage-pagination li a').removeClass('is-selected');
-          newSection.addClass('is-selected');
-        }
-      }
-      var getName = $('[data-section=' + index + ']').attr('data-name');
-      if (getName != undefined) {
-        $
-          .each($('.menu-container .menu-item > a, .widget_nav_menu .menu-smart .menu-item > a'), function (i, val) {
-            var get_href = $(val).attr('href');
-            if (get_href != undefined && get_href.substring(get_href.indexOf('#') + 1) == getName) {
-              $(val)
-                .closest('ul')
-                .find('.active')
-                .removeClass('active');
-              $(val)
-                .parent()
-                .addClass('active');
-            }
-          });
-      }
-    }
-
-    if (isSectionscroller) {
-      $(window)
-        .on('scroll', function () {
-          var bodyTop = document.documentElement['scrollTop'] || document.body['scrollTop'];
-          if (bodyTop == 0) {
-            $('ul.onepage-pagination li a').removeClass('is-selected');
-            $('.onepage-pagination li a[data-index=0]').addClass('is-selected');
-            var getName = $('[data-section=0]').attr('data-name');
-            if (getName != undefined) {
-              $
-                .each($('.menu-container .menu-item > a'), function (i, val) {
-                  var get_href = $(val).attr('href');
-                  if (get_href != undefined && get_href.substring(get_href.indexOf('#') + 1) == getName) {
-                    $(val)
-                      .closest('ul')
-                      .find('.active')
-                      .removeClass('active');
-                    $(val)
-                      .parent()
-                      .addClass('active');
-                  }
-                });
-            }
-          } else if ((window.innerHeight + bodyTop) >= $('.box-container').height()) {
-            var lastSection = $('.onepage-pagination li a[data-index="' + last + '"]');
-            if (lastSection.length) {
-              $('ul.onepage-pagination li a').removeClass('is-selected');
-              lastSection.addClass('is-selected');
-            }
-          }
-        });
-    }
-
-    var scrollBody = function (index) {
-      $('ul.onepage-pagination li a').removeClass('is-selected');
-      $('.onepage-pagination li a[data-index=' + index + ']').addClass('is-selected');
-
-      var getSection = $('[data-section=' + index + ']'),
-        scrollTo;
-
-      if (getSection == undefined) 
-        return;
-      
-      var body = $("html, body"),
-        bodyTop = document.documentElement['scrollTop'] || document.body['scrollTop'],
-        delta = bodyTop - ($('[data-section=' + index + ']').length
-          ? $('[data-section=' + index + ']').offset().top
-          : 0),
-        getOffset = UNCODE.get_scroll_offset();
-      if (typeof getSection.offset() === 'undefined') 
-        return;
-      scrollTo = getSection
-        .offset()
-        .top;
-      scrollTo -= getOffset;
-
-      var shrink = typeof $('.navbar-brand').data('padding-shrink') !== 'undefined'
-        ? $('.navbar-brand').data('padding-shrink') * 2
-        : 36;
-
-      if ($('.menu-sticky .menu-container:not(.menu-hide)').length && $('.menu-shrink').length) {
-        scrollTo += UNCODE.menuHeight - ($('.navbar-brand').data('minheight') + shrink);
-      }
-
-      var scrollSpeed = (SiteParameters.constant_scroll == 'on')
-        ? Math.abs(delta) / parseFloat(SiteParameters.scroll_speed)
-        : SiteParameters.scroll_speed;
-      if (scrollSpeed < 1000 && SiteParameters.constant_scroll == 'on') 
-        scrollSpeed = 1000;
-      
-      if (index != 0) {
-        UNCODE.scrolling = true;
-      }
-
-      if (scrollSpeed == 0) {
-        body.scrollTop((delta > 0)
-          ? scrollTo - 0.1
-          : scrollTo);
-        UNCODE.scrolling = false;
-      } else {
-        body
-          .animate({
-            scrollTop: (delta > 0)
-              ? scrollTo - 0.1
-              : scrollTo
-          }, scrollSpeed, 'easeInOutQuad', function () {
-            setTimeout(function () {
-              UNCODE.scrolling = false;
-              if (getOffset != UNCODE.get_scroll_offset()) {
-                scrollBody(index);
-              }
-            }, 100);
-          });
-      }
-
-    };
-
-    init_onepage();
-  };
-
-  UNCODE.stickyElements = function () {
-    if (!UNCODE.isMobile) {
-
-      var calculateOffset = function (el) {
-          var getRowPadding = (!$(el).hasClass('with-bg'))
-              ? $(el)
-                .closest('.row-parent')
-                .css("padding-top")
-              : 0,
-            sideOffset = (getRowPadding != undefined && getRowPadding != 0)
-              ? parseInt(getRowPadding.replace("px", ""))
-              : 0,
-            shrink = typeof $('.navbar-brand').data('padding-shrink') !== 'undefined'
-              ? $('.navbar-brand').data('padding-shrink') * 2
-              : 0;
-
-          sideOffset += UNCODE.bodyBorder;
-
-          if (UNCODE.adminBarHeight > 0) 
-            sideOffset += UNCODE.adminBarHeight;
-          if ($('.menu-sticky .menu-container:not(.menu-hide)').length) {
-            if ($('.menu-shrink').length) {
-              sideOffset += $('.navbar-brand').data('minheight') + shrink;
-            } else 
-              sideOffset += ($('body.hmenu-center').length
-                ? $('#masthead .menu-container').outerHeight()
-                : parseInt(UNCODE.menuMobileHeight));
-            }
-          
-          return sideOffset;
-
-        },
-
-        initStickyElement = function () {
-          $
-            .each($('.sticky-element'), function (index, element) {
-              $(element).stick_in_parent({sticky_class: 'is_stucked', offset_top: calculateOffset(element), bottoming: true, inner_scrolling: false});
-            });
-        };
-
-      setTimeout(function () {
-        if ($('.sticky-element').length) {
-
-          if ($(window).width() > UNCODE.mediaQuery) {
-            initStickyElement();
-          }
-
-          $(window)
-            .on('resize', function (event) {
-              if ($(window).width() > UNCODE.mediaQuery) {
-                initStickyElement();
-              } else {
-                $(".sticky-element").trigger("sticky_kit:detach");
-              }
-            });
-        }
-      }, 1000);
-    }
-  };
-
-  UNCODE.scrollEnance = function () {
-    //
-    // SmoothScroll for websites v1.4.4 (Balazs Galambosi)
-    // http://www.smoothscroll.net/
-    //
-    // Licensed under the terms of the MIT license.
-    //
-    // You may use it in your theme if you credit me. It is also free to use on any
-    // individual website.
-    //
-    // Exception: The only restriction is to not publish any extension for browsers
-    // or native application without getting a written permission first.
-    //
-    UNCODE.navigating = false;
-    (function () {
-
-      // Scroll Variables (tweakable)
-      var defaultOptions = {
-
-        // Scrolling Core
-        frameRate: 150, // [Hz]
-        animationTime: 500, // [ms]
-        stepSize: 100, // [px]
-
-        // Pulse (less tweakable) ratio of "tail" to "acceleration"
-        pulseAlgorithm: true,
-        pulseScale: 4,
-        pulseNormalize: 1,
-
-        // Acceleration
-        accelerationDelta: 50, // 50
-        accelerationMax: 3, // 3
-
-        // Keyboard Settings
-        keyboardSupport: true, // option
-        arrowScroll: 50, // [px]
-
-        // Other
-        touchpadSupport: false, // ignore touchpad by default
-        fixedBackground: true,
-        excluded: ''
-      };
-
-      var options = defaultOptions;
-
-      // Other Variables
-      var isExcluded = false;
-      var isFrame = false;
-      var direction = {
-        x: 0,
-        y: 0
-      };
-      var initDone = false;
-      var root = document.documentElement;
-      var activeElement;
-      var observer;
-      var refreshSize;
-      var deltaBuffer = [];
-      var isMac = /^Mac/.test(navigator.platform);
-
-      var key = {
-        left: 37,
-        up: 38,
-        right: 39,
-        down: 40,
-        spacebar: 32,
-        pageup: 33,
-        pagedown: 34,
-        end: 35,
-        home: 36
-      };
-      var arrowKeys = {
-        37: 1,
-        38: 1,
-        39: 1,
-        40: 1
-      };
-
-      /***********************************************
-   * INITIALIZE
-   ***********************************************/
-
-      /**
-   * Tests if smooth scrolling is allowed. Shuts down everything if not.
-   */
-      function initTest() {
-        if (options.keyboardSupport) {
-          addEvent('keydown', keydown);
-        }
-      }
-
-      /**
-   * Sets up scrolls array, determines if frames are involved.
-   */
-      function init() {
-
-        if (initDone || !document.body) 
-          return;
-        
-        initDone = true;
-
-        var body = document.body;
-        var html = document.documentElement;
-        var windowHeight = window.innerHeight;
-        var scrollHeight = body.scrollHeight;
-
-        // check compat mode for root element
-        root = (document.compatMode.indexOf('CSS') >= 0)
-          ? html
-          : body;
-        activeElement = body;
-
-        initTest();
-
-        // Checks if this script is running in a frame
-        if (top != self) {
-          isFrame =/**
-       * Please duplicate this radar for a Safari fix!
-       * rdar://22376037
-       * https://openradar.appspot.com/radar?id=4965070979203072
-       *
-       * Only applies to Safari now, Chrome fixed it in v45:
-       * This fixes a bug where the areas left and right to
-       * the content does not trigger the onmousewheel event
-       * on some pages. e.g.: html, body { height: 100% }
-       */
-          true;
-        } else if (scrollHeight > windowHeight && (body.offsetHeight <= windowHeight || html.offsetHeight <= windowHeight)) {
-
-          var fullPageElem = document.createElement('div');
-          fullPageElem.style.cssText = 'position:absolute; z-index:-10000; top:0; left:0; right:0; height:' + root.scrollHeight + 'px';
-          document
-            .body
-            .appendChild(fullPageElem);
-
-          // DOM changed (throttled) to fix height
-          var pendingRefresh;
-          refreshSize = function () {
-            if (pendingRefresh) 
-              return; // could also be: clearTimeout(pendingRefresh);
-            pendingRefresh = setTimeout(function () {
-              if (isExcluded) 
-                return; // could be running after cleanup
-              fullPageElem.style.height = '0';
-              fullPageElem.style.height = root.scrollHeight + 'px';
-              pendingRefresh = null;
-            }, 500); // act rarely to stay fast
-          };
-
-          setTimeout(refreshSize, 10);
-
-          addEvent('resize', refreshSize);
-
-          // TODO: attributeFilter?
-          var config = {
-            attributes: true,
-            childList: true,
-            characterData: false
-            // subtree: true
-          };
-
-          observer = new MutationObserver(refreshSize);
-          observer.observe(body, config);
-
-          if (root.offsetHeight <= windowHeight) {
-            var clearfix = document.createElement('div');
-            clearfix.style.clear = 'both';
-            body.appendChild(clearfix);
-          }
-        }
-
-        // disable fixed background
-        if (!options.fixedBackground && !isExcluded) {
-          body.style.backgroundAttachment = 'scroll';
-          html.style.backgroundAttachment = 'scroll';
-        }
-      }
-
-      /**
-   * Removes event listeners and other traces left on the page.
-   */
-      function cleanup() {
-        observer && observer.disconnect();
-        removeEvent(wheelEvent, wheel);
-        removeEvent('mousedown', mousedown);
-        removeEvent('keydown', keydown);
-        removeEvent('resize', refreshSize);
-        removeEvent('load', init);
-      }
-
-      /************************************************
-   * SCROLLING
-   ************************************************/
-
-      var que = [];
-      var pending = false;
-      var lastScroll = Date.now();
-
-      /**
-   * Pushes scroll actions to the scrolling queue.
-   */
-      function scrollArray(elem, left, top) {
-
-        directionCheck(left, top);
-
-        if (options.accelerationMax != 1) {
-          var now = Date.now();
-          var elapsed = now - lastScroll;
-          if (elapsed < options.accelerationDelta) {
-            var factor = (1 + (50 / elapsed)) / 2;
-            if (factor > 1) {
-              factor = Math.min(factor, options.accelerationMax);
-              left *= factor;
-              top *= factor;
-            }
-          }
-          lastScroll = Date.now();
-        }
-
-        // push a scroll command
-        que.push({
-          x: left,
-          y: top,
-          lastX: (left < 0)
-            ? 0.99
-            : -0.99,
-          lastY: (top < 0)
-            ? 0.99
-            : -0.99,
-          start: Date.now()
-        });
-
-        // don't act if there's a pending queue
-        if (pending) {
-          return;
-        }
-
-        var scrollWindow = (elem === document.body);
-
-        var step = function (time) {
-
-          var now = Date.now();
-          var scrollX = 0;
-          var scrollY = 0;
-
-          for (var i = 0; i < que.length; i++) {
-
-            var item = que[i];
-            var elapsed = now - item.start;
-            var finished = (elapsed >= options.animationTime);
-
-            // scroll position: [0, 1]
-            var position = (finished)
-              ? 1
-              : elapsed / options.animationTime;
-
-            // easing [optional]
-            if (options.pulseAlgorithm) {
-              position = pulse(position);
-            }
-
-            // only need the difference
-            var x = (item.x * position - item.lastX) >> 0;
-            var y = (item.y * position - item.lastY) >> 0;
-
-            // add this to the total scrolling
-            scrollX += x;
-            scrollY += y;
-
-            // update last values
-            item.lastX += x;
-            item.lastY += y;
-
-            // delete and step back if it's over
-            if (finished) {
-              que.splice(i, 1);
-              i--;
-            }
-          }
-
-          // scroll left and top
-          if (scrollWindow) {
-            window.scrollBy(scrollX, scrollY);
-          } else {
-            if (scrollX) 
-              elem.scrollLeft += scrollX;
-            if (scrollY) 
-              elem.scrollTop += scrollY;
-            }
-          
-          // clean up if there's nothing left to do
-          if (!left && !top) {
-            que = [];
-          }
-
-          if (que.length) {
-            requestFrame(step, elem, (1000 / options.frameRate + 1));
-          } else {
-            pending = false;
-          }
-        };
-
-        // start a new queue of actions
-        requestFrame(step, elem, 0);
-        pending = true;
-      }
-
-      /***********************************************
-   * EVENTS
-   ***********************************************/
-
-      /**
-   * Mouse wheel handler.
-   * @param {Object} event
-   */
-      function wheel(event) {
-
-        if (!initDone) {
-          init();
-        }
-
-        var target = event.target;
-        var overflowing = overflowingAncestor(target);
-
-        // use default if there's no overflowing element or default action is prevented
-        // or it's a zooming event with CTRL
-        if (!overflowing || event.defaultPrevented || event.ctrlKey) {
-          return true;
-        }
-
-        // leave embedded content alone (flash & pdf)
-        if (isNodeName(activeElement, 'embed') || (isNodeName(target, 'embed') && /\.pdf/i.test(target.src)) || isNodeName(activeElement, 'object') || target.shadowRoot) {
-          return true;
-        }
-
-        var deltaX = -event.wheelDeltaX || event.deltaX || 0;
-        var deltaY = -event.wheelDeltaY || event.deltaY || 0;
-
-        if (isMac) {
-          if (event.wheelDeltaX && isDivisible(event.wheelDeltaX, 120)) {
-            deltaX = -120 * (event.wheelDeltaX / Math.abs(event.wheelDeltaX));
-          }
-          if (event.wheelDeltaY && isDivisible(event.wheelDeltaY, 120)) {
-            deltaY = -120 * (event.wheelDeltaY / Math.abs(event.wheelDeltaY));
-          }
-        }
-
-        // use wheelDelta if deltaX/Y is not available
-        if (!deltaX && !deltaY) {
-          deltaY = -event.wheelDelta || 0;
-        }
-
-        // line based scrolling (Firefox mostly)
-        if (event.deltaMode === 1) {
-          deltaX *= 40;
-          deltaY *= 40;
-        }
-
-        // check if it's a touchpad scroll that should be ignored
-        if (!options.touchpadSupport && isTouchpad(deltaY)) {
-          return true;
-        }
-
-        // scale by step size delta is 120 most of the time synaptics seems to send 1
-        // sometimes
-        if (Math.abs(deltaX) > 1.2) {
-          deltaX *= options.stepSize / 120;
-        }
-        if (Math.abs(deltaY) > 1.2) {
-          deltaY *= options.stepSize / 120;
-        }
-
-        scrollArray(overflowing, deltaX, deltaY);
-
-        if (Math.abs(deltaX) > 10 && !UNCODE.navigating) {
-          if (deltaX > 0) {
-            UNCODE.navigating = true;
-            window
-              .history
-              .forward();
-          } else {
-            UNCODE.navigating = true;
-            window
-              .history
-              .back();
-          }
-        } else 
-          event.preventDefault();
-        scheduleClearCache();
-      }
-
-      /**
-   * Keydown event handler.
-   * @param {Object} event
-   */
-      function keydown(event) {
-
-        var target = event.target;
-        var modifier = event.ctrlKey || event.altKey || event.metaKey || (event.shiftKey && event.keyCode !== key.spacebar);
-
-        // our own tracked active element could've been removed from the DOM
-        if (!document.body.contains(activeElement)) {
-          activeElement = document.activeElement;
-        }
-
-        // do nothing if user is editing text or using a modifier key (except shift) or
-        // in a dropdown or inside interactive elements
-        var inputNodeNames = /^(textarea|select|embed|object)$/i;
-        var buttonTypes = /^(button|submit|radio|checkbox|file|color|image)$/i;
-        if (event.defaultPrevented || inputNodeNames.test(target.nodeName) || isNodeName(target, 'input') && !buttonTypes.test(target.type) || isNodeName(activeElement, 'video') || isInsideYoutubeVideo(event) || target.isContentEditable || modifier) {
-          return true;
-        }
-
-        // [spacebar] should trigger button press, leave it alone
-        if ((isNodeName(target, 'button') || isNodeName(target, 'input') && buttonTypes.test(target.type)) && event.keyCode === key.spacebar) {
-          return true;
-        }
-
-        // [arrwow keys] on radio buttons should be left alone
-        if (isNodeName(target, 'input') && target.type == 'radio' && arrowKeys[event.keyCode]) {
-          return true;
-        }
-
-        var shift,
-          x = 0,
-          y = 0;
-        var elem = overflowingAncestor(activeElement);
-        var clientHeight = elem.clientHeight;
-
-        if (elem == document.body) {
-          clientHeight = window.innerHeight;
-        }
-
-        switch (event.keyCode) {
-          case key.up:
-            y = -options.arrowScroll;
-            break;
-          case key.down:
-            y = options.arrowScroll;
-            break;
-          case key.spacebar: // (+ shift)
-            shift = event.shiftKey
-              ? 1
-              : -1;
-            y = -shift * clientHeight * 0.9;
-            break;
-          case key.pageup:
-            y = -clientHeight * 0.9;
-            break;
-          case key.pagedown:
-            y = clientHeight * 0.9;
-            break;
-          case key.home:
-            y = -elem.scrollTop;
-            break;
-          case key.end:
-            var damt = elem.scrollHeight - elem.scrollTop - clientHeight;
-            y = (damt > 0)
-              ? damt + 10
-              : 0;
-            break;
-          case key.left:
-            x = -options.arrowScroll;
-            break;
-          case key.right:
-            x = options.arrowScroll;
-            break;
-          default:
-            return true; // a key we don't care about
-        }
-
-        scrollArray(elem, x, y);
-        event.preventDefault();
-        scheduleClearCache();
-      }
-
-      /**
-   * Mousedown event only for updating activeElement
-   */
-      function mousedown(event) {
-        activeElement = event.target;
-      }
-
-      /***********************************************
-   * OVERFLOW
-   ***********************************************/
-
-      var uniqueID = (function () {
-        var i = 0;
-        return function (el) {
-          return el.uniqueID || (el.uniqueID = i++);
-        };
-      })();
-
-      var cache = {}; // cleared out after a scrolling session
-      var clearCacheTimer;
-
-      //setInterval(function () { cache = {}; }, 10 * 1000);
-
-      function scheduleClearCache() {
-        clearTimeout(clearCacheTimer);
-        clearCacheTimer = setInterval(function () {
-          cache = {};
-        }, 1 * 1000);
-      }
-
-      function setCache(elems, overflowing) {
-        for (var i = elems.length; i--;) 
-          cache[uniqueID(elems[i])] = overflowing;
-        return overflowing;
-      }
-
-      //  (body)                (root)         | hidden | visible | scroll |  auto  |
-      // hidden  |   no   |    no   |   YES  |   YES  | visible |   no   |   YES   |
-      // YES  |   YES  | scroll  |   no   |   YES   |   YES  |   YES  | auto    |   no
-      //   |   YES   |   YES  |   YES  |
-
-      function overflowingAncestor(el) {
-        var elems = [];
-        var body = document.body;
-        var rootScrollHeight = root.scrollHeight;
-        do {
-          var cached = cache[uniqueID(el)];
-          if (cached) {
-            return setCache(elems, cached);
-          }
-          elems.push(el);
-          if (rootScrollHeight === el.scrollHeight) {
-            var topOverflowsNotHidden = overflowNotHidden(root) && overflowNotHidden(body);
-            var isOverflowCSS = topOverflowsNotHidden || overflowAutoOrScroll(root);
-            if (isFrame && isContentOverflowing(root) || !isFrame && isOverflowCSS) {
-              return setCache(elems, getScrollRoot());
-            }
-          } else if (isContentOverflowing(el) && overflowAutoOrScroll(el)) {
-            return setCache(elems, el);
-          }
-        } while (el = el.parentElement);
-      }
-
-      function isContentOverflowing(el) {
-        return (el.clientHeight + 10 < el.scrollHeight);
-      }
-
-      // typically for <body> and <html>
-      function overflowNotHidden(el) {
-        var overflow = getComputedStyle(el, '').getPropertyValue('overflow-y');
-        return (overflow !== 'hidden');
-      }
-
-      // for all other elements
-      function overflowAutoOrScroll(el) {
-        var overflow = getComputedStyle(el, '').getPropertyValue('overflow-y');
-        return (overflow === 'scroll' || overflow === 'auto');
-      }
-
-      /***********************************************
-   * HELPERS
-   ***********************************************/
-
-      function addEvent(type, fn) {
-        window.addEventListener(type, fn, false);
-      }
-
-      function removeEvent(type, fn) {
-        window.removeEventListener(type, fn, false);
-      }
-
-      function isNodeName(el, tag) {
-        return (el.nodeName || '').toLowerCase() === tag.toLowerCase();
-      }
-
-      function directionCheck(x, y) {
-        x = (x > 0)
-          ? 1
-          : -1;
-        y = (y > 0)
-          ? 1
-          : -1;
-        if (direction.x !== x || direction.y !== y) {
-          direction.x = x;
-          direction.y = y;
-          que = [];
-          lastScroll = 0;
-        }
-      }
-
-      var deltaBufferTimer;
-
-      if (window.localStorage && localStorage.SS_deltaBuffer) {
-        deltaBuffer = localStorage
-          .SS_deltaBuffer
-          .split(',');
-      }
-
-      function isTouchpad(deltaY) {
-        if (!deltaY) 
-          return;
-        if (!deltaBuffer.length) {
-          deltaBuffer = [deltaY, deltaY, deltaY];
-        }
-        deltaY = Math.abs(deltaY);
-        deltaBuffer.push(deltaY);
-        deltaBuffer.shift();
-        clearTimeout(deltaBufferTimer);
-        deltaBufferTimer = setTimeout(function () {
-          if (window.localStorage) {
-            localStorage.SS_deltaBuffer = deltaBuffer.join(',');
-          }
-        }, 1000);
-        return !allDeltasDivisableBy(120) && !allDeltasDivisableBy(100);
-      }
-
-      function isDivisible(n, divisor) {
-        return (Math.floor(n / divisor) == n / divisor);
-      }
-
-      function allDeltasDivisableBy(divisor) {
-        return (isDivisible(deltaBuffer[0], divisor) && isDivisible(deltaBuffer[1], divisor) && isDivisible(deltaBuffer[2], divisor));
-      }
-
-      function isInsideYoutubeVideo(event) {
-        var elem = event.target;
-        var isControl = false;
-        if (document.URL.indexOf('www.youtube.com/watch') != -1) {
-          do {
-            isControl = (elem.classList && elem.classList.contains('html5-video-controls'));
-            if (isControl) 
-              break;
-            }
-          while (elem = elem.parentNode);
-        }
-        return isControl;
-      }
-
-      var requestFrame = (function () {
-        return (window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function (callback, element, delay) {
-          window.setTimeout(callback, delay || (1000 / 60));
-        });
-      })();
-
-      var MutationObserver = (window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver);
-
-      var getScrollRoot = (function () {
-        var SCROLL_ROOT;
-        return function () {
-          if (!SCROLL_ROOT) {
-            var dummy = document.createElement('div');
-            dummy.style.cssText = 'height:10000px;width:1px;';
-            document
-              .body
-              .appendChild(dummy);
-            var bodyScrollTop = document.body.scrollTop;
-            var docElScrollTop = document.documentElement.scrollTop;
-            window.scrollBy(0, 3);
-            if (document.body.scrollTop != bodyScrollTop) 
-              (SCROLL_ROOT = document.body);
-            else 
-              (SCROLL_ROOT = document.documentElement);
-            window.scrollBy(0, -3);
-            document
-              .body
-              .removeChild(dummy);
-          }
-          return SCROLL_ROOT;
-        };
-      })();
-
-      /***********************************************
-   * PULSE (by Michael Herf)
-   ***********************************************/
-
-      /**
-   * Viscous fluid with a pulse for part and decay for the rest.
-   * - Applies a fixed force over an interval (a damped acceleration), and
-   * - Lets the exponential bleed away the velocity over a longer interval
-   * - Michael Herf, http://stereopsis.com/stopping/
-   */
-      function pulse_(x) {
-        var val,
-          start,
-          expx;
-        // test
-        x = x * options.pulseScale;
-        if (x < 1) { // acceleartion
-          val = x - (1 - Math.exp(-x));
-        } else { // tail
-          // the previous animation ended here:
-          start = Math.exp(-1);
-          // simple viscous drag
-          x -= 1;
-          expx = 1 - Math.exp(-x);
-          val = start + (expx * (1 - start));
-        }
-        return val * options.pulseNormalize;
-      }
-
-      function pulse(x) {
-        if (x >= 1) 
-          return 1;
-        if (x <= 0) 
-          return 0;
-        
-        if (options.pulseNormalize == 1) {
-          options.pulseNormalize /= pulse_(1);
-        }
-        return pulse_(x);
-      }
-
-      /***********************************************
-   * FIRST RUN
-   ***********************************************/
-
-      var userAgent = window.navigator.userAgent;
-      var isEdge = /Edge/.test(userAgent); // thank you MS
-      var isChrome = /chrome/i.test(userAgent) && !isEdge;
-      var isSafari = /safari/i.test(userAgent) && !isEdge;
-      var isMobile = /mobile/i.test(userAgent);
-      var isIEWin7 = /Windows NT 6.1/i.test(userAgent) && /rv:11/i.test(userAgent);
-      var isEnabledForBrowser = (isChrome || isSafari || isIEWin7) && !isMobile;
-
-      var wheelEvent;
-      if ('onwheel' in document.createElement('div')) 
-        wheelEvent = 'wheel';
-      else if ('onmousewheel' in document.createElement('div')) 
-        wheelEvent = 'mousewheel';
-      
-      if (wheelEvent && isEnabledForBrowser) {
-        addEvent(wheelEvent, wheel);
-        addEvent('mousedown', mousedown);
-        addEvent('load', init);
-      }
-
-      /***********************************************
-   * PUBLIC INTERFACE
-   ***********************************************/
-
-      function SmoothScroll(optionsToSet) {
-        for (var key in optionsToSet) 
-          if (defaultOptions.hasOwnProperty(key)) 
-            options[key] = optionsToSet[key];
-          }
-        SmoothScroll.destroy = cleanup;
-
-      if (window.SmoothScrollOptions) // async API
-        SmoothScroll(window.SmoothScrollOptions);
-      
-      if (typeof define === 'function' && define.amd) 
-        define(function () {
-          return SmoothScroll;
-        });
-      else if ('object' == typeof exports) 
-        module.exports = SmoothScroll;
-      else 
-        window.SmoothScroll = SmoothScroll;
-
-      }
-    )();
-  };
-
-  UNCODE.twentytwenty = function () {
-
-    if (!$('.twentytwenty-container').length) 
-      return;
-    
-    // jquery.event.move
-    //
-    // 1.3.6
-    //
-    // Stephen Band
-    //
-    // Triggers 'movestart', 'move' and 'moveend' events after mousemoves following
-    // a mousedown cross a distance threshold, similar to the native 'dragstart',
-    // 'drag' and 'dragend' events. Move events are throttled to animation frames.
-    // Move event objects have the properties:
-    //
-    // pageX: pageY:   Page coordinates of pointer. startX: startY:  Page
-    // coordinates of pointer at movestart. distX: distY:  Distance the pointer has
-    // moved since movestart. deltaX: deltaY:  Distance the finger has moved since
-    // last event. velocityX: velocityY:  Average velocity over last few events.
-
-    (function (module) {
-      if (typeof define === 'function' && define.amd) {
-        // AMD. Register as an anonymous module.
-        define(['jquery'], module);
-      } else {
-        // Browser globals
-        module(jQuery);
-      }
-    })(function (jQuery, undefined) {
-
-      var // Number of pixels a pressed pointer travels before movestart
-        // event is fired.
-        threshold = 6,
-
-        add = jQuery.event.add,
-
-        remove = jQuery.event.remove,
-
-        // Just sugar, so we can have arguments in the same order as add and remove.
-        trigger = function (node, type, data) {
-          jQuery
-            .event
-            .trigger(type, data, node);
-        },
-
-        // Shim for requestAnimationFrame, falling back to timer. See: see
-        // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
-        requestFrame = (function () {
-          return (window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (fn, element) {
-            return window.setTimeout(function () {
-              fn();
-            }, 25);
-          });
-        })(),
-
-        ignoreTags = {
-          textarea: true,
-          input: true,
-          select: true,
-          button: true
-        },
-
-        mouseevents = {
-          move: 'mousemove',
-          cancel: 'mouseup dragstart',
-          end: 'mouseup'
-        },
-
-        touchevents = {
-          move: 'touchmove',
-          cancel: 'touchend',
-          end: 'touchend'
-        };
-
-      // Constructors
-
-      function Timer(fn) {
-        var callback = fn,
-          active = false,
-          running = false;
-
-        function trigger(time) {
-          if (active) {
-            callback();
-            requestFrame(trigger);
-            running = true;
-            active = false;
-          } else {
-            running = false;
-          }
-        }
-
-        this.kick = function (fn) {
-          active = true;
-          if (!running) {
-            trigger();
-          }
-        };
-
-        this.end = function (fn) {
-          var cb = callback;
-
-          if (!fn) {
-            return;
-          }
-
-          // If the timer is not running, simply call the end callback.
-          if (!running) {
-            fn() // If the timer is running, and has been kicked lately, then queue up the
-            // current callback and the end callback, otherwise just the end callback.;
-          } else {
-            callback = active
-              ? function () {
-                cb();
-                fn();
-              }
-              : fn;
-
-            active = true;
-          }
-        };
-      }
-
-      // Functions
-
-      function returnTrue() {
-        return true;
-      }
-
-      function returnFalse() {
-        return false;
-      }
-
-      function preventDefault(e) {
-        e.preventDefault();
-      }
-
-      function preventIgnoreTags(e) {
-        // Don't prevent interaction with form elements.
-        if (ignoreTags[
-          e
-            .target
-            .tagName
-            .toLowerCase()
-        ]) {
-          return;
-        }
-
-        e.preventDefault();
-      }
-
-      function isLeftButton(e) {
-        // Ignore mousedowns on any button other than the left (or primary) mouse
-        // button, or when a modifier key is pressed.
-        return (e.which === 1 && !e.ctrlKey && !e.altKey);
-      }
-
-      function identifiedTouch(touchList, id) {
-        var i,
-          l;
-
-        if (touchList.identifiedTouch) {
-          return touchList.identifiedTouch(id);
-        }
-
-        // touchList.identifiedTouch() does not exist in webkit yet… we must do the
-        // search ourselves...
-
-        i = -1;
-        l = touchList.length;
-
-        while (++i < l) {
-          if (touchList[i].identifier === id) {
-            return touchList[i];
-          }
-        }
-      }
-
-      function changedTouch(e, event) {
-        var touch = identifiedTouch(e.changedTouches, event.identifier);
-
-        // This isn't the touch you're looking for.
-        if (!touch) {
-          return;
-        }
-
-        // Chrome Android (at least) includes touches that have not changed in
-        // e.changedTouches. That's a bit annoying. Check that this touch has changed.
-        if (touch.pageX === event.pageX && touch.pageY === event.pageY) {
-          return;
-        }
-
-        return touch;
-      }
-
-      // Handlers that decide when the first movestart is triggered
-
-      function mousedown(e) {
-        var data;
-
-        if (!isLeftButton(e)) {
-          return;
-        }
-
-        data = {
-          target: e.target,
-          startX: e.pageX,
-          startY: e.pageY,
-          timeStamp: e.timeStamp
-        };
-
-        add(document, mouseevents.move, mousemove, data);
-        add(document, mouseevents.cancel, mouseend, data);
-      }
-
-      function mousemove(e) {
-        var data = e.data;
-
-        checkThreshold(e, data, e, removeMouse);
-      }
-
-      function mouseend(e) {
-        removeMouse();
-      }
-
-      function removeMouse() {
-        remove(document, mouseevents.move, mousemove);
-        remove(document, mouseevents.cancel, mouseend);
-      }
-
-      function touchstart(e) {
-        var touch,
-          template;
-
-        // Don't get in the way of interaction with form elements.
-        if (ignoreTags[
-          e
-            .target
-            .tagName
-            .toLowerCase()
-        ]) {
-          return;
-        }
-
-        touch = e.changedTouches[0];
-
-        // iOS live updates the touch objects whereas Android gives us copies. That
-        // means we can't trust the touchstart object to stay the same, so we must copy
-        // the data. This object acts as a template for movestart, move and moveend
-        // event objects.
-        template = {
-          target: touch.target,
-          startX: touch.pageX,
-          startY: touch.pageY,
-          timeStamp: e.timeStamp,
-          identifier: touch.identifier
-        };
-
-        // Use the touch identifier as a namespace, so that we can later remove handlers
-        // pertaining only to this touch.
-        add(document, touchevents.move + '.' + touch.identifier, touchmove, template);
-        add(document, touchevents.cancel + '.' + touch.identifier, touchend, template);
-      }
-
-      function touchmove(e) {
-        var data = e.data,
-          touch = changedTouch(e, data);
-
-        if (!touch) {
-          return;
-        }
-
-        checkThreshold(e, data, touch, removeTouch);
-      }
-
-      function touchend(e) {
-        var template = e.data,
-          touch = identifiedTouch(e.changedTouches, template.identifier);
-
-        if (!touch) {
-          return;
-        }
-
-        removeTouch(template.identifier);
-      }
-
-      function removeTouch(identifier) {
-        remove(document, '.' + identifier, touchmove);
-        remove(document, '.' + identifier, touchend);
-      }
-
-      // Logic for deciding when to trigger a movestart.
-
-      function checkThreshold(e, template, touch, fn) {
-        var distX = touch.pageX - template.startX,
-          distY = touch.pageY - template.startY;
-
-        // Do nothing if the threshold has not been crossed.
-        if ((distX * distX) + (distY * distY) < (threshold * threshold)) {
-          return;
-        }
-
-        triggerStart(e, template, touch, distX, distY, fn);
-      }
-
-      function handled() {
-        // this._handled should return false once, and after return true.
-        this._handled = returnTrue;
-        return false;
-      }
-
-      function flagAsHandled(e) {
-        e._handled();
-      }
-
-      function triggerStart(e, template, touch, distX, distY, fn) {
-        var node = template.target,
-          touches,
-          time;
-
-        touches = e.targetTouches;
-        time = e.timeStamp - template.timeStamp;
-
-        // Create a movestart object with some special properties that are passed only
-        // to the movestart handlers.
-        template.type = 'movestart';
-        template.distX = distX;
-        template.distY = distY;
-        template.deltaX = distX;
-        template.deltaY = distY;
-        template.pageX = touch.pageX;
-        template.pageY = touch.pageY;
-        template.velocityX = distX / time;
-        template.velocityY = distY / time;
-        template.targetTouches = touches;
-        template.finger = touches
-          ? touches.length
-          : 1;
-
-        // The _handled method is fired to tell the default movestart handler that one
-        // of the move events is bound.
-        template._handled = handled;
-
-        // Pass the touchmove event so it can be prevented if or when movestart is
-        // handled.
-        template._preventTouchmoveDefault = function () {
-          e.preventDefault();
-        };
-
-        // Trigger the movestart event.
-        trigger(template.target, template);
-
-        // Unbind handlers that tracked the touch or mouse up till now.
-        fn(template.identifier);
-      }
-
-      // Handlers that control what happens following a movestart
-
-      function activeMousemove(e) {
-        var timer = e.data.timer;
-
-        e.data.touch = e;
-        e.data.timeStamp = e.timeStamp;
-        timer.kick();
-      }
-
-      function activeMouseend(e) {
-        var event = e.data.event,
-          timer = e.data.timer;
-
-        removeActiveMouse();
-
-        endEvent(event, timer, function () {
-          // Unbind the click suppressor, waiting until after mouseup has been handled.
-          setTimeout(function () {
-            remove(event.target, 'click', returnFalse);
-          }, 0);
-        });
-      }
-
-      function removeActiveMouse(event) {
-        remove(document, mouseevents.move, activeMousemove);
-        remove(document, mouseevents.end, activeMouseend);
-      }
-
-      function activeTouchmove(e) {
-        var event = e.data.event,
-          timer = e.data.timer,
-          touch = changedTouch(e, event);
-
-        if (!touch) {
-          return;
-        }
-
-        // Stop the interface from gesturing
-        e.preventDefault();
-
-        event.targetTouches = e.targetTouches;
-        e.data.touch = touch;
-        e.data.timeStamp = e.timeStamp;
-        timer.kick();
-      }
-
-      function activeTouchend(e) {
-        var event = e.data.event,
-          timer = e.data.timer,
-          touch = identifiedTouch(e.changedTouches, event.identifier);
-
-        // This isn't the touch you're looking for.
-        if (!touch) {
-          return;
-        }
-
-        removeActiveTouch(event);
-        endEvent(event, timer);
-      }
-
-      function removeActiveTouch(event) {
-        remove(document, '.' + event.identifier, activeTouchmove);
-        remove(document, '.' + event.identifier, activeTouchend);
-      }
-
-      // Logic for triggering move and moveend events
-
-      function updateEvent(event, touch, timeStamp, timer) {
-        var time = timeStamp - event.timeStamp;
-
-        event.type = 'move';
-        event.distX = touch.pageX - event.startX;
-        event.distY = touch.pageY - event.startY;
-        event.deltaX = touch.pageX - event.pageX;
-        event.deltaY = touch.pageY - event.pageY;
-
-        // Average the velocity of the last few events using a decay curve to even out
-        // spurious jumps in values.
-        event.velocityX = 0.3 * event.velocityX + 0.7 * event.deltaX / time;
-        event.velocityY = 0.3 * event.velocityY + 0.7 * event.deltaY / time;
-        event.pageX = touch.pageX;
-        event.pageY = touch.pageY;
-      }
-
-      function endEvent(event, timer, fn) {
-        timer
-          .end(function () {
-            event.type = 'moveend';
-
-            trigger(event.target, event);
-
-            return fn && fn();
-          });
-      }
-
-      // jQuery special event definition
-
-      function setup(data, namespaces, eventHandle) {
-        // Stop the node from being dragged add(this, 'dragstart.move drag.move',
-        // preventDefault); Prevent text selection and touch interface scrolling
-        // add(this, 'mousedown.move', preventIgnoreTags); Tell movestart default
-        // handler that we've handled this
-        add(this, 'movestart.move', flagAsHandled);
-
-        // Don't bind to the DOM. For speed.
-        return true;
-      }
-
-      function teardown(namespaces) {
-        remove(this, 'dragstart drag', preventDefault);
-        remove(this, 'mousedown touchstart', preventIgnoreTags);
-        remove(this, 'movestart', flagAsHandled);
-
-        // Don't bind to the DOM. For speed.
-        return true;
-      }
-
-      function addMethod(handleObj) {
-        // We're not interested in preventing defaults for handlers that come from
-        // internal move or moveend bindings
-        if (handleObj.namespace === "move" || handleObj.namespace === "moveend") {
-          return;
-        }
-
-        // Stop the node from being dragged
-        add(this, 'dragstart.' + handleObj.guid + ' drag.' + handleObj.guid, preventDefault, undefined, handleObj.selector);
-
-        // Prevent text selection and touch interface scrolling
-        add(this, 'mousedown.' + handleObj.guid, preventIgnoreTags, undefined, handleObj.selector);
-      }
-
-      function removeMethod(handleObj) {
-        if (handleObj.namespace === "move" || handleObj.namespace === "moveend") {
-          return;
-        }
-
-        remove(this, 'dragstart.' + handleObj.guid + ' drag.' + handleObj.guid);
-        remove(this, 'mousedown.' + handleObj.guid);
-      }
-
-      jQuery.event.special.movestart = {
-        setup: setup,
-        teardown: teardown,
-        add: addMethod,
-        remove: removeMethod,
-
-        _default: function (e) {
-          var event,
-            data;
-
-          // If no move events were bound to any ancestors of this target, high tail it
-          // out of here.
-          if (!e._handled()) {
-            return;
-          }
-
-          function update(time) {
-            updateEvent(event, data.touch, data.timeStamp);
-            trigger(e.target, event);
-          }
-
-          event = {
-            target: e.target,
-            startX: e.startX,
-            startY: e.startY,
-            pageX: e.pageX,
-            pageY: e.pageY,
-            distX: e.distX,
-            distY: e.distY,
-            deltaX: e.deltaX,
-            deltaY: e.deltaY,
-            velocityX: e.velocityX,
-            velocityY: e.velocityY,
-            timeStamp: e.timeStamp,
-            identifier: e.identifier,
-            targetTouches: e.targetTouches,
-            finger: e.finger
-          };
-
-          data = {
-            event: event,
-            timer: new Timer(update),
-            touch: undefined,
-            timeStamp: undefined
-          };
-
-          if (e.identifier === undefined) {
-            // We're dealing with a mouse Stop clicks from propagating during a move
-            add(e.target, 'click', returnFalse);
-            add(document, mouseevents.move, activeMousemove, data);
-            add(document, mouseevents.end, activeMouseend, data);
-          } else {
-            // We're dealing with a touch. Stop touchmove doing anything defaulty.
-            e._preventTouchmoveDefault();
-            add(document, touchevents.move + '.' + e.identifier, activeTouchmove, data);
-            add(document, touchevents.end + '.' + e.identifier, activeTouchend, data);
-          }
-        }
-      };
-
-      jQuery.event.special.move = {
-        setup: function () {
-          // Bind a noop to movestart. Why? It's the movestart setup that decides whether
-          // other move events are fired.
-          add(this, 'movestart.move', jQuery.noop);
-        },
-
-        teardown: function () {
-          remove(this, 'movestart.move', jQuery.noop);
-        }
-      };
-
-      jQuery.event.special.moveend = {
-        setup: function () {
-          // Bind a noop to movestart. Why? It's the movestart setup that decides whether
-          // other move events are fired.
-          add(this, 'movestart.moveend', jQuery.noop);
-        },
-
-        teardown: function () {
-          remove(this, 'movestart.moveend', jQuery.noop);
-        }
-      };
-
-      add(document, 'mousedown.move', mousedown);
-      add(document, 'touchstart.move', touchstart);
-
-      // Make jQuery copy touch event properties over to the jQuery event object, if
-      // they are not already listed. But only do the ones we really need. IE7/8 do
-      // not have Array#indexOf(), but nor do they have touch events, so let's assume
-      // we can ignore them.
-      if (typeof Array.prototype.indexOf === 'function') {
-        (function (jQuery, undefined) {
-          var props = [
-              "changedTouches", "targetTouches"
-            ],
-            l = props.length;
-
-          while (l--) {
-            if (jQuery.event.props.indexOf(props[l]) === -1) {
-              jQuery
-                .event
-                .props
-                .push(props[l]);
-            }
-          }
-        })(jQuery);
-      };
-    });
-
-    $.fn.twentytwenty = function (options) {
-      var options = $.extend({
-        default_offset_pct: 0.5,
-        orientation: 'horizontal'
-      }, options);
-      return this.each(function () {
-
-        var sliderPct = options.default_offset_pct;
-        var container = $(this);
-        var sliderOrientation = options.orientation;
-        var beforeDirection = (sliderOrientation === 'vertical')
-          ? 'down'
-          : 'left';
-        var afterDirection = (sliderOrientation === 'vertical')
-          ? 'up'
-          : 'right';
-
-        container.wrap("<div class='twentytwenty-wrapper twentytwenty-" + sliderOrientation + "'></div>");
-        container.append("<div class='twentytwenty-overlay'></div>");
-        var beforeImg = container.find("img:first");
-        var afterImg = container.find("img:last");
-        container.append("<div class='twentytwenty-handle style-accent-bg border-accent-color'></div>");
-        var slider = container.find(".twentytwenty-handle");
-        slider.append("<span class='twentytwenty-" + beforeDirection + "-arrow'></span>");
-        slider.append("<span class='twentytwenty-" + afterDirection + "-arrow'></span>");
-        container.addClass("twentytwenty-container");
-        beforeImg.addClass("twentytwenty-before");
-        afterImg.addClass("twentytwenty-after");
-
-        var overlay = container.find(".twentytwenty-overlay");
-        overlay.append("<div class='twentytwenty-before-label'></div>");
-        overlay.append("<div class='twentytwenty-after-label'></div>");
-
-        var calcOffset = function (dimensionPct) {
-          var w = beforeImg.width();
-          var h = beforeImg.height();
-          return {
-            w: w + "px",
-            h: h + "px",
-            cw: (dimensionPct * w) + "px",
-            ch: (dimensionPct * h) + "px"
-          };
-        };
-
-        var adjustContainer = function (offset) {
-          if (sliderOrientation === 'vertical') {
-            beforeImg.css("clip", "rect(0," + offset.w + "," + offset.ch + ",0)");
-          } else {
-            beforeImg.css("clip", "rect(0," + offset.cw + "," + offset.h + ",0)");
-          }
-          container.css("height", offset.h);
-        };
-
-        var adjustSlider = function (pct) {
-          var offset = calcOffset(pct);
-          slider.css((sliderOrientation === "vertical")
-            ? "top"
-            : "left", (sliderOrientation === "vertical")
-            ? offset.ch
-            : offset.cw);
-          adjustContainer(offset);
-        }
-
-        $(window).on("resize.twentytwenty", function (e) {
-          adjustSlider(sliderPct);
-        });
-
-        var offsetX = 0,
-          offsetY = 0,
-          imgWidth = 0,
-          imgHeight = 0;
-
-        slider.on("movestart", function (e) {
-          if (((e.distX > e.distY && e.distX < -e.distY) || (e.distX < e.distY && e.distX > -e.distY)) && sliderOrientation !== 'vertical') {
-            e.preventDefault();
-          } else if (((e.distX < e.distY && e.distX < -e.distY) || (e.distX > e.distY && e.distX > -e.distY)) && sliderOrientation === 'vertical') {
-            e.preventDefault();
-          }
-          container.addClass("active");
-          offsetX = container
-            .offset()
-            .left;
-          offsetY = container
-            .offset()
-            .top;
-          imgWidth = beforeImg.width();
-          imgHeight = beforeImg.height();
-        });
-
-        slider.on("moveend", function (e) {
-          container.removeClass("active");
-        });
-
-        slider.on("move", function (e) {
-          if (container.hasClass("active")) {
-            sliderPct = (sliderOrientation === 'vertical')
-              ? (e.pageY - offsetY) / imgHeight
-              : (e.pageX - offsetX) / imgWidth;
-            if (sliderPct < 0) {
-              sliderPct = 0;
-            }
-            if (sliderPct > 1) {
-              sliderPct = 1;
-            }
-            adjustSlider(sliderPct);
-          }
-        });
-
-        container
-          .find("img")
-          .on("mousedown", function (event) {
-            event.preventDefault();
-          });
-
-        $(window).trigger("resize.twentytwenty");
-      });
-    };
-
-    $('.twentytwenty-container').twentytwenty();
-
-  }
-
-  UNCODE.justifiedGallery = function () {
-
-    if ($('.justified-layout').length > 0) {
-      var justifiedContainersArray = [],
-        typeGridArray = [],
-        layoutGridArray = [],
-        screenLgArray = [],
-        screenMdArray = [],
-        screenSmArray = [],
-        transitionDuration = [],
-        $filterItems = [],
-        $filters = $('.isotope-filters'),
-        $itemSelector = '.tmb',
-        $items,
-        itemMargin,
-        correctionFactor = 0,
-        firstLoad = true,
-        isOriginLeft = $('body').hasClass('rtl')
-          ? false
-          : true;
-      $('[class*="justified-container"]').each(function () {
-        var isoData = $(this).data(),
-          $data_lg,
-          $data_md,
-          $data_sm;
-        if (isoData.lg !== undefined) 
-          $data_lg = $(this).attr('data-lg');
-        else 
-          $data_lg = '1000';
-        if (isoData.md !== undefined) 
-          $data_md = $(this).attr('data-md');
-        else 
-          $data_md = '600';
-        if (isoData.sm !== undefined) 
-          $data_sm = $(this).attr('data-sm');
-        else 
-          $data_sm = '480';
-        screenLgArray.push($data_lg);
-        screenMdArray.push($data_md);
-        screenSmArray.push($data_sm);
-        transitionDuration.push($('.t-inside.animate_when_almost_visible', this).length > 0
-          ? 0
-          : '0.5s');
-        if (isoData.type == 'metro') 
-          typeGridArray.push(true);
-        else 
-          typeGridArray.push(false);
-        if (isoData.layout !== undefined) 
-          layoutGridArray.push(isoData.layout);
-        else 
-          layoutGridArray.push('masonry');
-        justifiedContainersArray.push($(this));
-      });
-      var init_justifiedGallery = function () {
-          for (var i = 0, len = justifiedContainersArray.length; i < len; i++) {
-            var justifiedSystem = $(justifiedContainersArray[i]).closest($('.justified-system')),
-              justifiedId = justifiedSystem.attr('id'),
-              $layoutMode = layoutGridArray[i],
-              gutter = $(justifiedContainersArray[i]).data('gutter'),
-              rowHeight = $(justifiedContainersArray[i]).data('row-height'),
-              maxRowHeight = $(justifiedContainersArray[i]).data('max-row-height'),
-              lastRow = $(justifiedContainersArray[i]).data('last-row'),
-              margins;
-
-            rowHeight = typeof rowHeight === 'undefined' || rowHeight === ''
-              ? 250
-              : parseFloat(rowHeight);
-            maxRowHeight = typeof maxRowHeight === 'undefined' || maxRowHeight === ''
-              ? false
-              : parseFloat(maxRowHeight);
-            lastRow = typeof lastRow === 'undefined' || lastRow === ''
-              ? 'nojustify'
-              : lastRow;
-
-            switch (gutter) {
-              case 'no-gutter':
-                margins = 0;
-                break;
-              case 'px-gutter':
-                margins = 1;
-                break;
-              case 'half-gutter':
-                margins = 18;
-                break;
-              case 'double-gutter':
-                margins = 72;
-                break;
-              default:
-                margins = 36; //single-gutter
-            }
-
-            $(justifiedContainersArray[i])
-              .justifiedGallery({
-                rowHeight: rowHeight,
-                maxRowHeight: maxRowHeight,
-                margins: margins,
-                cssAnimation: true,
-                lastRow: lastRow,
-                waitThumbnailsLoad: false
-              })
-              .one('jg.complete', function () {
-                onLayout($(this), 0);
-              });
-          }
-        },
-        onLayout = function (justifiedObj, startIndex) {
-          justifiedObj.css('opacity', 1);
-          justifiedObj
-            .closest('.justified-system')
-            .find('.justified-footer')
-            .css('opacity', 1);
-          $('.tmb', justifiedObj).addClass('justified-object-loaded');
-          setTimeout(function () {
-            window.dispatchEvent(UNCODE.boxEvent);
-            UNCODE.adaptive();
-            $(justifiedObj)
-              .find('audio,video')
-              .each(function () {
-                $(this).mediaelementplayer({pauseOtherPlayers: false});
-              });
-            if ($(justifiedObj).find('.nested-carousel').length) {
-              UNCODE.carousel($(justifiedObj).find('.nested-carousel'));
-              setTimeout(function () {
-                boxAnimation($('.tmb', justifiedObj), startIndex, true, justifiedObj);
-                justifiedObj.addClass('justified-gallery-finished')
-                Waypoint.refreshAll();
-              }, 200);
-            } else {
-              setTimeout(function () {
-                boxAnimation($('.tmb', justifiedObj), startIndex, true, justifiedObj);
-                justifiedObj.addClass('justified-gallery-finished')
-                Waypoint.refreshAll();
-              }, 300);
-            }
-          }, 100);
-        },
-        boxAnimation = function (items, startIndex, sequential, container) {
-          var $allItems = items.length - startIndex,
-            showed = 0,
-            index = 0;
-          if (container.closest('.owl-item').length == 1) 
-            return false;
-          $
-            .each(items, function (index, val) {
-              var elInner = $('> .t-inside', val);
-              if (val[0]) 
-                val = val[0];
-              if (elInner.hasClass('animate_when_almost_visible') && !elInner.hasClass('force-anim')) {
-                new Waypoint({
-                  element: val,
-                  handler: function () {
-                    var element = $('> .t-inside', this.element),
-                      parent = $(this.element),
-                      currentIndex = parent.index();
-                    var delay = (!sequential)
-                        ? index
-                        : ((startIndex !== 0)
-                          ? currentIndex - $allItems
-                          : currentIndex),
-                      delayAttr = parseInt(element.attr('data-delay'));
-                    if (isNaN(delayAttr)) 
-                      delayAttr = 100;
-                    delay -= showed;
-                    var objTimeout = setTimeout(function () {
-                      element
-                        .removeClass('zoom-reverse')
-                        .addClass('start_animation');
-                      showed = parent.index();
-                    }, delay * delayAttr)
-                    parent.data('objTimeout', objTimeout);
-                    this.destroy();
-                  },
-                  offset: '100%'
-                })
-              } else {
-                elInner.removeClass('animate_when_almost_visible');
-                $(val).addClass('no-waypoint-animation');
-                /*if (elInner.hasClass('force-anim')) {
-						elInner.addClass('start_animation');
-					} else {
-						elInner.css('opacity', 1);
-					}*/
-              }
-              index++;
-            });
-        };
-      $filters.on('click', 'a', function (evt) {
-        var $filter = $(this),
-          filterContainer = $filter.closest('.isotope-filters'),
-          filterValue = $filter.attr('data-filter'),
-          container = $filter
-            .closest('.justified-system')
-            .find($('.justified-layout')),
-          lastRow = container.data('last-row'),
-          transitionDuration = 0,
-          delay = 300,
-          filterItems = [];
-
-        lastRow = typeof lastRow === 'undefined' || lastRow === ''
-          ? 'nojustify'
-          : lastRow;
-
-        if (!$filter.hasClass('active')) {
-          /** Scroll top with filtering */
-          if (filterContainer.hasClass('filter-scroll')) {
-            var calc_scroll = container
-                .closest('.uncol')
-                .offset()
-                .top,
-              getFilterSpanPadding = (!filterContainer.hasClass('with-bg'))
-                ? $('.filter-show-all span', filterContainer).css("padding-bottom")
-                : 0,
-              getFilterPadding = (!filterContainer.hasClass('with-bg'))
-                ? $('.filter-show-all span a', filterContainer).css("padding-bottom")
-                : 0,
-              filterOffset = (getFilterSpanPadding != undefined && getFilterSpanPadding != 0)
-                ? parseInt(getFilterSpanPadding.replace("px", ""))
-                : 0;
-            filterOffset += (getFilterPadding != undefined && getFilterPadding != 0)
-              ? parseInt(getFilterPadding.replace("px", ""))
-              : 0;
-
-            calc_scroll -= filterOffset - 1;
-            calc_scroll -= UNCODE.get_scroll_offset();
-
-            var bodyTop = document.documentElement['scrollTop'] || document.body['scrollTop'],
-              delta = bodyTop - calc_scroll,
-              scrollSpeed = (SiteParameters.constant_scroll == 'on')
-                ? Math.abs(delta) / parseFloat(SiteParameters.scroll_speed)
-                : SiteParameters.scroll_speed;
-            if (scrollSpeed < 1000 && SiteParameters.constant_scroll == 'on') 
-              scrollSpeed = 1000;
-            
-            if (!UNCODE.isFullPage) {
-              if (scrollSpeed == 0) {
-                $('html, body').scrollTop(calc_scroll);
-                UNCODE.scrolling = false;
-              } else {
-                $('html, body').animate({
-                  scrollTop: calc_scroll
-                }, {
-                  easing: 'easeInOutQuad',
-                  duration: scrollSpeed,
-                  complete: function () {
-                    UNCODE.scrolling = false;
-                  }
-                });
-              }
-            }
-          }
-          if (filterValue !== undefined) {
-            $
-              .each($('> .tmb > .t-inside', container), function (index, val) {
-                var parent = $(val).parent(),
-                  objTimeout = parent.data('objTimeout');
-                if (objTimeout) {
-                  $(val).removeClass('zoom-reverse');
-                  clearTimeout(objTimeout);
-                }
-                if (transitionDuration == 0) {
-                  if ($(val).hasClass('animate_when_almost_visible')) {
-                    $(val)
-                      .addClass('zoom-reverse')
-                      .removeClass('start_animation');
-                  } else {
-                    $(val).addClass('animate_when_almost_visible zoom-reverse zoom-anim force-anim');
-                  }
-                }
-              });
-
-            setTimeout(function () {
-              var $block,
-                selector,
-                lightboxElements,
-                $boxes;
-
-              if (filterValue !== '' && filterValue !== '*') {
-                $('[data-lbox^=ilightbox]', container).addClass('lb-disabled');
-                selector = '.' + filterValue;
-                $.each($(selector, container), function (index, block) {
-                  lightboxElements = $('[data-lbox^=ilightbox]', block);
-                  if (lightboxElements.length) {
-                    lightboxElements.removeClass('lb-disabled');
-                    container.data('lbox', $(lightboxElements[0]).data('lbox'));
-                  }
-                  filterItems.push(block);
-                });
-                container.justifiedGallery({filter: selector, lastRow: 'nojustify'});
-              } else {
-                container.justifiedGallery({filter: false, lastRow: lastRow});
-                $('[data-lbox^=ilightbox]', $block).removeClass('lb-disabled');
-                filterItems = $('> .tmb', container);
-              }
-
-              $('.t-inside.zoom-reverse', container).removeClass('zoom-reverse');
-
-              var getLightbox = UNCODE.lightboxArray[container.data('lbox')];
-              if (typeof getLightbox === 'object') 
-                getLightbox.refresh();
-              
-              if (transitionDuration == 0) {
-                setTimeout(function () {
-                  boxAnimation(filterItems, 0, false, container);
-                }, 100);
-              }
-              setTimeout(function () {
-                Waypoint.refreshAll();
-              }, 2000);
-
-            }, delay);
-          } else {
-            $
-              .each($('> .tmb > .t-inside', container), function (index, val) {
-                var parent = $(val).parent(),
-                  objTimeout = parent.data('objTimeout');
-                if (objTimeout) {
-                  $(val)
-                    .removeClass('zoom-reverse')
-                    .removeClass('start_animation')
-                  clearTimeout(objTimeout);
-                }
-                if (transitionDuration == 0) {
-                  if ($(val).hasClass('animate_when_almost_visible')) {
-                    $(val)
-                      .addClass('zoom-reverse')
-                      .removeClass('start_animation');
-                  } else {
-                    $(val).addClass('animate_when_almost_visible zoom-reverse zoom-anim force-anim');
-                  }
-                }
-              });
-            container
-              .parent()
-              .addClass('justified-loading');
-          }
-        }
-        evt.preventDefault();
-      });
-
-      $filters.each(function (i, buttonGroup) {
-        var $buttonGroup = $(buttonGroup);
-        $buttonGroup.on('click', 'a', function () {
-          $buttonGroup
-            .find('.active')
-            .removeClass('active');
-          $(this).addClass('active');
-        });
-      });
-      window.addEventListener('boxResized', function (e) {
-        $
-          .each($('.justified-layout'), function (index, val) {
-            var $layoutMode = ($(this).data('layout'));
-            if ($layoutMode === undefined) 
-              $layoutMode = 'masonry';
-            if ($(this).data('justified')) {
-              $(this).justified({});
-              $(this).justified('unbindResize');
-            }
-            $(this)
-              .find('.mejs-video,.mejs-audio')
-              .each(function () {
-                $(this).trigger('resize');
-              });
-          });
-      }, false);
-
-      init_justifiedGallery();
-    };
-  };
-
-  UNCODE.preventDoubleTransition = function () {
-    $('.sticky-element .animate_when_almost_visible')
-      .each(function () {
-        var $el = $(this).one('webkitAnimationEnd mozAnimationEnd oAnimationEnd animationEnd', function (e) {
-          $el.addClass('do_not_reanimate');
-        });
-      });
-  };
-
-  UNCODE.checkScrollForTabs = function () {
-    var goToSection = window.location.hash;
-    if (window.location.hash != undefined && window.location.hash != '') {
-      setTimeout(function () {
-        scrollBody(goToSection);
-      }, 500);
-    }
-
-    $('.page-body a[href*="#"]')
-      .not('[data-tab-history]')
-      .not('.scroll-top')
-      .click(function (e) {
-        var hash = (e.currentTarget).hash;
-        if ($('.uncode-tabs a[href="' + hash + '"][data-tab-history]').length) {
-          $('a[href="' + hash + '"][data-tab-history]').click();
-          scrollBody(hash);
-        }
-      });
-
-    var scrollBody = function (index) {
-
-      var getSection = $('a[href="' + index + '"][data-tab-history]'),
-        scrollTo;
-
-      if (getSection == undefined) 
-        return;
-      
-      var body = $("html, body"),
-        bodyTop = document.documentElement['scrollTop'] || document.body['scrollTop'],
-        delta = bodyTop - ($('a[href="' + index + '"][data-tab-history]').length
-          ? $('a[href="' + index + '"][data-tab-history]').offset().top
-          : 0),
-        getOffset = UNCODE.get_scroll_offset();
-      if (typeof getSection.offset() === 'undefined') 
-        return;
-      scrollTo = getSection
-        .offset()
-        .top - 27;
-      scrollTo -= getOffset;
-
-      var scrollSpeed = (SiteParameters.constant_scroll == 'on')
-        ? Math.abs(delta) / parseFloat(SiteParameters.scroll_speed)
-        : SiteParameters.scroll_speed;
-      if (scrollSpeed < 1000 && SiteParameters.constant_scroll == 'on') 
-        scrollSpeed = 1000;
-      
-      if (index != 0) {
-        UNCODE.scrolling = true;
-      }
-
-      if (scrollSpeed == 0) {
-        body.scrollTop((delta > 0)
-          ? scrollTo - 0.1
-          : scrollTo);
-        UNCODE.scrolling = false;
-      } else {
-        body
-          .animate({
-            scrollTop: (delta > 0)
-              ? scrollTo - 0.1
-              : scrollTo
-          }, scrollSpeed, 'easeInOutQuad', function () {
-            setTimeout(function () {
-              UNCODE.scrolling = false;
-              if (getOffset != UNCODE.get_scroll_offset()) {
-                scrollBody(index);
-              }
-            }, 100);
-          });
-      }
-
-    };
-  };
-
-  UNCODE.printScreen = function () {
-    var inlineMediaStyle = null,
-      setResize;
-
-    function changeMediaStyle() {
-      clearTimeout(setResize);
-      setResize = setTimeout(function () {
-        var $head = document.getElementsByTagName('head')[0],
-          $newStyle = document.createElement('style'),
-          winW = window.innerWidth,
-          printH = window.innerHeight;
-
-        $newStyle.setAttribute('type', 'text/css');
-        $newStyle.setAttribute('media', 'print');
-        $newStyle.appendChild(document.createTextNode('@page { size: ' + winW + 'px ' + printH + 'px; margin: 0; }'));
-
-        if (inlineMediaStyle != null) {
-          $head.replaceChild($newStyle, inlineMediaStyle)
-        } else {
-          $head.appendChild($newStyle);
-        }
-        inlineMediaStyle = $newStyle;
-      }, 1000);
-    }
-
-    changeMediaStyle();
-    window.addEventListener('resize', changeMediaStyle);
-  };
-
-  UNCODE.fullPage = function () {
-    if ((!UNCODE.isFullPage && !UNCODE.isFullPageSnap)) {
-      $('body')
-        .removeClass('uncode-fullpage')
-        .removeClass('uncode-fullpage-slide')
-        .removeClass('fp-waiting');
-      return false;
-    } else {
-      setTimeout(function () {
-        window.scrollTo(0, 0);
-      }, 10);
-    }
-
-    var $masthead = $('#masthead'),
-      $logo = $('#logo-container-mobile'),
-      $logolink = $('[data-minheight]', $logo),
-      logoMinScale = $logolink.data('minheight'),
-      logoMaxScale = $('[data-maxheight]', $logo).data('maxheight'),
-      $container = $('.main-container .post-content'),
-      $mobileMenuWrapper = $('.menu-wrapper'),
-      mobMenuPos,
-      $rows = $container
-        .find('.vc_row')
-        .addClass('uncode-scroll-lock fp-auto-height'),
-      $header = $('#page-header').addClass('uncode-scroll-lock fp-auto-height'),
-      headerName = $('.vc_row[data-name]', $header).attr('data-name'),
-      headerLabel = $('.vc_row[data-label]', $header).attr('data-label'),
-      headerWithOpacity = $('.header-scroll-opacity', $header).length,
-      menuHidden = !$('body').hasClass('vmenu') && $('body').hasClass('uncode-fp-menu-hide')
-        ? true
-        : false,
-      menuHeight = $masthead.hasClass('menu-transparent') || menuHidden
-        ? 0
-        : UNCODE.menuHeight,
-      footerAdd = ($('body').hasClass('hmenu') && $('body').hasClass('uncode-fp-menu-shrink') && !$masthead.hasClass('menu-transparent'))
-        ? -18
-        : 0,
-      $footer = $('#colophon').addClass('uncode-scroll-lock fp-auto-height'),
-      $scrollTop = $('.scroll-top'),
-      scrollBar = true,
-      effect,
-      animationEndTimeOut,
-      fp_anim_time = 900,
-      fp_easing = 'cubic-bezier(0.37, 0.31, 0.2, 0.85)',
-      is_scrolling = false,
-      dataNames = [],
-      is_first = true,
-      no_history = $('body').hasClass('uncode-scroll-no-history'),
-      theres_footer = true;
-
-    if ($('> div', $footer).outerHeight() < 2 || !$footer.length) {
-      $('> div', $footer)
-        .each(function (index, el) {
-          if ($(el).outerHeight() < 2) 
-            theres_footer = false;
-          else 
-            theres_footer = true;
-          }
-        );
-    }
-
-    if (!$footer.length) 
-      theres_footer = false;
-    
-    if (!UNCODE.isFullPageSnap) {
-      /*if ( theres_footer )
-			$footer.css({ marginTop: ( menuHeight + footerAdd + UNCODE.bodyBorder ) * -1 })*/
-
-      if ($('body').hasClass('uncode-fullpage-zoom')) 
-        effect = 'scaleDown';
-      else if ($('body').hasClass('uncode-fullpage-parallax')) 
-        effect = 'moveparallax';
-      else 
-        effect = 'movecurtain';
-      }
-    
-    if ($('body').hasClass('uncode-fullpage-trid')) 
-      fp_anim_time = fp_anim_time * 2;
-    
-    if ($header.length) {
-      if (headerName !== '') 
-        $header.attr('data-name', headerName);
-      if (headerLabel !== '') 
-        $header.attr('data-label', headerLabel);
-      $container.prepend($header);
-    }
-    if (theres_footer) {
-      $container.append($footer);
-      $footer
-        .attr('data-anchor', SiteParameters.slide_footer)
-        .data('name', SiteParameters.slide_footer);
-      $('aside.widget ul', $footer).addClass('no-list');
-    }
-
-    var $all = $rows.add($header);
-
-    if (theres_footer) 
-      $all = $all.add($footer);
-    
-    $all
-      .each(function (index, row) {
-        if (index === 0) 
-          $(row).addClass('uncode-scroll-active');
-        }
-      );
-
-    if (!UNCODE.isMobile && !$('body').hasClass('uncode-scroll-no-dots')) 
-      $("<ul class='onepage-pagination'></ul>").prependTo("body");
-    
-    $all
-      .each(function (index, val) {
-        var getName = $(val).data('name'),
-          label;
-
-        if (typeof getName == 'undefined' || getName == 'undefined') 
-          getName = SiteParameters.slide_name + '-' + index;
-        
-        if (dataNames.includes(getName)) {
-          getName += '_' + index;
-          $(val).data('name', getName);
-        }
-
-        dataNames.push(getName);
-
-        $(val)
-          .attr('data-section', (index + 1))
-          .attr('data-anchor', getName);
-
-        if (typeof $(val).attr('data-label') !== 'undefined') 
-          label = $(val).attr('data-label');
-        else 
-          label = '';
-        
-        if ($(val).is($footer)) 
-          return;
-        
-        if (label != '') {
-          label = '<span class="cd-label style-accent-bg border-accent-color">' + label + '</span>';
-          $('ul.onepage-pagination').append("<li><a class='one-dot-link' data-index='" + (index) + "' href='#" + (getName) + "'><span class='cd-dot-cont'><span class='cd-dot'></span></span>" + label + "</a></li>");
-        } else if (label == '' && $('body').hasClass('uncode-empty-dots')) {
-          $('ul.onepage-pagination').append("<li><a class='one-dot-link' data-index='" + (index) + "' href='#" + (getName) + "'><span class='cd-dot-cont'><span class='cd-dot'></span></span></a></li>");
-        }
-
-      });
-
-    var checkVisible = function (el, off) {
-      if (typeof jQuery === "function" && el instanceof jQuery) {
-        el = el[0];
-      }
-
-      off = typeof off == 'undefined'
-        ? 50
-        : off;
-
-      var rect = el.getBoundingClientRect();
-
-      return (((rect.top >= 0 && (rect.top + off) <= (window.innerHeight || document.documentElement.clientHeight)) || (rect.bottom >= off && (rect.bottom) <= (window.innerHeight || document.documentElement.clientHeight)) || (rect.top <= 0 && (rect.bottom) >= (window.innerHeight || document.documentElement.clientHeight))));
-    };
-
-    var animationEndAction = function (index, nextIndex) {
-      var $currentSlide = $('.uncode-scroll-lock[data-section="' + index + '"]', $container),
-        $nextSlide = $('.uncode-scroll-lock[data-section="' + nextIndex + '"]', $container),
-        player,
-        iframe;
-
-      if (!$nextSlide.is($footer)) {
-        $('.no-scrolloverflow').removeClass('no-scrolloverflow');
-      }
-
-      if (!UNCODE.isFullPageSnap) 
-        activateKBurns(nextIndex);
-      
-      $('body:not(.uncode-fullpage-zoom) .background-video-shortcode, .uncode-video-conta' +
-            'iner.video',
-        $currentSlide)
-        .each(function (index, val) {
-          if ($(this).attr('data-provider') == 'vimeo') {
-            iframe = $(this).find('iframe');
-            player = $f(iframe[0]);
-            player.api('pause');
-          } else if ($(this).attr('data-provider') == 'youtube') {
-            if (youtubePlayers[$(this).attr('data-id')] != undefined) 
-              youtubePlayers[$(this).attr('data-id')].pauseVideo();
-            }
-          else {
-            if ($(this).is('video')) {
-              $(this)[0].volume = 0;
-              $(this)[0].pause();
-            }
-          }
-        });
-
-      if (!UNCODE.isMobile && headerWithOpacity) {
-        if ($nextSlide.is($header)) 
-          $header.removeClass('header-scrolled');
-        }
-      
-      var $otherEl = $('.uncode-scroll-lock:not(.hidden-scroll)', $container).not($nextSlide);
-      $otherEl.each(function () {
-        var $otherThis = $(this),
-          $bgwrapperOther = $('.background-inner', $otherThis);
-        if (!checkVisible($otherThis)) 
-          $bgwrapperOther.removeClass('uncode-kburns');
-
-        }
-      );
-
-      if (!checkVisible($currentSlide)) {
-        $currentSlide.removeClass('uncode-scroll-visible');
-        var currentScroll = $('.fp-scrollable', $currentSlide).data('iscrollInstance');
-        if (typeof currentScroll != 'undefined' && !UNCODE.isFullPageSnap) 
-          currentScroll.scrollTo(0, 0, 0);
-        }
-      
-      clearTimeout(animationEndTimeOut);
-      animationEndTimeOut = setTimeout(function () {
-        Waypoint.refreshAll();
-        $(document.body).trigger('uncode_waypoints');
-        var eventFP = new CustomEvent('fp-slide-changed');
-        window.dispatchEvent(eventFP);
-        is_scrolling = false;
-
-        if (is_first) {
-          $('ul.onepage-pagination a').removeClass('is-selected');
-          $('ul.onepage-pagination a[data-index="' + (nextIndex - 1) + '"]').addClass('is-selected');
-          is_first = false;
-        }
-
-      }, 500);
-    };
-
-    var postLeaveActions = function (nextIndex) {
-      if (menuHidden && !UNCODE.isMobile) 
-        return false;
-      
-      var $el = $('.uncode-scroll-lock[data-section="' + nextIndex + '"]', $container),
-        $cols = $('.uncol', $el),
-        anchor = $el.data('anchor');
-
-      if (!UNCODE.isFullPageSnap) {
-        $
-          .each($cols, function (index, val) {
-            if ($(val).hasClass('style-light')) {
-              $masthead
-                .removeClass('style-dark-override')
-                .addClass('style-light-override');
-              return false;
-            } else if ($(val).hasClass('style-dark')) {
-              $masthead
-                .removeClass('style-light-override')
-                .addClass('style-dark-override');
-              return false;
-            }
-          });
-      }
-
-      if (typeof anchor !== 'undefined' && $('.menu-item > a[href="#' + anchor + '"]').length) {
-        $('.menu-item').removeClass('active');
-        $('.menu-item > a[href="#' + anchor + '"]')
-          .closest('.menu-item')
-          .addClass('active');
-      }
-
-    };
-
-    var activateKBurns = function (nextIndex) {
-      var $el = $('.uncode-scroll-lock[data-section="' + nextIndex + '"]', $container),
-        $bgwrapper;
-
-      if ($el.length) {
-        if ($el.hasClass('with-kburns')) {
-          $bgwrapper = $('.background-inner:nth-child(1)', $el);
-        } else if ($('.with-kburns', $el).length) {
-          $bgwrapper = $('.with-kburns .background-inner:nth-child(1)', $el);
-        } else {
-          return false;
-        }
-      } else {
-        return false;
-      }
-
-      $bgwrapper.addClass('uncode-kburns');
-
-    };
-
-    var activateParallax = function (nextIndex, direction) {
-
-      var $el = $('.uncode-scroll-lock[data-section="' + nextIndex + '"]', $container),
-        $cell = $('.fp-tableCell', $el),
-        animationEnd = 'webkitAnimationEnd animationend',
-        cellAnim;
-
-      switch (direction) {
-        case 'up':
-          cellAnim = 'moveFromTopInner';
-          break;
-        default:
-          cellAnim = 'moveFromBottomInner';
-      }
-
-      $cell
-        .css({
-        'animation-name': cellAnim,
-        'animation-duration': fp_anim_time + 'ms',
-        'animation-delay': '',
-        'animation-timing-function': fp_easing,
-        'animation-fill-mode': 'both'
-      })
-        .off(animationEnd)
-        .on(animationEnd, function (event) {
-          if (event.originalEvent.animationName === cellAnim) {
-            $cell.css({'animation-name': '', 'animation-duration': '', 'animation-delay': '', 'animation-timing-function': '', 'animation-fill-mode': ''});
-          }
-        });
-    };
-
-    var scrollHashes = function () {
-      var hash = window
-          .location
-          .hash
-          .replace('#', '')
-          .split('/'),
-        hashInd;
-      if (hash[0] !== '' && hash[0] !== SiteParameters.slide_footer) {
-        if ($('.uncode-scroll-lock[data-anchor="' + hash[0] + '"]').length) {
-          hashInd = $('.uncode-scroll-lock[data-anchor="' + hash[0] + '"]').index('[data-anchor]');
-          $
-            .fn
-            .fullpage
-            .moveTo(hashInd + 1);
-        }
-      } else if (hash[0] === '') {
-        $
-          .fn
-          .fullpage
-          .moveTo(1);
-      }
-    };
-
-    var hideMenu = function (index, nextIndex) {
-      if ($('body').hasClass('vmenu') || UNCODE.isFullPageSnap || !$('body').hasClass('uncode-fp-menu-hide')) 
-        return false;
-      
-      var hMenu = UNCODE.menuHeight,
-        transTime = hMenu * 2;
-
-      if (index === 1 && nextIndex > 1) {
-        hMenu = hMenu * -1;
-      } else if (index !== 1 && nextIndex === 1) {
-        hMenu = 0;
-      } else {
-        return false;
-      }
-
-      $masthead.css({
-        '-webkit-transform': 'translate3d(0, ' + hMenu + 'px, 0)',
-        'transform': 'translate3d(0, ' + hMenu + 'px, 0)',
-        '-webkit-transition': 'transform 0.5s ease-in-out',
-        'transition': 'transform 0.5s ease-in-out'
-      });
-    };
-
-    var shrinkMenu = function (index, nextIndex) {
-      if ($('body').hasClass('vmenu') || !$('body').hasClass('uncode-fp-menu-shrink')) 
-        return false;
-      
-      if (index === 1 && nextIndex > 1) {
-        $logo.addClass('shrinked');
-        $('div', $logo).each(function (index, val) {
-          $(val).css({'height': logoMinScale, 'line-height': logoMinScale});
-          if ($(val).hasClass('text-logo')) {
-            $(val).css({
-              'font-size': logoMinScale + 'px'
-            });
-          }
-        });
-        setTimeout(function () {
-          UNCODE.menuMobileHeight = $masthead.outerHeight();
-        }, 300);
-      } else if (index !== 1 && nextIndex === 1) {
-        $logo.removeClass('shrinked');
-        $('div', $logo).each(function (index, val) {
-          $(val).css({'height': logoMaxScale, 'line-height': logoMaxScale});
-          if ($(val).hasClass('text-logo')) {
-            $(val).css({
-              'font-size': logoMaxScale + 'px'
-            });
-          }
-        });
-        setTimeout(function () {
-          UNCODE.menuMobileHeight = $masthead.outerHeight();
-        }, 300);
-      } else {
-        return false;
-      }
-
-    };
-
-    var anchorLink = function () {
-
-      $container
-        .add('.menu-item')
-        .find('a[href*="#"]')
-        .click(function (e) {
-          var $this = $(e.currentTarget),
-            hash = e
-              .currentTarget
-              .href
-              .split('#'),
-            current = window
-              .location
-              .href
-              .split('#'),
-            ind,
-            go = false;
-
-          if (hash[0] == current[0] || hash[0] == '') {
-            hash = '#' + hash[1];
-            e.preventDefault();
-            go = true;
-          }
-
-          if (go) {
-
-            if ($(hash).length) {
-              ind = $(hash)
-                .closest('.fp-section')
-                .index();
-            } else {
-              hash = hash.slice(1);
-              ind = $('.fp-section[data-anchor="' + hash + '"]').index('.fp-section');
-            }
-
-            if (typeof $this.attr('data-filter') !== 'undefined' && $this.attr('data-filter') != '') 
-              ind = $this.closest('.fp-section').index();
-            
-            $
-              .fn
-              .fullpage
-              .moveTo(ind + 1);
-
-          }
-
-        });
-
-      $('.header-scrolldown').on('click', function (event) {
-        event.preventDefault();
-        var scrollDown = $(this),
-          ind = scrollDown
-            .closest('.fp-section')
-            .index();
-
-        $
-          .fn
-          .fullpage
-          .moveTo(ind + 2);
-      });
-
-      var anchor = $('.fp-section.active').data('anchor');
-
-      if (typeof anchor !== 'undefined' && $('.menu-item > a[href="#' + anchor + '"]').length) {
-        $('.menu-item').removeClass('active');
-        $('.menu-item > a[href="#' + anchor + '"]')
-          .closest('.menu-item')
-          .addClass('active');
-      }
-
-    };
-
-    var slideLeave = function (index, nextIndex, direction) {
-      var $currentSlide = $('.uncode-scroll-lock[data-section="' + index + '"]', $container),
-        $nextSlide = $('.uncode-scroll-lock[data-section="' + nextIndex + '"]', $container),
-        animationEnd = 'webkitAnimationEnd animationend',
-        transitionEnd = 'webkitTransitionEnd transitionend',
-        animOut = effect != 'scaleDown'
-          ? effect + direction
-          : effect,
-        animIn,
-        animInDelay = effect == 'scaleDown'
-          ? 0
-          : 0,
-        isFooter = false,
-        isFooterNext = false,
-        isHeader = false,
-        isHeaderNext = false,
-        containerOff = $container
-          .offset()
-          .top,
-        footerH = $footer.outerHeight(),
-        timeout,
-        dataHash = $nextSlide.attr('data-anchor'),
-        player,
-        iframe;
-      switch (direction) {
-        case 'up':
-          animIn = 'moveFromTop';
-          break;
-        default:
-          animIn = 'moveFromBottom';
-      }
-
-      if ($('body').hasClass('uncode-fullpage-trid')) {
-        animOut = animIn + 'trid';
-        animIn = animOut + 'In';
-      } else if (UNCODE.isFullPageSnap) {
-        animIn = animOut = 'none';
-      }
-
-      hideMenu(index, nextIndex);
-      shrinkMenu(index, nextIndex);
-
-      $('.uncode-fullpage-zoom .background-video-shortcode, .uncode-video-container.video', $currentSlide).each(function (index, val) {
-        if ($(this).attr('data-provider') == 'vimeo') {
-          iframe = $(this).find('iframe');
-          player = $f(iframe[0]);
-          player.api('pause');
-        } else if ($(this).attr('data-provider') == 'youtube') {
-          if (youtubePlayers[$(this).attr('data-id')] != undefined) 
-            youtubePlayers[$(this).attr('data-id')].pauseVideo();
-          }
-        else {
-          if ($(this).is('video')) {
-            $(this)[0].volume = 0;
-            $(this)[0].pause();
-          }
-        }
-      });
-
-      $('.background-video-shortcode, .uncode-video-container.video', $nextSlide).each(function (index, val) {
-        if ($(this).attr('data-provider') == 'vimeo') {
-          iframe = $(this).find('iframe');
-          player = $f(iframe[0]);
-          player.api('play');
-        } else if ($(this).attr('data-provider') == 'youtube') {
-          if (youtubePlayers[$(this).attr('data-id')] != undefined) 
-            youtubePlayers[$(this).attr('data-id')].playVideo();
-          }
-        else {
-          if ($(this).is('video')) {
-            $(this)[0].volume = 0;
-            $(this)[0].play();
-          }
-        }
-      });
-
-      if ($currentSlide.is($footer)) 
-        isFooter = true;
-      
-      if ($nextSlide.is($footer)) 
-        isFooterNext = true;
-      
-      // if ( typeof dataHash && dataHash && !no_history && dataHash !=
-      // SiteParameters.slide_footer ) 	window.location.hash = '#' + dataHash;
-
-      if (!UNCODE.isMobile && headerWithOpacity) {
-        if ($currentSlide.is($header)) 
-          $header.addClass('header-scrolled');
-        }
-      
-      if (UNCODE.isFullPageSnap) {
-        postLeaveActions(nextIndex);
-        activateKBurns(nextIndex);
-        setTimeout(function () {
-          animationEndAction(index, nextIndex);
-        }, fp_anim_time + 150);
-      } else {
-        if (isFooterNext) {
-
-          var $iscrollWrapper = $currentSlide.find('.fp-scrollable');
-          $iscrollWrapper.addClass('no-scrolloverflow');
-
-          $nextSlide
-            .add($currentSlide)
-            .addClass('uncode-scroll-front')
-            .addClass('uncode-scroll-active')
-            .addClass('uncode-scroll-visible');
-          $container.css({
-            '-webkit-transform': 'translate3d(0, -' + (footerH) + 'px, 0)',
-            'transform': 'translate3d(0, -' + (footerH) + 'px, 0)',
-            '-webkit-transition': 'transform ' + ((footerH) * 2) + 'ms ' + fp_easing,
-            'transition': 'transform ' + ((footerH) * 2) + 'ms ' + fp_easing
-            })
-            .off(transitionEnd)
-            .one(transitionEnd, function () {
-              animationEndAction(index, nextIndex);
-            });
-
-        } else if (isFooter) {
-
-          $('.uncode-scroll-lock[data-section="' + (index - 1) + '"]', $container) // so it is always the section above the footer to be animated first
-            .add($currentSlide)
-            .addClass('uncode-scroll-front')
-            .addClass('uncode-scroll-active')
-            .addClass('uncode-scroll-visible');
-          $container.css({
-            '-webkit-transform': 'translate3d(0, 0, 0)',
-            'transform': 'translate3d(0, 0, 0)',
-            '-webkit-transition': 'transform ' + ((footerH) * 2) + 'ms ' + fp_easing,
-            'transition': 'transform ' + ((footerH) * 2) + 'ms ' + fp_easing
-            })
-            .off(transitionEnd)
-            .one(transitionEnd, function () {
-              if (nextIndex !== index - 1) { // if a bullet triggered a slide different than the one above the footer
-                clearTimeout(timeout);
-                timeout = setTimeout(function () {
-                  $
-                    .fn
-                    .fullpage
-                    .moveTo(nextIndex);
-                  slideLeave(index - 1, nextIndex, 'up');
-                }, 50);
-              }
-              animationEndAction(index, nextIndex);
-            });
-
-        } else {
-
-          postLeaveActions(nextIndex);
-
-          if (!$('body').hasClass('uncode-fullpage-trid')) 
-            activateParallax(nextIndex, direction);
-          
-          var $outBg = $('.background-wrapper', $currentSlide);
-
-          $nextSlide
-            .addClass('uncode-scroll-front')
-            .addClass('uncode-scroll-active')
-            .addClass('uncode-scroll-visible')
-            .addClass('uncode-scroll-animating-in')
-            .css({
-              'z-index': 4,
-              'animation-name': animIn,
-              'animation-duration': fp_anim_time + 'ms',
-              'animation-delay': '',
-              'animation-timing-function': fp_easing,
-              'animation-fill-mode': 'both',
-              'transition': 'initial'
-            })
-            .off(animationEnd)
-            .on(animationEnd, function (event) {
-              if (event.originalEvent.animationName === animIn) {
-                $(this)
-                  .addClass('uncode-scroll-already')
-                  .removeClass('uncode-scroll-front')
-                  .removeClass('uncode-scroll-animating-in')
-                  .css({
-                    'animation-name': '',
-                    'animation-duration': '',
-                    'animation-delay': '',
-                    'animation-timing-function': '',
-                    'animation-fill-mode': '',
-                    'transition': 'initial'
-                  });
-
-                $currentSlide
-                  .removeClass('uncode-scroll-active')
-                  .add($outBg)
-                  .css({
-                    'animation-name': '',
-                    'animation-duration': '',
-                    'animation-delay': '',
-                    'animation-timing-function': '',
-                    'animation-fill-mode': '',
-                    'transition': 'initial'
-                  });
-
-                animationEndAction(index, nextIndex);
-
-              }
-
-              if (nextIndex > 1) 
-                $('body').addClass('window-scrolled');
-              else 
-                $('body').removeClass('window-scrolled');
-              }
-            );
-
-          $currentSlide
-            .addClass('uncode-scroll-animating-out')
-            .removeClass('uncode-scroll-front')
-            .css({
-              'z-index': '1',
-              'animation-name': animOut,
-              'animation-duration': fp_anim_time + 'ms',
-              'animation-delay': '',
-              'animation-timing-function': fp_easing,
-              'animation-fill-mode': 'both',
-              'transition': 'initial',
-              'will-change': 'auto'
-            })
-            .off(animationEnd)
-            .on(animationEnd, function (event) {
-              if (event.originalEvent.animationName === animOut) {
-                $currentSlide.removeClass('uncode-scroll-animating-out');
-              }
-            });
-
-          if ($('body').hasClass('uncode-fp-opacity')) {
-            $currentSlide
-              .find('> div')
-              .css({
-                'animation-name': 'opacityout',
-                'animation-duration': fp_anim_time + 'ms',
-                'animation-delay': '',
-                'animation-timing-function': fp_easing,
-                'animation-fill-mode': 'both',
-                'transition': 'initial'
-              })
-              .off(animationEnd)
-              .on(animationEnd, function (event) {
-                if (event.originalEvent.animationName === 'opacityout') {
-                  $(event.currentTarget).css({
-                    'animation-name': '',
-                    'animation-duration': '',
-                    'animation-delay': '',
-                    'animation-timing-function': '',
-                    'animation-fill-mode': '',
-                    'transition': ''
-                  });
-                }
-              });
-          }
-        }
-      }
-
-      $('.scroll-top')
-        .on('click', function (e) {
-          $
-            .fn
-            .fullpage
-            .moveTo(1);
-          return false;
-        });
-
-    };
-
-    var init_fullPage = function (mode) {
-
-      /*if ( typeof mode !== 'undefined' && mode === 'mobile' ) {
-			scrollBar = false;
-		}*/
-
-      $container.fullpage({
-        sectionSelector: '.uncode-scroll-lock',
-        scrollOverflow: true,
-        navigation: false,
-        scrollBar: scrollBar,
-        scrollingSpeed: fp_anim_time,
-        verticalCentered: true,
-        anchors: no_history
-          ? false
-          : dataNames,
-        recordHistory: !no_history,
-        afterRender: function () {
-          $('body').removeClass('fp-waiting');
-          $('.uncode-scroll-lock', $container)
-            .not(':visible')
-            .each(function () {
-              var $invisible = $(this).addClass('hidden-scroll'); //,
-            });
-          $('.uncode-scroll-lock.active', $container)
-            .filter(':visible')
-            .each(function () {
-              var $visible = $(this).addClass('uncode-scroll-visible'),
-                visIndex = $visible.index('.uncode-scroll-lock:not(.hidden-scroll)');
-              $('ul.onepage-pagination a[data-index="' + visIndex + '"]').addClass('is-selected');
-            });
-
-          $('ul.onepage-pagination a').on('click', function (e) {
-            e.preventDefault();
-            var $a = $(this),
-              toIndex = $a.data('index');
-
-            $
-              .fn
-              .fullpage
-              .moveTo(toIndex + 1);
-          });
-
-          setTimeout(function () {
-            scrollHashes();
-          }, 1000);
-
-          $(window).on('hashchange', function (e) {
-            setTimeout(function () {
-              scrollHashes();
-            }, 500);
-          });
-
-          anchorLink();
-
-          if ($('body').hasClass('uncode-fp-opacity')) {
-            $all
-              .each(function (index, row) {
-                var testmatch = $(row)[0]
-                    .className
-                    .match(/\bstyle-.*?-bg\b/g, ''),
-                  classBg;
-
-                if (typeof testmatch !== 'undefined' && testmatch !== null) {
-                  classBg = testmatch[0];
-                  $(row)
-                    .removeClass(classBg)
-                    .find('.fp-tableCell')
-                    .addClass(classBg);
-                }
-              });
-          }
-
-          if (!$('body').hasClass('vmenu') && !$('body').hasClass('menu-offcanvas')) {
-            $(window)
-              .on('menuOpen', function () {
-                $
-                  .fn
-                  .fullpage
-                  .setAutoScrolling(false);
-              })
-              .on('menuClose', function () {
-                $
-                  .fn
-                  .fullpage
-                  .setAutoScrolling(true);
-              });
-          }
-
-          $(window)
-            .on('menuMobileOpen menuCanvasOpen', function () {
-              setTimeout(function () {
-                $
-                  .fn
-                  .fullpage
-                  .setAutoScrolling(false);
-              }, 1000);
-            })
-            .on('menuMobileClose menuCanvasClose', function () {
-              $
-                .fn
-                .fullpage
-                .setAutoScrolling(true);
-            });
-
-          if (!UNCODE.isFullPageSnap) 
-            activateKBurns(1);
-
-          }
-        ,
-        onLeave: function (index, nextIndex, direction) {
-
-          if (UNCODE.menuOpened || is_scrolling) 
-            return false;
-          
-          is_scrolling = true;
-
-          var event = new CustomEvent('fp-slide-leave');
-          window.dispatchEvent(event);
-
-          slideLeave(index, nextIndex, direction);
-
-          if ($('.uncode-scroll-lock', $container).eq(nextIndex - 1).hasClass('hidden-scroll')) {
-            if (direction === 'up') {
-              $
-                .fn
-                .fullpage
-                .moveTo(nextIndex - 1);
-            } else {
-              $
-                .fn
-                .fullpage
-                .moveTo(nextIndex + 1);
-            }
-            return false;
-          }
-
-          $('ul.onepage-pagination a').removeClass('is-selected');
-          $('ul.onepage-pagination a[data-index="' + (nextIndex - 1) + '"]').addClass('is-selected');
-
-        }
-      });
-    };
-
-    init_fullPage();
-    $(window).on('load', function () {
-      setTimeout(function () {
-        $
-          .fn
-          .fullpage
-          .reBuild();
-      }, 3000);
-    });
-
-    window.addEventListener("fp-slide-scroll", function () {
-      Waypoint.refreshAll();
-    }, false);
-
-    var setFPheight = function () {
-      var $body = document.body,
-        $footer = document.getElementById('colophon'),
-        $maincontainer = document.querySelector('.box-container'),
-        rect = $maincontainer.getBoundingClientRect();
-      $body.style.height = UNCODE.wheight + 'px';
-      $footer.style.top = rect.height + 'px';
-    };
-
-    setFPheight();
-
-    window.addEventListener('resize', setFPheight, false);
-    window.addEventListener('orientationchange', setFPheight, false);
-
-  };
-
-  UNCODE.init = function () {
-    UNCODE.preventDoubleTransition();
-    UNCODE.utils();
-    UNCODE.menuSystem();
-    UNCODE.okvideo();
-    UNCODE.tapHover();
-    UNCODE.isotopeLayout();
-    UNCODE.justifiedGallery();
-    UNCODE.lightbox();
-    //UNCODE.backVideo();
-    UNCODE.carousel($('body'));
-    UNCODE.animations();
-    UNCODE.stickyElements();
-    UNCODE.twentytwenty();
-    UNCODE.disableHoverScroll();
-    UNCODE.printScreen();
-    if (!UNCODE.isFullPage) {
-      UNCODE.checkScrollForTabs();
-    }
-    UNCODE.onePage(UNCODE.isMobile);
-    $(document).on('ready', function () {
-      UNCODE.fullPage();
-    });
-    if ($('body.smooth-scroller').length) {
-      setTimeout(function () {
-        UNCODE.scrollEnance();
-      }, 300);
-    }
-    $(window)
-      .on('load', function () {
-        setTimeout(function () {
-          Waypoint.refreshAll();
-        }, 1000);
-      });
-  }
-  UNCODE.init();
-})(jQuery);
+}]

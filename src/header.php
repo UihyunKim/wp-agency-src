@@ -12,7 +12,7 @@
 </head>
 
 <body id='bootstrap-overrides' 
-      class='<?php echo is_home() ? 'prx-1' : '' ?>'
+      <?php body_class(); ?>
       style = 'visibility: hidden'
       data-temp-url = <?php bloginfo('template_url') ?>
       data-bg-img1 = "<?php echo get_theme_mod('slide1_bg_image', get_bloginfo('template_url').'/img/front-parallax-bg1.png') ?>"

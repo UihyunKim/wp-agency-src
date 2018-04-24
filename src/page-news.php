@@ -17,19 +17,6 @@
       <div class="content text-center">
         <h5 class="text-white js-bg-anim invisible"><?php the_time(get_option('date_format')); ?></h2>
         <h1 class="mx-auto px-4 text-white js-title-anim invisible"> <?php the_title(); ?> </h1>
-        <!-- <div class="d-flex flex-row justify-content-center">
-          <div class="">
-            <h6 class="text-white">aaa</h6>
-          </div>
-          <div class="mx-3">
-            <h6 class="text-white">
-              <?php comments_number('0 comment', 'one comment', '% comments'); ?>
-            </h6>
-          </div>
-          <div class="">
-            <h6 class="text-white">bbb</h6>
-          </div>
-        </div> -->
         <div class="mt-4 mt-lg-5 js-bg-anim invisible">
           <a class="py-2 py-lg-3 px-3 px-lg-4 read-more badge badge-pill badge-light text-uppercase" href="<?php the_permalink(); ?>">Read More</a>
         </div>
